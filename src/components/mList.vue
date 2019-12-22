@@ -11,7 +11,8 @@
     <ul v-if="mType.list2">
       <li>
         <span class="title">
-          <a href>vsPlayAudio</a>:
+          <a href>vsPlayAudio</a>
+          <span>:</span>
         </span>
         <span class="explain">美观的音乐播放器</span>
       </li>
@@ -25,24 +26,24 @@ export default {
   props: {
     type: String
   },
-  data:function(){
+  data: function() {
     let mType = {
-      list:false,
-      list2:false,
-    }
+      list: false,
+      list2: false
+    };
     switch (this.type) {
       case "m-list2":
-        mType.list2 = true
+        mType.list2 = true;
         break;
-    
+
       default:
-        mType.list = true
+        mType.list = true;
         break;
     }
 
     return {
       mType
-    }
+    };
   }
 };
 </script>

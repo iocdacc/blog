@@ -6,25 +6,29 @@
       <span>495</span>
       <span>持续集成</span>
     </div>
-    <div class="content">
-      <p>所有的Gitlab任务都会放在Gitlab Runner中执行.</p>
-      <p>GitLab Runner的安装环境,根据你的需求而定,一个gitlab 可以注册的Runner是没有限制的.</p>
-      <p>普通的前端项目直接安装在Linux中就可以了,如果是小程序或者RN这种项目,目前我是直接找了一台mac mini来安装Runner.</p>
-      <h2>GitLab Runner安装</h2>
-      <p>安装Runner 非常简单, 这里晒出Gitlab的官方安装教程,你可以根据你的系统环境自行下载.</p>
-      <h2>本文链接：</h2>
-      <p>
-        <a href>file:///D:/code/blog-static/archive.html</a>
-      </p>
-    </div>
+    <div class="content" v-html="content"></div>
   </div>
 </template>
 
 <script>
+import marked from "marked";
+import axios from "axios";
+
 export default {
   name: "mArticle",
   props: {
-    msg: String
+  },
+  data:function (){
+    return {
+      content:""
+    }
+  },
+  beforeCreate() {
+    let that = this
+    axios.get("/md/可能被忽略的CSS优先级问题.md").then(function(response) {
+      that.content = marked(response.data)
+      window.console.log(response)
+    })
   }
 };
 </script>
@@ -44,17 +48,17 @@ export default {
   padding: 2px 0 0 0;
   font-size: 1.2rem;
 }
-.m-article .content {
+.m-article /deep/ .content {
   padding: 24px 0 0 0;
   font-size: 1.2rem;
 }
-.m-article .content p {
+.m-article /deep/ .content p {
   margin: 1rem 0;
   word-break: break-all;
   text-align: justify;
 }
-.m-article .content .h1,
-.m-article .content h1 {
+.m-article /deep/ .content .h1,
+.m-article /deep/ .content h1 {
   letter-spacing: 0.01em;
   font-size: 1.6em;
   font-style: normal;
@@ -64,15 +68,15 @@ export default {
   margin-bottom: 1rem;
   display: block;
 }
-.m-article .content .h2,
-.m-article .content h2,
-.m-article .content h3 {
+.m-article /deep/ .content .h2,
+.m-article /deep/ .content h2,
+.m-article /deep/ .content h3 {
   font-size: 1.4rem;
   font-weight: 700;
   color: #eee;
 }
-.m-article .content .h2,
-.m-article .content h2 {
+.m-article /deep/ .content .h2,
+.m-article /deep/ .content h2 {
   position: relative;
   text-transform: none;
   letter-spacing: normal;
@@ -80,7 +84,7 @@ export default {
   margin-bottom: 0.5rem;
   display: block;
 }
-.m-article .content h2:before {
+.m-article /deep/ .content h2:before {
   content: "#";
   color: #2bbc8a;
   position: absolute;
@@ -89,9 +93,9 @@ export default {
   font-size: 1.6rem;
   font-weight: 700;
 }
-.m-article .content h4,
-.m-article .content h5,
-.m-article .content h6 {
+.m-article /deep/ .content h4,
+.m-article /deep/ .content h5,
+.m-article /deep/ .content h6 {
   font-size: 1.2rem;
   font-weight: 400;
   color: #ccc;
@@ -99,15 +103,15 @@ export default {
   display: inline;
   text-decoration: none;
 }
-.m-article .content dt,
-.m-article .content strong,
-.m-article .content th {
+.m-article /deep/ .content dt,
+.m-article /deep/ .content strong,
+.m-article /deep/ .content th {
   font-weight: 700;
 }
-.m-article .content h3,
-.m-article .content h4,
-.m-article .content h5,
-.m-article .content h6 {
+.m-article /deep/ .content h3,
+.m-article /deep/ .content h4,
+.m-article /deep/ .content h5,
+.m-article /deep/ .content h6 {
   margin-top: 0.9rem;
   margin-bottom: 0.5rem;
 }
