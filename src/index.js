@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 /**
  * @description: 全局样式
  * @return:
@@ -21,6 +21,7 @@ import Foot from 'components/Foot';
 class App extends Component {
   constructor(props) {
     super(props);
+    console.log(Router);
   }
 
   render() {

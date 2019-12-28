@@ -8,7 +8,7 @@ class archiveList extends Component {
       for (const key in this.props.data) {
         let res = this.props.data[key];
         list.push(
-          <li key={res.page}>
+          <li key={key}>
             <span className="date">{res.date}</span>
             <span className="title">
               <Link to={'/archive/' + key}>{res.title}</Link>
