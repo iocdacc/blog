@@ -13,10 +13,16 @@ import 'assets/css/style.css';
  */
 import Home from 'views/Home';
 import Archive from 'views/Archive';
+import Archives from 'views/Archives';
+import About from 'views/About';
 import Head from 'components/Head';
 import Foot from 'components/Foot';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Router>
@@ -28,15 +34,19 @@ class App extends Component {
             <Home />
           </Route>
 
-          <Route
-              path="/archive/:id"
-          >
-            <Archive />
+          <Route component={Archive} path="/archive/:id" />
+
+          <Route path="/archives">
+            <Head title="Archives" />
+            <Archives />
           </Route>
 
-          <Route>
-            404
+          <Route path="/about">
+            <Head title="About" />
+            <About />
           </Route>
+
+          <Route>404</Route>
         </Switch>
 
         <Foot />

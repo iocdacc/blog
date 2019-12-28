@@ -5,8 +5,8 @@ module.exports = override(
     'prismjs',
     {
       languages: ['javascript', 'css', 'markup'],
-      plugins: ['line-numbers'],
-      theme: '',
+      plugins: ['line-numbers','copy-to-clipboard'],
+      theme: 'okaidia',
       css: true
     }
   ])

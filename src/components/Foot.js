@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MenuList from 'components/MenuList'
+import MenuList from 'components/MenuList';
 
 class Foot extends Component {
   render() {
