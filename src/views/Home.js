@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 import ArchiveList from 'components/ArchiveList';
 import ProjectsList from 'components/ProjectsList';
 import ShowText from 'components/ShowText';
-import Axios from 'axios';
+import store from 'store';
+import { archivesList } from 'store/actionCreators';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      archiveListData: ''
+      archivesListData: store.getState().archivesListData
     };
   }
 
   componentDidMount() {
-    Axios.get('/md/pages.json').then(res => {
-      this.setState({
-        archiveListData: res.data
-      });
-    });
+    let that = this;
+    store.dispatch(archivesList(store.getState().archivesListData));
+    this.unsubscribe = store.subscribe(() => that.setState({ archivesListData: store.getState().archivesListData }));
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() {
@@ -41,7 +43,7 @@ class Home extends Component {
             <a href="">Archives</a>
           </span>
         </div>
-        <ArchiveList data={this.state.archiveListData} />
+        <ArchiveList data={this.state.archivesListData} />
         <div className="m-title m-titleList">
           <span className="title">
             <a href="">Projects</a>

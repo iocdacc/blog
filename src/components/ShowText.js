@@ -6,7 +6,7 @@ class ShowText extends Component {
     new Typed('.m-showText span', {
       strings: ['First sentence.', 'Second sentence.'],
       typeSpeed: 30
-    })
+    });
   }
 
   render() {
@@ -14,7 +14,7 @@ class ShowText extends Component {
       <div className="m-showText">
         <span></span>
       </div>
-    )
+    );
   }
 }
 

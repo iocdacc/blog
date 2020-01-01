@@ -5,7 +5,7 @@ import MenuList from 'components/MenuList';
 class Head extends Component {
   constructor(props) {
     super(props);
-    this.title = 'Iocdacc'
+    this.title = 'Iocdacc';
   }
 
   render() {

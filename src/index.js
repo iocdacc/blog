@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import 'store/index';
+
 /**
  * @description: 全局样式
  * @return:
@@ -19,11 +21,6 @@ import Head from 'components/Head';
 import Foot from 'components/Foot';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    console.log(Router);
-  }
-
   render() {
     return (
       <Router>
@@ -35,7 +32,9 @@ class App extends Component {
             <Home />
           </Route>
 
-          <Route component={Archive} path="/archive/:id" />
+          <Route path="/archive/:id">
+            <Archive />
+          </Route>
 
           <Route path="/archives">
             <Head title="Archives" />

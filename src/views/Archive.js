@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
 import Content from 'components/Content';
 import MenuIcon from 'components/MenuIcon';
-import Axios from 'axios';
-
+import { withRouter } from 'react-router-dom';
+import store from 'store';
+import { archiveContent } from 'store/actionCreators';
 
 class Archive extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ContentData: '',
+      contentData: '',
       date: '',
       tag: '',
       title: ''
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let that = this;
-    Axios.get('/md/pages.json').then(res=>{
-      this.setState({
-        date: res.data[that.props.match.params.id].date,
-        tag: res.data[that.props.match.params.id].tag,
-        title: res.data[that.props.match.params.id].title
-      });
-      Axios.get(res.data[that.props.match.params.id].src).then(res=>{
-        this.setState({
-          ContentData: res.data
-        });
+    //this.props.match.params.id 为文章的id url带过来的
+    //这个action里有两层AJAX 第一层拿目录 第二层通过目录里SRC拿对应的文章内容 当然如果之前已经拿了目录会直接拿文章内容
+    store.dispatch(archiveContent(this.props.match.params.id));
+    this.unsubscribe = store.subscribe(() => {
+      that.setState({
+        contentData: store.getState().archiveContentData.contentData,
+        date: store.getState().archivesListData[this.props.match.params.id].date,
+        tag: store.getState().archivesListData[this.props.match.params.id].tag,
+        title: store.getState().archivesListData[this.props.match.params.id].title
       });
     });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() {
@@ -42,7 +46,7 @@ class Archive extends Component {
               <span>495</span>
               <span>{this.state.tag}</span>
             </div>
-            <Content data={this.state.ContentData} />
+            <Content data={this.state.contentData} />
           </div>
         </div>
         <div className="g-topRightFixed">
@@ -51,7 +55,6 @@ class Archive extends Component {
       </div>
     );
   }
-
 }
 
-export default Archive;
+export default withRouter(Archive);
