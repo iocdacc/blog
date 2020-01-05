@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class archiveList extends Component {
   render() {
     let list = [];
-    if (this.props.data) {
-      for (const key in this.props.data) {
-        let res = this.props.data[key];
+    if (this.props.archivesListData) {
+      for (const key in this.props.archivesListData) {
+        let res = this.props.archivesListData[key];
         list.push(
           <li key={key}>
             <span className="date">{res.date}</span>
@@ -26,4 +27,10 @@ class archiveList extends Component {
   }
 }
 
-export default archiveList;
+const mapStateToProps = (state) => {
+  return {
+    archivesListData: state.archivesListData
+  };
+};
+
+export default connect(mapStateToProps)(archiveList);

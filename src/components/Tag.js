@@ -1,27 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Tag extends Component {
   render() {
+
+    //通过文章列表信息读取并重组标签
+    let tagData = {};
+    let v = this.props.archivesListData;
+      for (const key in v) {
+        tagData[v[key].tag] ? (tagData[v[key].tag] += 1) : (tagData[v[key].tag] = 1);
+      }
+    let TagList = [];
+    for (const key in tagData) {
+      TagList.push(
+        <li className={'level' + tagData[key]} key={key}>{key}</li>
+      );
+    }
+
     return (
       <div className="m-tag clear">
         <ul>
-          <li className="level1">Centos</li>
-          <li className="level2">Centos</li>
-          <li className="level3">Centos</li>
-          <li className="level4">Centos</li>
-          <li className="level5">Centos</li>
-          <li className="level6">Centos</li>
-          <li className="level7">Centos</li>
-          <li className="level6">Centos</li>
-          <li className="level5">Centos</li>
-          <li className="level4">Centos</li>
-          <li className="level3">Centos</li>
-          <li className="level2">Centos</li>
-          <li className="level1">Centos</li>
+          {TagList}
         </ul>
       </div>
     );
   }
 }
 
-export default Tag;
+const mapStateToProps = (state) => {
+  return {
+    archivesListData: state.archivesListData
+  };
+};
+
+export default connect(mapStateToProps)(Tag);

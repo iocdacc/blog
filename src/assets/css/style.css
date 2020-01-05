@@ -31,7 +31,7 @@ body{background-color: #1d1f21;}
 
 
 /* 演示文字 */
-.m-showText{min-height: 105px;padding: 30px 0 10px 0;}
+.m-showText{min-height: 105px;padding: 48px 0 10px 0;font-size: 1.2rem;line-height: 24px;}
 
 /* 计数 */
 .m-counting ul li{float:left;font-size:1.1rem;margin-right:20px;position:relative;}
@@ -51,7 +51,7 @@ body{background-color: #1d1f21;}
 .m-list2 ul li .title{margin: 0 5px 0 0;}
 
 /* 文章标签 */
-.m-tag{padding: 40px 0 0 0;}
+.m-tag{padding: 40px 0 40px 0;}
 .m-tag ul li{float: left;margin: 0 5px 0 0;line-height: 34px;}
 .m-tag ul li.level1{font-size: 1rem;}
 .m-tag ul li.level2{font-size: 1.2rem;}
@@ -67,7 +67,7 @@ body{background-color: #1d1f21;}
 .m-article .info{padding: 2px 0 0 0;font-size:1.2rem;}
 .m-article .content{padding: 24px 0 0 0;font-size:1.2rem;}
 .m-article .content p{margin: 1rem 0;word-break: break-all;text-align: justify;}
-.m-article .content .h1,.m-article .content h1{letter-spacing:.01em;font-size:1.6em;font-style:normal;font-weight:700;color:#2bbc8a;margin-top:3rem;margin-bottom:1rem;display:block}
+.m-article .content .h1,.m-article .content h1{letter-spacing:.01em;font-size:1.6em;font-style:normal;font-weight:700;margin-top:3rem;margin-bottom:1rem;display:block}
 .m-article .content .h2,.m-article .content h2,.m-article .content h3{font-size:1.4rem;font-weight:700;color:#eee}
 .m-article .content .h2,.m-article .content h2{position:relative;text-transform:none;letter-spacing:normal;margin-top:2rem;margin-bottom:.5rem;display:block}
 .m-article .content h2:before{content:"#";color:#2bbc8a;position:absolute;left:-1.5rem;top:0rem;font-size:1.6rem;font-weight:700;}

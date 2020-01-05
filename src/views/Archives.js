@@ -8,11 +8,11 @@ class Archives extends Component {
       <div>
         <div className="g-main">
           <Tag />
-          <div className="m-title m-titleArchives">
+          {/* <div className="m-title m-titleArchives">
             <span className="title">
               <a href="">2019</a>
             </span>
-          </div>
+          </div> */}
           <ArchiveList />
         </div>
       </div>
