@@ -13,9 +13,9 @@
   },
   "201912229":{
     "date": "2019-12-28",
-    "title": "测试文章2",
-    "tag": "测试文章2",
-    "src": "/md/aa2.md"
+    "title": "BLOG介绍",
+    "tag": "BLOG",
+    "src": "https://gitee.com/iocdacc/BLOG/raw/master/README.md"
   },
   "201912292":{
     "date": "2019-12-28",
