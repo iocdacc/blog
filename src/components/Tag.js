@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Tag extends Component {
+  componentDidMount(){
+
+  }
+
   render() {
 
     //通过文章列表信息读取并重组标签
