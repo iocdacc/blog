@@ -9,8 +9,8 @@ class ShowText extends Component {
     this.props.shanbayDayData.content && this.ShowText(this.props.shanbayDayData);
   }
 
-  shouldComponentUpdate(nextProps){
-    return (JSON.stringify(this.props) == JSON.stringify(nextProps)) ? false : true;
+  shouldComponentUpdate(nextProps) {
+    return JSON.stringify(this.props) == JSON.stringify(nextProps) ? false : true;
   }
 
   componentDidUpdate() {

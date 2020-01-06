@@ -22,7 +22,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     quotes: [2, 'single'], //单引号
-    'no-console': 0, //不禁用console
+    'no-console': 1, //不禁用console
     'no-debugger': 2, //禁用debugger
     'no-var': 0, //对var警告
     'semi': 1, //不强制使用分号

@@ -25,7 +25,7 @@ class Home extends Component {
             <a href="">Archives</a>
           </span>
         </div>
-        <ArchiveList />
+        <ArchiveList page={12} />
         <div className="m-title m-titleList">
           <span className="title">
             <a href="">Projects</a>

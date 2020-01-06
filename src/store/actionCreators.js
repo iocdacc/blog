@@ -20,15 +20,20 @@ export const archiveContent = id => {
   return dispatch => {
     if (store.getState().archivesListData) {
       let archivesListData = store.getState().archivesListData;
-      axios.get(archivesListData[id].src).then(res => {
-        if (res.data) {
-          dispatch({
-            type: 'GET_ARCHIVESCONTENT',
-            id: id,
-            contentData: res.data
-          });
-        }
-      });
+      axios
+        .get(archivesListData[id].src)
+        .then(res => {
+          if (res.data) {
+            dispatch({
+              type: 'GET_ARCHIVESCONTENT',
+              id: id,
+              contentData: res.data
+            });
+          }
+        })
+        .catch(() => {
+
+        });
     } else {
       axios.get('/md/pages.json').then(res => {
         if (res.data) {
@@ -44,6 +49,9 @@ export const archiveContent = id => {
                 contentData: res2.data
               });
             }
+          })
+          .catch(() => {
+
           });
         }
       });

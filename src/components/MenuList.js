@@ -15,6 +15,9 @@ class MenuList extends Component {
             <Link to="/archives">Archives</Link>
           </li>
           <li>
+            <Link to="/snippet">Snippet</Link>
+          </li>
+          <li>
             <Link to="/about">About</Link>
           </li>
           <li>
