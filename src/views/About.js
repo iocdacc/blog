@@ -9,11 +9,11 @@ class About extends Component {
     super(props);
     switch (this.props.match.path) {
       case '/snippet':
-        this.state = {id: '201912293'};
+        this.state = {id: 'snippet'};
         break;
 
       default:
-        this.state = {id: '000000'};
+        this.state = {id: 'about'};
         break;
     }
   }
