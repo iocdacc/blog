@@ -6,7 +6,7 @@ a:link{text-decoration:none;}
 a:visited{text-decoration:none;}
 a:hover{text-decoration:none;}
 a:active{text-decoration:none;}
-li{list-style:none;font-size:12px;}
+li{list-style:none;font-size:1rem;}
 em{font-style:normal}
 ul{font-size:0px;}
 img{border:0;vertical-align:middle}

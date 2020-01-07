@@ -10,7 +10,7 @@ class Tag extends Component {
     let tagData = {};
     let v = this.props.archivesListData;
     for (const key in v) {
-      if (!v.hidden) {
+      if (!v[key].hidden) {
         tagData[v[key].tag] ? (tagData[v[key].tag] += 1) : (tagData[v[key].tag] = 1);
         tagData[v[key].tag] > 7 && (tagData[v[key].tag] = 7);
       }
