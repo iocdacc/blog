@@ -21,7 +21,7 @@ class MenuList extends Component {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/">Github</Link>
+            <a href="https://github.com/iocdacc">Github</a>
           </li>
         </ul>
       </div>
