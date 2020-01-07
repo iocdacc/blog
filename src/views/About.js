@@ -24,12 +24,24 @@ class About extends Component {
 
   render() {
     if (this.props.archivesListData && this.props.archivesListData[this.state.id].contentData) {
+      let that = this;
+      window.disqus_config = function () {
+        this.page.url = 'https://iocdacc.com'+that.props.match.url;
+        this.page.identifier = that.state.id;
+      };
+      let d = document, s = d.createElement('script');
+      s.src = 'https://iocdacc.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+
+
       return (
         <div>
           <div className="g-main">
             <div className="m-article">
               <Content data={this.props.archivesListData[this.state.id].contentData} />
             </div>
+            <div id="disqus_thread"></div>
           </div>
         </div>
       );

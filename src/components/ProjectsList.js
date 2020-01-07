@@ -7,7 +7,7 @@ class ProjectsList extends Component {
         <ul>
           <li>
             <span className="title">
-              <a href="">vsPlayAudio</a>:
+              <a href="/">vsPlayAudio</a>:
             </span>
             <span className="explain">美观的音乐播放器</span>
           </li>

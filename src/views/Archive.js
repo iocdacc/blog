@@ -21,13 +21,6 @@ let infoLoader = (
 );
 
 class Archive extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      aaa: 1
-    };
-  }
-
   componentDidMount() {
     this.props.archiveContent(this.props.match.params.id);
   }
@@ -48,6 +41,16 @@ class Archive extends Component {
 
   render() {
     if (this.props.archivesListData && this.props.archivesListData[this.props.match.params.id].contentData) {
+      let that = this;
+      window.disqus_config = function () {
+        this.page.url = 'https://iocdacc.com'+that.props.match.url;
+        this.page.identifier = that.props.match.params.id;
+      };
+      let d = document, s = d.createElement('script');
+      s.src = 'https://iocdacc.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+
       return (
         <div>
           <div className="g-main">
@@ -60,6 +63,7 @@ class Archive extends Component {
               </div>
               <Content data={this.props.archivesListData[this.props.match.params.id].contentData}/>
             </div>
+            <div id="disqus_thread"></div>
           </div>
           <div className="g-topRightFixed">
             <MenuIcon />

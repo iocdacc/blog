@@ -10,7 +10,7 @@ class ShowText extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return JSON.stringify(this.props) == JSON.stringify(nextProps) ? false : true;
+    return JSON.stringify(this.props) === JSON.stringify(nextProps) ? false : true;
   }
 
   componentDidUpdate() {
@@ -18,15 +18,13 @@ class ShowText extends Component {
   }
 
   ShowText(data) {
-    if (!this.Typed) {
-      let str = data.content + '<br/>';
-      str += data.translation + '<br/>';
-      this.Typed = new Typed('.m-showText span', {
-        strings: [str + '--- Who??^1000', str + '--- It\'s me^2000', str + '--- Haha, make a joke', str + '--- ' + data.author],
-        typeSpeed: 20,
-        startDelay: 300
-      });
-    }
+    let str = data.content + '<br/>';
+    str += data.translation + '<br/>';
+    this.Typed = new Typed('.m-showText span', {
+      strings: [str + '--- Who??^1000', str + '--- It\'s me^2000', str + '--- Haha, make a joke', str + '--- ' + data.author],
+      typeSpeed: 20,
+      startDelay: 300
+    });
   }
 
   render() {

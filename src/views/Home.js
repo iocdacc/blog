@@ -22,13 +22,13 @@ class Home extends Component {
         </div>
         <div className="m-title m-titleList">
           <span className="title">
-            <a href="">Archives</a>
+            <a href="/">Archives</a>
           </span>
         </div>
         <ArchiveList page={12} />
         <div className="m-title m-titleList">
           <span className="title">
-            <a href="">Projects</a>
+            <a href="/">Projects</a>
           </span>
         </div>
         <ProjectsList />

@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Tag extends Component {
-  componentDidMount() {}
-
   render() {
     //通过文章列表信息读取并重组标签
     let tagData = {};

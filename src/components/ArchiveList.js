@@ -11,7 +11,7 @@ class archiveList extends Component {
       for (const key in this.props.archivesListData) {
         let res = this.props.archivesListData[key];
         if (!res.hidden) {
-          if (res.tag == this.props.match.params.tag || !this.props.match.params.tag) {
+          if (res.tag === this.props.match.params.tag || !this.props.match.params.tag) {
             if (i >= this.props.page && this.props.page) break;
             i++;
 
