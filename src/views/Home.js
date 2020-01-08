@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ArchiveList from 'components/ArchiveList';
 import ProjectsList from 'components/ProjectsList';
 import ShowText from 'components/ShowText';
-console.log(process);
+
 class Home extends Component {
 
   render() {
