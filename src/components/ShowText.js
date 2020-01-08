@@ -9,12 +9,10 @@ class ShowText extends Component {
     this.props.shanbayDayData.content && this.ShowText(this.props.shanbayDayData);
   }
 
-  shouldComponentUpdate(nextProps) {
-    return JSON.stringify(this.props) === JSON.stringify(nextProps) ? false : true;
-  }
-
-  componentDidUpdate() {
-    this.props.shanbayDayData.content && this.ShowText(this.props.shanbayDayData);
+  componentDidUpdate(prevState) {
+    if (this.props.shanbayDayData.content != prevState.shanbayDayData.content) {
+      this.props.shanbayDayData.content && this.ShowText(this.props.shanbayDayData);
+    }
   }
 
   ShowText(data) {

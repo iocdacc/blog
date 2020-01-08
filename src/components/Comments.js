@@ -5,8 +5,10 @@ class Comments extends Component {
     !window.DISQUS ? this.disqus() : this.resetDisqus();
   }
 
-  componentDidUpdate(){
-    !window.DISQUS ? this.disqus() : this.resetDisqus();
+  componentDidUpdate(prevState){
+    if (this.props.url != prevState.url && this.props.id != prevState.id) {
+      !window.DISQUS ? this.disqus() : this.resetDisqus();
+    }
   }
 
   disqus(){
