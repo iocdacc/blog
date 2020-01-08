@@ -3,7 +3,7 @@
 > 自尊只会伤害你，绝不会帮助你。  
 > —— 昆汀·塔伦蒂诺《低俗小说》  
 
-<iframe style="width: 100%;height: 288px;" src="//player.bilibili.com/player.html?aid=15749914&cid=25649472&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe style="width: 100%;height: 288px;" src="https://player.bilibili.com/player.html?aid=15749914&cid=25649472&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 # 联系方式
 
