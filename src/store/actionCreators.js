@@ -20,20 +20,20 @@ export const archiveContent = id => {
   return dispatch => {
     if (store.getState().archivesListData) {
       let archivesListData = store.getState().archivesListData;
-      axios
-        .get(archivesListData[id].src)
-        .then(res => {
-          if (res.data) {
-            dispatch({
-              type: 'GET_ARCHIVESCONTENT',
-              id: id,
-              contentData: res.data
-            });
-          }
-        })
-        .catch(() => {
-
-        });
+      if (archivesListData[id]) {
+        axios
+          .get(archivesListData[id].src)
+          .then(res => {
+            if (res.data) {
+              dispatch({
+                type: 'GET_ARCHIVESCONTENT',
+                id: id,
+                contentData: res.data
+              });
+            }
+          })
+          .catch(() => {});
+      }
     } else {
       axios.get('/md/config/pages.json').then(res => {
         if (res.data) {
@@ -41,18 +41,20 @@ export const archiveContent = id => {
             type: 'GET_ARCHIVES_LIST',
             archivesListData: res.data
           });
-          axios.get(res.data[id].src).then(res2 => {
-            if (res2.data) {
-              dispatch({
-                type: 'GET_ARCHIVESCONTENT',
-                id: id,
-                contentData: res2.data
-              });
-            }
-          })
-          .catch(() => {
-
-          });
+          if (res.data[id]) {
+            axios
+              .get(res.data[id].src)
+              .then(res2 => {
+                if (res2.data) {
+                  dispatch({
+                    type: 'GET_ARCHIVESCONTENT',
+                    id: id,
+                    contentData: res2.data
+                  });
+                }
+              })
+              .catch(() => {});
+          }
         }
       });
     }
