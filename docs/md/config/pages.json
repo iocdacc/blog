@@ -3,14 +3,14 @@
     "date": "2019-12-28",
     "title": "关于",
     "tag": "关于",
-    "src": "/md/about.md",
+    "src": "/md/page/about.md",
     "hidden": true
   },
   "snippet":{
     "date": "2019-12-28",
     "title": "代码片段",
     "tag": "代码片段",
-    "src": "https://raw.githubusercontent.com/nieweidong/fetool/master/README.md",
+    "src": "/md/page/snippet.md",
     "hidden": true
   },
   "20191009":{
