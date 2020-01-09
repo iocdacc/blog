@@ -3,7 +3,8 @@ const paths = require('react-scripts/config/paths');
 const path = require('path');
 
 paths.appBuild = path.join(path.dirname(paths.appBuild), 'docs'); // 修改打包目录
-process.env.GENERATE_SOURCEMAP = 'false';
+paths.servedPath = './'; // 资源路径改为相对路径
+process.env.GENERATE_SOURCEMAP = 'false'; // 取消生成map文件
 
 module.exports = override(
   addBabelPlugins([
