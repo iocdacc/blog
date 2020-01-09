@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.d86f0a39.chunk.css",
-    "main.js": "/static/js/main.d95b6d08.chunk.js",
+    "main.js": "/static/js/main.f105bea0.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.ef29f233.js",
     "static/css/2.1c8132cd.chunk.css": "/static/css/2.1c8132cd.chunk.css",
-    "static/js/2.ee084c84.chunk.js": "/static/js/2.ee084c84.chunk.js",
+    "static/js/2.49fa169b.chunk.js": "/static/js/2.49fa169b.chunk.js",
     "index.html": "/index.html",
-    "precache-manifest.c1f8b0c1e64573e8b6cf20a6f1ae3160.js": "/precache-manifest.c1f8b0c1e64573e8b6cf20a6f1ae3160.js",
+    "precache-manifest.52d6bbcaefbf8e3280b26074dec9934a.js": "/precache-manifest.52d6bbcaefbf8e3280b26074dec9934a.js",
     "service-worker.js": "/service-worker.js",
-    "static/js/2.ee084c84.chunk.js.LICENSE": "/static/js/2.ee084c84.chunk.js.LICENSE",
+    "static/js/2.49fa169b.chunk.js.LICENSE": "/static/js/2.49fa169b.chunk.js.LICENSE",
     "static/media/reset.css": "/static/media/MesloLGS-Regular.c26c11f1.woff",
     "static/media/logo.png": "/static/media/logo.3a523a21.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ef29f233.js",
     "static/css/2.1c8132cd.chunk.css",
-    "static/js/2.ee084c84.chunk.js",
+    "static/js/2.49fa169b.chunk.js",
     "static/css/main.d86f0a39.chunk.css",
-    "static/js/main.d95b6d08.chunk.js"
+    "static/js/main.f105bea0.chunk.js"
   ]
 }
