@@ -4,7 +4,7 @@ import store from 'store';
 export const archivesList = (data = '') => {
   return dispatch => {
     if (!data) {
-      axios.get('./md/config/pages.json').then(res => {
+      axios.get('/blog/md/config/pages.json').then(res => {
         if (res.data) {
           dispatch({
             type: 'GET_ARCHIVES_LIST',
@@ -35,7 +35,7 @@ export const archiveContent = id => {
           .catch(() => {});
       }
     } else {
-      axios.get('./md/config/pages.json').then(res => {
+      axios.get('/blog/md/config/pages.json').then(res => {
         if (res.data) {
           dispatch({
             type: 'GET_ARCHIVES_LIST',

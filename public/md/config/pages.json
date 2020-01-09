@@ -3,104 +3,104 @@
     "date": "2019-12-28",
     "title": "关于",
     "tag": "关于",
-    "src": "./md/page/about.md",
+    "src": "/blog/md/page/about.md",
     "hidden": true
   },
   "snippet":{
     "date": "2019-12-28",
     "title": "代码片段",
     "tag": "代码片段",
-    "src": "./md/page/snippet.md",
+    "src": "/blog/md/page/snippet.md",
     "hidden": true
   },
   "20191009":{
     "date": "2019-10-09",
     "title": "Systemd Linux管理工具（守护进程，开机自启动）",
     "tag": "Linux",
-    "src": "./md/Systemd Linux管理工具（守护进程，开机自启动）.md"
+    "src": "/blog/md/Systemd Linux管理工具（守护进程，开机自启动）.md"
   },
   "2019100902":{
     "date": "2019-10-09",
     "title": "关闭SELinux解决NGINX因其导致各种的问题",
     "tag": "Linux",
-    "src": "./md/关闭SELinux解决NGINX因其导致各种的问题.md"
+    "src": "/blog/md/关闭SELinux解决NGINX因其导致各种的问题.md"
   },
   "20191007":{
     "date": "2019-10-07",
     "title": "pm2常用的命令用法介绍",
     "tag": "node",
-    "src": "./md/pm2常用的命令用法介绍.md"
+    "src": "/blog/md/pm2常用的命令用法介绍.md"
   },
   "2019100702":{
     "date": "2019-10-07",
     "title": "从零开始搭建一个nginx反向代理node服务器",
     "tag": "nginx",
-    "src": "./md/从零开始搭建一个nginx反向代理node服务器.md"
+    "src": "/blog/md/从零开始搭建一个nginx反向代理node服务器.md"
   },
   "2019100703":{
     "date": "2019-10-07",
     "title": "RHEL8_CentOS8的基础防火墙配置-用例",
     "tag": "Linux",
-    "src": "./md/RHEL8_CentOS8的基础防火墙配置-用例.md"
+    "src": "/blog/md/RHEL8_CentOS8的基础防火墙配置-用例.md"
   },
   "20191004":{
     "date": "2019-10-04",
     "title": "CentOS 添加环境变量的三种方法",
     "tag": "Linux",
-    "src": "./md/CentOS 添加环境变量的三种方法.md"
+    "src": "/blog/md/CentOS 添加环境变量的三种方法.md"
   },
   "2019100402":{
     "date": "2019-10-04",
     "title": "CentOS 7最小化安装后连接WiFi和有线网络的全过程",
     "tag": "Linux",
-    "src": "./md/CentOS 7最小化安装后连接WiFi和有线网络的全过程.md"
+    "src": "/blog/md/CentOS 7最小化安装后连接WiFi和有线网络的全过程.md"
   },
   "2019100403":{
     "date": "2019-10-04",
     "title": "关于centos 7 64位 笔记本合盖不关机的方案总结",
     "tag": "Linux",
-    "src": "./md/关于centos 7 64位 笔记本合盖不关机的方案总结.md"
+    "src": "/blog/md/关于centos 7 64位 笔记本合盖不关机的方案总结.md"
   },
   "20190620":{
     "date": "2019-06-20",
     "title": "关于Video标签比例问题的一种解决方法",
     "tag": "前端",
-    "src": "./md/关于Video标签比例问题的一种解决方法.md"
+    "src": "/blog/md/关于Video标签比例问题的一种解决方法.md"
   },
   "20190619":{
     "date": "2019-06-19",
     "title": "可能被忽略的CSS优先级问题",
     "tag": "前端",
-    "src": "./md/可能被忽略的CSS优先级问题.md"
+    "src": "/blog/md/可能被忽略的CSS优先级问题.md"
   },
   "2019061902":{
     "date": "2019-06-19",
     "title": "IE对样式的限制(这个IE的坑太沙雕)",
     "tag": "前端",
-    "src": "./md/IE对样式的限制(这个IE的坑太沙雕).md"
+    "src": "/blog/md/IE对样式的限制(这个IE的坑太沙雕).md"
   },
   "20190506":{
     "date": "2019-05-06",
     "title": "javascript 作用域",
     "tag": "前端",
-    "src": "./md/javascript 作用域.md"
+    "src": "/blog/md/javascript 作用域.md"
   },
   "2019050602":{
     "date": "2019-05-06",
     "title": "CSS相关知识",
     "tag": "前端",
-    "src": "./md/CSS相关知识.md"
+    "src": "/blog/md/CSS相关知识.md"
   },
   "2019050603":{
     "date": "2019-05-06",
     "title": "HTML相关知识",
     "tag": "前端",
-    "src": "./md/HTML相关知识.md"
+    "src": "/blog/md/HTML相关知识.md"
   },
   "20190505":{
     "date": "2019-05-05",
     "title": "Unicode 12.0字符代码图表",
     "tag": "Unicode",
-    "src": "./md/Unicode 12.0字符代码图表.md"
+    "src": "/blog/md/Unicode 12.0字符代码图表.md"
   }
 }
