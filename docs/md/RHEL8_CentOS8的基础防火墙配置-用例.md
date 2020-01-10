@@ -1,4 +1,4 @@
-##systemctl
+## systemctl
 
 ```linux
 systemctl unmask firewalld                  #执行命令，即可实现取消服务的锁定
@@ -13,9 +13,9 @@ systemctl disable firewalld.service         #在开机时禁用服务
 systemctl is-enabled firewalld.service      #查看服务是否开机启动
 systemctl list-unit-files|grep enabled      #查看已启动的服务列表
 systemctl --failed                          #查看启动失败的服务列表            
-```linux
+```
 
-##firewall-cmd
+## firewall-cmd
 ```linux
 firewall-cmd --state                         #查看防火墙状态  
 firewall-cmd --reload                        #更新防火墙规则  
@@ -50,7 +50,7 @@ firewall-cmd --permanent --remove-port=8080/tcp    # 移除端口
 firewall-cmd --reload    #重启防火墙(修改配置后要重启防火墙)
 ```
 
-##iptables.service
+## iptables.service
 ```linux
 yum install iptables-services           #安装iptables  
 systemctl stop firewalld.service        #停止firewalld  
