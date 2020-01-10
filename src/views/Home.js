@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import ArchiveList from 'components/ArchiveList';
 import ProjectsList from 'components/ProjectsList';
 import ShowText from 'components/ShowText';
+import {
+  Link
+} from 'react-router-dom';
+
 
 class Home extends Component {
 
@@ -16,19 +20,19 @@ class Home extends Component {
               <span>555555</span>
             </li>
             <li>
-              Find me on <i className="m-icon m-icon-github"></i>.
+              Find me on <a href="https://github.com/iocdacc"><i className="m-icon m-icon-github"></i></a>.
             </li>
           </ul>
         </div>
         <div className="m-title m-titleList">
           <span className="title">
-            <a href="/">Archives</a>
+            <Link to="/Archives">Archives</Link>
           </span>
         </div>
         <ArchiveList page={12} />
         <div className="m-title m-titleList">
           <span className="title">
-            <a href="/">Projects</a>
+            <a href="javascript:;">Projects</a>
           </span>
         </div>
         <ProjectsList />

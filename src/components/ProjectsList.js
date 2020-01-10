@@ -14,7 +14,7 @@ class ProjectsList extends Component {
         list.push(
           <li key={k.name}>
             <span className="title">
-              <a href={k.src}>{k.name}</a>:
+              <a href={k.src} rel="noopener noreferrer" target="_blank">{k.name}</a>:
             </span>
             <span className="explain">{k.describe}</span>
           </li>

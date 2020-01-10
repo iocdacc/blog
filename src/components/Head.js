@@ -16,7 +16,6 @@ class Head extends Component {
         </div>
         <div className="m-title">
           <h1 className="title">{!this.props.title ? this.title : this.props.title}</h1>
-          <div></div>
         </div>
         <MenuList />
       </div>
