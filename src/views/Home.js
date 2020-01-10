@@ -3,12 +3,16 @@ import ArchiveList from 'components/ArchiveList';
 import ProjectsList from 'components/ProjectsList';
 import ShowText from 'components/ShowText';
 import { Link } from 'react-router-dom';
-import { fetch } from 'busuanzi.pure.js';
+import 'busuanzi.pure.js';
+let busuanzi_value_site_pv = 0;
 
 class Home extends Component {
   componentDidMount(){
-    fetch();
+    document.getElementById('busuanzi_value_site_pv').addEventListener('DOMNodeInserted',(e)=>{
+      busuanzi_value_site_pv = e.srcElement.textContent;
+    });
   }
+
   render() {
     return (
       <div className="g-main">
@@ -17,7 +21,7 @@ class Home extends Component {
           <ul className="clear">
             <li>
               <i className="m-icon m-icon-eye"></i>
-              <span id="busuanzi_value_site_pv">0</span>
+              <span id="busuanzi_value_site_pv">{busuanzi_value_site_pv}</span>
             </li>
             <li>
               Find me on{' '}
@@ -36,7 +40,7 @@ class Home extends Component {
         <ArchiveList page={12} />
         <div className="m-title m-titleList">
           <span className="title">
-            <Link href="/">Projects</Link>
+            <Link to="/">Projects</Link>
           </span>
         </div>
         <ProjectsList />

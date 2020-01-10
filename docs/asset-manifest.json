@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "./static/css/main.f4e0b879.chunk.css",
-    "main.js": "./static/js/main.e4b1cbc5.chunk.js",
+    "main.js": "./static/js/main.b69e2e38.chunk.js",
     "runtime-main.js": "./static/js/runtime-main.5048dfb8.js",
     "static/css/2.1e4bb3c2.chunk.css": "./static/css/2.1e4bb3c2.chunk.css",
-    "static/js/2.dc8f1d80.chunk.js": "./static/js/2.dc8f1d80.chunk.js",
+    "static/js/2.8719e447.chunk.js": "./static/js/2.8719e447.chunk.js",
     "index.html": "./index.html",
-    "precache-manifest.16e2fc49fe9933ddf3f78a1b2a95b414.js": "./precache-manifest.16e2fc49fe9933ddf3f78a1b2a95b414.js",
+    "precache-manifest.8d557facd51bcec98a1ac8e07bd66cc9.js": "./precache-manifest.8d557facd51bcec98a1ac8e07bd66cc9.js",
     "service-worker.js": "./service-worker.js",
-    "static/js/2.dc8f1d80.chunk.js.LICENSE": "./static/js/2.dc8f1d80.chunk.js.LICENSE",
+    "static/js/2.8719e447.chunk.js.LICENSE": "./static/js/2.8719e447.chunk.js.LICENSE",
     "static/media/reset.css": "./static/media/MesloLGS-Regular.c26c11f1.woff",
     "static/media/logo.png": "./static/media/logo.3a523a21.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5048dfb8.js",
     "static/css/2.1e4bb3c2.chunk.css",
-    "static/js/2.dc8f1d80.chunk.js",
+    "static/js/2.8719e447.chunk.js",
     "static/css/main.f4e0b879.chunk.css",
-    "static/js/main.e4b1cbc5.chunk.js"
+    "static/js/main.b69e2e38.chunk.js"
   ]
 }
