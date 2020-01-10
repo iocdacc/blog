@@ -61,6 +61,29 @@ export const archiveContent = id => {
   };
 };
 
+export const getProjects = () => {
+  return dispatch => {
+    if (!store.getState().projectsData) {
+      dispatch({
+        type: 'GET_PROJECTS',
+        projectsData: [
+          {
+            name: 'vsPlayAudio',
+            describe: '美观的音乐播放器',
+            src: '/'
+          },
+          {
+            name: 'vsPlayVideo',
+            describe: '美观的视频播放器',
+            src: '/'
+          }
+        ]
+      });
+    }
+  };
+};
+
+
 export const getShanbayDay = () => {
   return dispatch => {
     if (!store.getState().shanbayDayData.content) {

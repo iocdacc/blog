@@ -5,15 +5,8 @@ const defaultState = {
     translation: ''
   },
   archivesListData: '',
-  archiveContentData: {
-    title: '',
-    date: '',
-    tag: '',
-    contentData: '',
-    src: '',
-    id: ''
-  },
-  tagData: ''
+  tagData: '',
+  projectsData: ''
 };
 
 function counter(state = defaultState, action) {
@@ -34,6 +27,10 @@ function counter(state = defaultState, action) {
     case 'GET_TAG':
       newState = JSON.parse(JSON.stringify(state));
       newState.tagData = action.tagData;
+      return newState;
+    case 'GET_PROJECTS':
+      newState = JSON.parse(JSON.stringify(state));
+      newState.projectsData = action.projectsData;
       return newState;
     default:
       return state;

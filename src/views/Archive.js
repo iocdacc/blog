@@ -3,10 +3,9 @@ import Content from 'components/Content';
 import MenuIcon from 'components/MenuIcon';
 import { connect } from 'react-redux';
 import { archiveContent } from 'store/actionCreators';
-import { withRouter } from 'react-router-dom';
 import ContentLoader from 'react-content-loader';
 import Comments from 'components/Comments';
-
+import { withRouter } from 'react-router-dom';
 
 let titleLoader = (
   <ContentLoader height={'18'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
