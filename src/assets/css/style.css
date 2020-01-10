@@ -27,7 +27,7 @@ body{background-color: #1d1f21;}
 .m-menuFoot{float: right;width: auto;margin:0;}
 .m-menuFoot ul li a{color:#666;}
 .m-menuFoot ul li::before{border-right:#666 1px dotted;}
-.m-menuIcon{width: auto;margin:0;}
+.m-menuIcon{width: auto;margin:0;margin-right: 20px;}
 
 
 /* 演示文字 */
