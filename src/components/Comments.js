@@ -14,7 +14,7 @@ class Comments extends Component {
   disqus(){
     let that = this;
     window.disqus_config = function () {
-      this.page.url = that.props.url;
+      this.page.url = 'https://blog.iocdacc.com/'+that.props.url;
       this.page.identifier = that.props.id;
     };
     let d = document, s = d.createElement('script');
@@ -29,7 +29,7 @@ class Comments extends Component {
       window.DISQUS.reset({
         reload: true,
         config: function () {
-          this.page.url = that.props.url;
+          this.page.url = 'https://blog.iocdacc.com/'+that.props.url;
           this.page.identifier = that.props.id;
         }
       });
