@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import ArchiveList from 'components/ArchiveList';
 import ProjectsList from 'components/ProjectsList';
 import ShowText from 'components/ShowText';
-import {
-  Link
-} from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import { fetch } from 'busuanzi.pure.js';
 
 class Home extends Component {
-
+  componentDidMount(){
+    fetch();
+  }
   render() {
     return (
       <div className="g-main">
@@ -17,10 +17,14 @@ class Home extends Component {
           <ul className="clear">
             <li>
               <i className="m-icon m-icon-eye"></i>
-              <span>555555</span>
+              <span id="busuanzi_value_site_pv">0</span>
             </li>
             <li>
-              Find me on <a href="https://github.com/iocdacc"><i className="m-icon m-icon-github"></i></a>.
+              Find me on{' '}
+              <a href="https://github.com/iocdacc">
+                <i className="m-icon m-icon-github"></i>
+              </a>
+              .
             </li>
           </ul>
         </div>
@@ -32,7 +36,7 @@ class Home extends Component {
         <ArchiveList page={12} />
         <div className="m-title m-titleList">
           <span className="title">
-            <a href="javascript:;">Projects</a>
+            <Link href="/">Projects</Link>
           </span>
         </div>
         <ProjectsList />

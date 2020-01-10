@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { archiveContent } from 'store/actionCreators';
 import ContentLoader from 'react-content-loader';
 import Comments from 'components/Comments';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import { fetch } from 'busuanzi.pure.js';
 
 let titleLoader = (
   <ContentLoader height={'18'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
@@ -23,6 +24,7 @@ let infoLoader = (
 
 class Archive extends Component {
   componentDidMount() {
+    fetch();
     this.props.archiveContent(this.props.match.params.id);
   }
 
@@ -39,8 +41,8 @@ class Archive extends Component {
               <h1 className="title">{this.props.archivesListData[this.props.match.params.id].title}</h1>
               <div className="info">
                 <span>{this.props.archivesListData[this.props.match.params.id].date}</span>
-                <span>495</span>
-                <span>{this.props.archivesListData[this.props.match.params.id].tag}</span>
+                <span><i className="m-icon m-icon-eye"></i><span id="busuanzi_value_page_pv">0</span></span>
+                <Link to={'/archives/'+this.props.archivesListData[this.props.match.params.id].tag}><span><i className="m-icon m-icon-label"></i>{this.props.archivesListData[this.props.match.params.id].tag}</span></Link>
               </div>
               <Content data={this.props.archivesListData[this.props.match.params.id].contentData}/>
             </div>
