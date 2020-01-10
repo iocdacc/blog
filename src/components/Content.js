@@ -4,8 +4,8 @@ import Marked from 'marked';
 import ContentLoader from 'react-content-loader';
 
 let textLoader = (
-  <ContentLoader height={'800'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
-    <rect height="800" rx="0" ry="0" width="100%" x="0" y="0" />
+  <ContentLoader height={'500'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
+    <rect height="500" rx="0" ry="0" width="100%" x="0" y="0" />
   </ContentLoader>
 );
 

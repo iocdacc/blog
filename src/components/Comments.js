@@ -6,7 +6,7 @@ class Comments extends Component {
   }
 
   componentDidUpdate(prevState){
-    if (this.props.url != prevState.url && this.props.id != prevState.id) {
+    if (this.props.url !== prevState.url && this.props.id !== prevState.id) {
       !window.DISQUS ? this.disqus() : this.resetDisqus();
     }
   }

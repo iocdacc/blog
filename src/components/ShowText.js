@@ -10,7 +10,7 @@ class ShowText extends Component {
   }
 
   componentDidUpdate(prevState) {
-    if (this.props.shanbayDayData.content != prevState.shanbayDayData.content) {
+    if (this.props.shanbayDayData.content !== prevState.shanbayDayData.content) {
       this.props.shanbayDayData.content && this.ShowText(this.props.shanbayDayData);
     }
   }
