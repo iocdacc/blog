@@ -11,12 +11,14 @@ module.exports = {
     process: true,
     __dirname: true,
   },
+  parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
+      allowImportExportEverywhere: true,
       jsx: true,
     },
     sourceType: 'module',
+    experimentalObjectRestSpread: true,
     ecmaVersion: 7,
   },
   plugins: ['react'],

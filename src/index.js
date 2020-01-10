@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import store from 'store';
+import loadable from '@loadable/component';
 import { archivesList } from 'store/actionCreators';
 /**
  * @description: 全局样式
@@ -14,12 +15,13 @@ import 'assets/css/style.css';
  * @description: 路由组件
  * @return: 标准React组件
  */
-import Home from 'views/Home';
-import Archive from 'views/Archive';
-import Archives from 'views/Archives';
-import About from 'views/About';
-import Head from 'components/Head';
-import Foot from 'components/Foot';
+
+const Home = loadable(() => import('views/Home'));
+const Archive = loadable(() => import('views/Archive'));
+const Archives = loadable(() => import('views/Archives'));
+const About = loadable(() => import('views/About'));
+const Head = loadable(() => import('components/Head'));
+const Foot = loadable(() => import('components/Foot'));
 
 //文章列表包含了整个博客的核心数据所以初始化时就读取
 store.dispatch(archivesList(store.getState().archivesListData));
@@ -44,6 +46,7 @@ class App extends Component {
   }
 }
 
+// eslint-disable-next-line no-console
 console.log(
   '\n%c Email:%ciocdacc@gmail.com \n%c wechat:%cxp50021 \n',
   'color: #fff;background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%);padding:5px 1px;',

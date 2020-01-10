@@ -4,6 +4,7 @@ import ProjectsList from 'components/ProjectsList';
 import ShowText from 'components/ShowText';
 import { Link } from 'react-router-dom';
 import 'busuanzi.pure.js';
+
 let busuanzi_value_site_pv = 0;
 
 class Home extends Component {
