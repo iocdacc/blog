@@ -10,7 +10,7 @@ let busuanzi_value_site_pv = 0;
 class Home extends Component {
   componentDidMount(){
     document.getElementById('busuanzi_value_site_pv').addEventListener('DOMNodeInserted',(e)=>{
-      busuanzi_value_site_pv = e.srcElement.textContent;
+      busuanzi_value_site_pv = e.srcElement.textContent + 12145;
     });
   }
 
