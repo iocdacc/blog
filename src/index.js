@@ -15,11 +15,11 @@ import 'assets/css/style.css';
  * @description: 路由组件
  * @return: 标准React组件
  */
-
-const Home = loadable(() => import('views/Home'));
-const Archive = loadable(() => import('views/Archive'));
-const Archives = loadable(() => import('views/Archives'));
-const About = loadable(() => import('views/About'));
+const fallback = (<div className="g-main" style={{height: 600}}></div>);//组件loading状态
+const Home = loadable(() => import('views/Home'), {fallback});
+const Archive = loadable(() => import('views/Archive'), {fallback});
+const Archives = loadable(() => import('views/Archives'), {fallback});
+const About = loadable(() => import('views/About'), {fallback});
 const Head = loadable(() => import('components/Head'));
 const Foot = loadable(() => import('components/Foot'));
 
