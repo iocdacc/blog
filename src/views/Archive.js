@@ -33,7 +33,7 @@ class Archive extends Component {
   render() {
     if (this.props.archivesListData && this.props.archivesListData[this.props.match.params.id] && this.props.archivesListData[this.props.match.params.id].contentData) {
       return (
-        <div id="aaa">
+        <div>
           <div className="g-main">
             <div className="m-article">
               <h1 className="title">{this.props.archivesListData[this.props.match.params.id].title}</h1>
