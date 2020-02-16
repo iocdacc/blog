@@ -102,7 +102,7 @@ body{background-color: #1d1f21;}
 
 /* 文章摘要 */
 .m-abstract{position:absolute;right:0;top:40px;}
-.m-abstract ul li{font-size: 1.1rem;margin-bottom: 2px;position: relative;text-align: right;}
+.m-abstract ul li{font-size: 1.1rem;margin-bottom: 6px;position: relative;text-align: left;}
 .m-abstract ul li a{padding-left: 8px;}
 .m-abstract ul li a:hover{color:#2bbc8a;}
 .m-abstract ul li:before{content:"#";color:#2bbc8a;}
