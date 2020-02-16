@@ -100,6 +100,13 @@ body{background-color: #1d1f21;}
 .m-article .content pre code .line-numbers-rows span:last-child{padding-bottom:14px;}
 .m-article .content pre code .toolbar{margin-right:20px;}
 
+/* 文章摘要 */
+.m-abstract{position:absolute;right:0;top:40px;}
+.m-abstract ul li{font-size: 1.1rem;margin-bottom: 2px;position: relative;text-align: right;}
+.m-abstract ul li a{padding-left: 8px;}
+.m-abstract ul li a:hover{color:#2bbc8a;}
+.m-abstract ul li:before{content:"#";color:#2bbc8a;}
+
 /* 评论 */
 #disqus_thread {padding: 24px 16px 0 16px;}
 

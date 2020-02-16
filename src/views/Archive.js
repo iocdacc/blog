@@ -22,6 +22,14 @@ let infoLoader = (
 );
 
 class Archive extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      abstract: []
+    };
+  }
+
+
   componentDidMount() {
     this.props.archiveContent(this.props.match.params.id);
   }

@@ -95,7 +95,7 @@ export const getShanbayDay = () => {
           translation: '你的潜力不在于过去，你随时都可以去解放未来。'
         }
       });
-      //因为扇贝没开放数据 前端无法访问此API  等以后有我服务器了再做打算 上面先用静态的
+      //因为扇贝没开放数据 前端无法访问此API
       // axios.get('https://rest.shanbay.com/api/v2/quote/quotes/today/').then(res => {
       //   if (res.data) {
       //     dispatch({
