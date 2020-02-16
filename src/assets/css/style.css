@@ -7,7 +7,7 @@ body{background-color: #1d1f21;}
 .g-main{width: 560px;margin: 0 auto;}
 .g-mainHead{margin:64px auto 0 auto;}
 .g-mainFoot{margin:128px auto 32px auto;}
-.g-topRightFixed{position: fixed;top: 30px;right: 30px;}
+.g-topRightFixed{position: fixed;top: 30px;right: 30px;width: 400px;}
 
 /* LOGO */
 .m-logo{height:50px;width:50px;float:left;}
@@ -120,7 +120,7 @@ body{background-color: #1d1f21;}
   url('//at.alicdn.com/t/font_1584122_gwfx6u65cm5.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_1584122_gwfx6u65cm5.svg#iconfont') format('svg');
 }
-.m-icon{font-family: 'iconfont';font-size:1rem;}
+.m-icon{font-family: 'iconfont';font-size:1rem;user-select:none;}
 .m-icon-eye{margin-right: 20px;}
 .m-icon-eye::before{content:'\e62f';font-style:normal;font-size:1.4rem;position:absolute;}
 .m-icon-label{margin-right: 20px;}
@@ -128,5 +128,5 @@ body{background-color: #1d1f21;}
 .m-icon-github{margin-right: 16px;}
 .m-icon-github:hover{color: #2bbc8a;}
 .m-icon-github::before{content:'\e690';font-style:normal;font-size:1.2rem;position:absolute;}
-.m-icon-menu{margin-right: 20px;}
+.m-icon-menu{margin-right: 20px;float: right;cursor: pointer;}
 .m-icon-menu::before{content:'\e62a';font-style:normal;font-size:1.8rem;position:absolute;top:-3px;}

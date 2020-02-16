@@ -14,7 +14,9 @@ class MenuIcon extends Component {
     let h2Array = [...document.getElementsByTagName('h2')];
     let h2 = h2Array.map((h2, index) => (
       <li key={index}>
-        <a href="#" onClick={this.scrollToAnchor.bind(this, h2.getAttribute('id'))}>{h2.textContent}</a>
+        <a href="#" onClick={this.scrollToAnchor.bind(this, h2.getAttribute('id'))}>
+          {h2.textContent}
+        </a>
       </li>
     ));
 
