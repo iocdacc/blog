@@ -3,23 +3,23 @@ import Content from 'components/Content';
 import MenuIcon from 'components/MenuIcon';
 import { connect } from 'react-redux';
 import { archiveContent } from 'store/actionCreators';
-import ContentLoader from 'react-content-loader';
+// import ContentLoader from 'react-content-loader';
 import Comments from 'components/Comments';
 import { withRouter, Link } from 'react-router-dom';
 
-let titleLoader = (
-  <ContentLoader height={'18'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
-    <rect height="18" rx="0" ry="0" width="100%" x="0" y="0" />
-  </ContentLoader>
-);
+// let titleLoader = (
+//   <ContentLoader height={'18'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
+//     <rect height="18" rx="0" ry="0" width="100%" x="0" y="0" />
+//   </ContentLoader>
+// );
 
-let infoLoader = (
-  <ContentLoader height={'18'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
-    <rect height="12" rx="0" ry="0" width="50" x="0" y="0" />
-    <rect height="12" rx="0" ry="0" width="50" x="60" y="0" />
-    <rect height="12" rx="0" ry="0" width="50" x="120" y="0" />
-  </ContentLoader>
-);
+// let infoLoader = (
+//   <ContentLoader height={'18'} primaryColor={'#1d1f21'} secondaryColor={'#272727'}>
+//     <rect height="12" rx="0" ry="0" width="50" x="0" y="0" />
+//     <rect height="12" rx="0" ry="0" width="50" x="60" y="0" />
+//     <rect height="12" rx="0" ry="0" width="50" x="120" y="0" />
+//   </ContentLoader>
+// );
 
 class Archive extends Component {
   constructor(props) {
@@ -59,24 +59,25 @@ class Archive extends Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <div className="g-main">
-            <div className="m-article">
-              <h1 className="title">{titleLoader}</h1>
-              <div className="info">
-                {infoLoader}
-              </div>
-              <Content data=""/>
-            </div>
-          </div>
-          <div className="g-topRightFixed">
-            <MenuIcon />
-          </div>
-        </div>
-      );
     }
+    // else {
+    //   return (
+    //     <div>
+    //       <div className="g-main">
+    //         <div className="m-article">
+    //           <h1 className="title">{titleLoader}</h1>
+    //           <div className="info">
+    //             {infoLoader}
+    //           </div>
+    //           <Content data=""/>
+    //         </div>
+    //       </div>
+    //       <div className="g-topRightFixed">
+    //         <MenuIcon />
+    //       </div>
+    //     </div>
+    //   );
+    // }
   }
 }
 
