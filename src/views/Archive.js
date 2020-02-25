@@ -59,25 +59,22 @@ class Archive extends Component {
           </div>
         </div>
       );
+    } else {
+      return (
+        <div>
+          <div className="g-main">
+            <div className="m-article">
+              <h1 className="title"></h1>
+              <div className="info"></div>
+              <Content data=""/>
+            </div>
+          </div>
+          <div className="g-topRightFixed">
+            <MenuIcon />
+          </div>
+        </div>
+      );
     }
-    // else {
-    //   return (
-    //     <div>
-    //       <div className="g-main">
-    //         <div className="m-article">
-    //           <h1 className="title">{titleLoader}</h1>
-    //           <div className="info">
-    //             {infoLoader}
-    //           </div>
-    //           <Content data=""/>
-    //         </div>
-    //       </div>
-    //       <div className="g-topRightFixed">
-    //         <MenuIcon />
-    //       </div>
-    //     </div>
-    //   );
-    // }
   }
 }
 
