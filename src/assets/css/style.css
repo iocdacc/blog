@@ -74,22 +74,22 @@ body{background-color: #1d1f21;}
 .m-article .info>*{margin-right: 21px;position: relative;}
 .m-article .content{padding:24px 0 0 0;font-size:1.2rem;}
 .m-article .content a{font-size:1.2rem;}
-.m-article .content ul{margin:14px 0;padding-inline-start: 40px;}
+.m-article .content ul{margin:4px 0;padding-inline-start: 40px;}
 .m-article .content ul li{font-size:1.2rem;line-height:1.8;list-style:disc;}
 .m-article .content ul li a{position:relative;display:inline-block;}
 .m-article .content ul li a::after{content:"";width:100%;position:absolute;bottom:0;left:0;height:1px;background-color:#c9cacc;}
 .m-article .content ul li a:hover{color:#2bbc8a;}
 .m-article .content ul li a:hover::after{background-color:#2bbc8a;}
-.m-article .content ul li ul{padding:0 0 0 40px;}
-.m-article .content ul li ul li{list-style:circle;}
-.m-article .content ol{margin:14px 0;padding-inline-start: 40px;}
+.m-article .content ul li ul,.m-article .content ul li ol{padding:0 0 0 10px;}
+.m-article .content ul li ul li,.m-article .content ul li ol{list-style:circle;}
+.m-article .content ol{margin:4px 0;padding-inline-start: 40px;}
 .m-article .content ol li{font-size:1.2rem;line-height:1.8;list-style:decimal;}
 .m-article .content ol li a{position:relative;display:inline-block;}
 .m-article .content ol li a::after{content:"";width:100%;position:absolute;bottom:0;left:0;height:1px;background-color:#c9cacc;}
 .m-article .content ol li a:hover{color:#2bbc8a;}
 .m-article .content ol li a:hover::after{background-color:#2bbc8a;}
-.m-article .content ol li ul{padding:0 0 0 40px;}
-.m-article .content ol li ul li{list-style:circle;}
+.m-article .content ol li ul,.m-article .content ol li ol{padding:0 0 0 10px;}
+.m-article .content ol li ul li,.m-article .content ol li ol{list-style:circle;}
 .m-article .content hr{border:1px dashed #ccc;}
 .m-article .content p{margin:1rem 0;word-break:break-all;text-align:justify;line-height:1.5;}
 .m-article .content blockquote{margin-left:0;margin-right:0;color:#ccffb6;margin-top:48px;position:relative;}
