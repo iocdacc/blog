@@ -63,22 +63,22 @@
 ``` 
 6. 赋值运算符(var x = 1;) // 赋值运算符还可以与其他运算符结合，形成变体
 ``` js
-// 将 1 赋值给变量 x
-var x = 1;
-// 将变量 y 的值赋值给变量 x
-var x = y;
-// 等同于 x = x + y
-x += y
-// 等同于 x = x - y
-x -= y
-// 等同于 x = x * y
-x *= y
-// 等同于 x = x / y
-x /= y
-// 等同于 x = x % y
-x %= y
-// 等同于 x = x ** y
-x **= y
+  // 将 1 赋值给变量 x
+  var x = 1;
+  // 将变量 y 的值赋值给变量 x
+  var x = y;
+  // 等同于 x = x + y
+  x += y
+  // 等同于 x = x - y
+  x -= y
+  // 等同于 x = x * y
+  x *= y
+  // 等同于 x = x / y
+  x /= y
+  // 等同于 x = x % y
+  x %= y
+  // 等同于 x = x ** y
+  x **= y
 ```
 除引用数据类型外的其他基础数据类型会先转换成数值再进行运算
 除赋值运算符所有算术运算符都有此特性：  
@@ -89,15 +89,15 @@ x **= y
 1. 大于，小于，小于或等于，大于或等于  
 字符串的比较 是比较Unicode码点  
 ``` js
-// 字符串按照字典顺序进行比较。
-'cat' > 'dog' // false
-'cat' > 'catalog' // false
-//JavaScript 引擎内部首先比较首字符的 Unicode 码点。如果相等，再比较第二个字符的 Unicode 码点，以此类推。
-'cat' > 'Cat' // true'
-//上面代码中，小写的c的 Unicode 码点（99）大于大写的C的 Unicode 码点（67），所以返回true。
-//由于所有字符都有 Unicode 码点，因此汉字也可以比较。
-'大' > '小' // false
-//上面代码中，“大”的 Unicode 码点是22823，“小”是23567，因此返回false。
+  // 字符串按照字典顺序进行比较。
+  'cat' > 'dog' // false
+  'cat' > 'catalog' // false
+  //JavaScript 引擎内部首先比较首字符的 Unicode 码点。如果相等，再比较第二个字符的 Unicode 码点，以此类推。
+  'cat' > 'Cat' // true'
+  //上面代码中，小写的c的 Unicode 码点（99）大于大写的C的 Unicode 码点（67），所以返回true。
+  //由于所有字符都有 Unicode 码点，因此汉字也可以比较。
+  '大' > '小' // false
+  //上面代码中，“大”的 Unicode 码点是22823，“小”是23567，因此返回false。
 ```
 非字符串的其他基础数据 类型比较 是先转成数值再比较  
 ``` js
@@ -121,28 +121,26 @@ x **= y
   // 等同于 2 > Number(undefined)
   // 即 2 > NaN
 ```
-
 这里需要注意与NaN的比较。任何值（包括NaN本身）与NaN比较，返回的都是false  
-
-比较运算符都有此特性：    
+  
+比较运算符都有此特性：  
 如果运算子是，引用(对象)数据类型，会先调用this.valueOf()然后调用this.toString()再进行运算    
 所以可以自定义这两个对象方法 达到自己的目的
 
 2. 严格相等，严格不相等，相等，不相等运算符  
 严格相等,两个值的类型不同，直接返回false  
-
 ``` js
-1 === "1" // false
-true === "true" // false
-1 === 0x1 // true
-NaN === NaN  // false
-+0 === -0 // true
-//两个复合类型（对象、数组、函数）的数据比较时，不是比较它们的值是否相等，而是比较它们是否指向同一个地址。
-{} === {} // false
-[] === [] // false
-(function () {} === function () {}) // false
-undefined === undefined // true
-null === null // true
+  1 === "1" // false
+  true === "true" // false
+  1 === 0x1 // true
+  NaN === NaN  // false
+  +0 === -0 // true
+  //两个复合类型（对象、数组、函数）的数据比较时，不是比较它们的值是否相等，而是比较它们是否指向同一个地址。
+  {} === {} // false
+  [] === [] // false
+  (function () {} === function () {}) // false
+  undefined === undefined // true
+  null === null // true
 ```
 注意，对于两个对象的比较，严格相等运算符比较的是地址，而大于或小于运算符比较的是值。  
 严格相等运算符有一个对应的“严格不相等运算符”（!==），它的算法就是先求严格相等运算符的结果，然后返回相反值。  
@@ -152,20 +150,20 @@ null === null // true
 对象（这里指广义的对象，包括数组和函数）与原始类型的值比较时，对象转换成原始类型的值，再进行比较。  
 因为基础数据类型会先转换成数值，所以会带来一些违反直觉的结果
 ``` js
-0 == ''             // true
-0 == '0'            // true
+  0 == ''             // true
+  0 == '0'            // true
 
-2 == true           // false
-2 == false          // false
+  2 == true           // false
+  2 == false          // false
 
-false == 'false'    // false
-false == '0'        // true
+  false == 'false'    // false
+  false == '0'        // true
 
-false == undefined  // false
-false == null       // false
-null == undefined   // true
+  false == undefined  // false
+  false == null       // false
+  null == undefined   // true
 
-' \t\r\n ' == 0     // true
+  ' \t\r\n ' == 0     // true
 ```
 上面这些表达式都不同于直觉，很容易出错。因此建议不要使用相等运算符（==），最好只使用严格相等运算符（===）。
 
