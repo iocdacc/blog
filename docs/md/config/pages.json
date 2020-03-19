@@ -13,6 +13,12 @@
     "src": "/md/page/snippet.md",
     "hidden": true
   },
+  "2020-03-19":{
+    "date": "2020-03-19",
+    "title": "javascript 知识备份",
+    "tag": "javascript",
+    "src": "/md/javascript 知识备份.md"
+  },
   "2019-10-09":{
     "date": "2019-10-09",
     "title": "Systemd Linux管理工具（守护进程，开机自启动）",
