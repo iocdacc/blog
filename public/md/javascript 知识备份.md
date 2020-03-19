@@ -121,6 +121,7 @@ true > false // true
 // 等同于 2 > Number(undefined)
 // 即 2 > NaN
 ```
+
 这里需要注意与NaN的比较。任何值（包括NaN本身）与NaN比较，返回的都是false  
 
 比较运算符都有此特性：    
