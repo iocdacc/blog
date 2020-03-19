@@ -101,25 +101,25 @@ x **= y
 ```
 非字符串的其他基础数据 类型比较 是先转成数值再比较  
 ``` js
-5 > '4' // true
-// 等同于 5 > Number('4')
-// 即 5 > 4
+  5 > '4' // true
+  // 等同于 5 > Number('4')
+  // 即 5 > 4
 
-true > false // true
-// 等同于 Number(true) > Number(false)
-// 即 1 > 0
+  true > false // true
+  // 等同于 Number(true) > Number(false)
+  // 即 1 > 0
 
-2 > true // true
-// 等同于 2 > Number(true)
-// 即 2 > 1
+  2 > true // true
+  // 等同于 2 > Number(true)
+  // 即 2 > 1
 
-2 > null // true
-// 等同于 2 > Number(null)
-// 即 2 > 0
+  2 > null // true
+  // 等同于 2 > Number(null)
+  // 即 2 > 0
 
-2 > undefined // false
-// 等同于 2 > Number(undefined)
-// 即 2 > NaN
+  2 > undefined // false
+  // 等同于 2 > Number(undefined)
+  // 即 2 > NaN
 ```
 
 这里需要注意与NaN的比较。任何值（包括NaN本身）与NaN比较，返回的都是false  
