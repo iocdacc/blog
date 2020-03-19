@@ -5,6 +5,7 @@ netsh winsock reset
 ```
 
 ## Git生成新的SSH密钥
-``` Batch
 打开Git Bash
+``` Batch
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
