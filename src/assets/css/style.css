@@ -83,7 +83,7 @@ body{background-color: #1d1f21;}
 .m-article .content ul li ul{padding:0 0 0 40px;}
 .m-article .content ul li ul li{list-style:circle;}
 .m-article .content ol{margin:14px 0;padding-inline-start: 40px;}
-.m-article .content ol li{font-size:1.2rem;line-height:1.8;list-style:disc;}
+.m-article .content ol li{font-size:1.2rem;line-height:1.8;list-style:decimal;}
 .m-article .content ol li a{position:relative;display:inline-block;}
 .m-article .content ol li a::after{content:"";width:100%;position:absolute;bottom:0;left:0;height:1px;background-color:#c9cacc;}
 .m-article .content ol li a:hover{color:#2bbc8a;}
