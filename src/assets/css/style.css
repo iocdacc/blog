@@ -115,7 +115,8 @@ body{background-color: #1d1f21;}
 .m-abstract ul li{font-size: 1.1rem;margin-bottom: 6px;position: relative;text-align: left;}
 .m-abstract ul li a{padding-left: 8px;}
 .m-abstract ul li a:hover{color:#2bbc8a;}
-.m-abstract ul li:before{content:"#";color:#2bbc8a;}
+.m-abstract ul li[class=h2]:before{content:"#";color:#2bbc8a;}
+.m-abstract ul li[class=h3]:before{content:"|";color:#2bbc8a;}
 
 /* 评论 */
 #disqus_thread {padding: 24px 16px 0 16px;}
