@@ -35,7 +35,9 @@ class Archive extends Component {
   }
 
   componentDidUpdate(prevState){
-    JSON.stringify(this.props.match.params) !== JSON.stringify(prevState.match.params) && this.props.archiveContent(this.props.match.params.id);
+    if (JSON.stringify(this.props.match.params) !== JSON.stringify(prevState.match.params)){
+      this.props.archiveContent(this.props.match.params.id);
+    }
   }
 
   render() {
