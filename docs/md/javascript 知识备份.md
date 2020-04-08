@@ -19,7 +19,8 @@
 1. 基础数据类型直接指向**数据本体**，引用(对象)数据类型直接指向**数据的内存地址**。所以当赋值时，实际上基础类型是**复制一个本体给新变量**，而引用类型是复制了**内存地址给新变量**。这造成基础类型的新变量修改时**不会影响原来的变量**，而引用数据类型**会影响原来的变量**。
 2. **函数(function)** 是一个非常特殊的对象，它不仅可以实例新的对象，而且所有构造方法的 **\_\_porto\_\_** 都指向他的**prototype**,包括他自己（他自己也是构造方法）和**Object**。总结一下，所有构造方法的原型都指向**函数(function)**的**prototype**。其他普通对象的原型指向，实例他们的构造方法的**prototype**。
 3. **函数(function)** 的闭包其实就是一个接口函数，函数外部作用域（window）无法访问函数内部的作用域 **（内部作用域可以访问外部作用域，反之则不行。）** ，此时函数可以**返回另一个函数**（此函数内部写有相关方法访问它父级函数的内容，），外部作用域（window）可以通过调用这个返回的函数**间接访问**到，它父级的作用域。做到了外部作用域间接访问内部作用域的功能。而这个在父函数内部**返回的函数**就叫做**闭包**（使外部作用域间接访问内部作用域），当然不管它被不被返回都叫**闭包**。只是不返回的话好像没什么用。
-4. 原型链图解：<a href="/md/img/原型链.png" target="_blank"><img src="/md/img/原型链.png"></a>
+4. 关于 **箭头函数** 和 **函数** 的 **this** 问题。 **函数** 的 **this** 通过谁调用它，它的this就是谁。**箭头函数** 的 **this** 定义的时候外层有没有其他父函数如果有， **this** 就是外层父函数的 **this** ，没有其他父函数则 **this** 是 window。
+5. 原型链图解：<a href="/md/img/原型链.png" target="_blank"><img src="/md/img/原型链.png"></a>
 
 ## 运算符
 
@@ -98,18 +99,33 @@ https://wangdoc.com/javascript/operators/bit.html
 
 ## Array
 ```javascript
-//修改器方法
+//修改器方法（会修改原数组）
 Array.prototype.shift() //开头删除一个值，并返回这个值。
 Array.prototype.pop() //末尾删除一个值，并返回这个值。
 Array.prototype.unshift() //开头增加一个或多个值，并返回新的length。
 Array.prototype.push() //末尾增加一个或多个值，并返回新的length。
 Array.prototype.splice() //对任意位置的值进行，增删改操作，并返回被删除的值。其他情况返回空数组。
-Array.prototype.reverse() //颠倒数组。返回被颠倒的数组。和原数组相等。
-Array.prototype.sort() //对数组进行排序。返回被排序的数组。和原数组相等。
+Array.prototype.reverse() //颠倒数组。返回被颠倒的数组。和原数组相等（原数组被颠倒了，其实返回的就是原数组）。
+Array.prototype.sort() //对数组进行排序。返回被排序的数组。和原数组相等。（原数组被排序了，其实返回的就是原数组）
 
-//访问方法
+//访问方法（不会修改原数组）
 Array.prototype.concat() //合并数组。
+Array.prototype.toString() //将数组转换为字符串，元素之间由逗号隔开。
+Array.prototype.toLocaleString() //将数组转换为字符串，特殊元素（时间，数字）会进行本地化处理。
+Array.prototype.join() //将数组转换为字符串，并且可以指定分隔符。
+Array.prototype.slice() //将数组中某一范围内的元素组成一个新数组。
+Array.prototype.indexOf() //正向查找指定的元素是否存在，存在则返回键值，否则返回-1。（如果多个相同的值则返回第一个的键值）
+Array.prototype.lastIndexOf() //反向查找指定的元素是否存在，存在则返回键值，否则返回-1。（如果多个相同的值则返回最后一个的键值）
+
+//迭代方法
+Array.prototype.forEach(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，并将当前元素，当前索引，和数组本身传给回调函数。
+Array.prototype.every(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，如果所有回调函数都返回true，则整体返回true。反之则整体返回false。
+Array.prototype.some(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，只要有一个回调函数返回true，则整体返回true。反之则整体返回false。
+Array.prototype.filter(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，然后将所有返回true的元素组成一个新数组。并整体返回这个新数组。
+Array.prototype.map(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，然后将所有回调函数的返回组成一个新数组。并整体返回这个新数组。
+Array.prototype.reduce(callback(累加值, 当前值, 当前索引, 数组本身), 初始值) //遍历一个数组，将上一个回调函数的返回值作为下一个回调函数的累加值。最后整体返回最后一个回调函数的值。
+Array.prototype.reduceRight() //和Array.prototype.reduce()一样，但是是从最后一个元素往前遍历。
 ```
 
-## 特性
+### 特性
 1. 所有**实例的Array**都有一个自动添加的**length属性**注意它不是原型属性所以他是实例数组的**私有属性**，表示当前数组有多少个值。注意不要和**Array.prototype.length**和**Array.length**搞混。**Array.prototype.length**在实例中存在于 **\_\_proto\_\_** 中。而**Array.length**是属于**Array构造方法的静态属性**。
