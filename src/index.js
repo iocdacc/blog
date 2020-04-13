@@ -32,14 +32,31 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path="/"><Head/><Home/></Route>
-            <Route exact path="/archive/:id"><Archive /></Route>
-            <Route exact path={['/archives/:tag','/archives']}><Head title="Archives" /><Archives/></Route>
-            <Route exact path="/snippet"><Head title="Snippet" /><About key="snippet" /></Route>
-            <Route exact path="/about"><Head title="About" /><About key="about" /></Route>
+            <Route exact path="/">
+              <Head/>
+              <Home/>
+              <Foot />
+            </Route>
+            <Route exact path="/archive/:id">
+              <Archive />
+            </Route>
+            <Route exact path={['/archives/:tag','/archives']}>
+              <Head title="Archives" />
+              <Archives/>
+              <Foot />
+            </Route>
+            <Route exact path="/snippet">
+              <Head title="Snippet" />
+              <About key="snippet" />
+              <Foot />
+            </Route>
+            <Route exact path="/about">
+              <Head title="About" />
+              <About key="about" />
+              <Foot />
+            </Route>
             <Route>404</Route>
           </Switch>
-          <Foot />
         </Router>
       </Provider>
     );

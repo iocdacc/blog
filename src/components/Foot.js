@@ -4,7 +4,7 @@ import MenuList from 'components/MenuList';
 class Foot extends Component {
   render() {
     return (
-      <div className="g-main g-mainFoot clear">
+      <div className={(this.props.className || 'g-main') + ' g-mainFoot clear'}>
         <MenuList classType="m-menuFoot" />
       </div>
     );

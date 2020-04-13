@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Content from 'components/Content';
 import MenuIcon from 'components/MenuIcon';
+import Foot from 'components/Foot';
 import { connect } from 'react-redux';
 import { archiveContent } from 'store/actionCreators';
 // import ContentLoader from 'react-content-loader';
@@ -44,7 +45,7 @@ class Archive extends Component {
     if (this.props.archivesListData && this.props.archivesListData[this.props.match.params.id] && this.props.archivesListData[this.props.match.params.id].contentData) {
       return (
         <div>
-          <div className="g-main">
+          <div className="g-mainArc">
             <div className="m-article">
               <h1 className="title">{this.props.archivesListData[this.props.match.params.id].title}</h1>
               <div className="info">
@@ -59,6 +60,7 @@ class Archive extends Component {
           <div className="g-topRightFixed">
             <MenuIcon />
           </div>
+          <Foot className="g-mainArc " />
         </div>
       );
     } else {
