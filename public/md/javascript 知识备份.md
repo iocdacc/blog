@@ -17,7 +17,7 @@
 
 ### 特性
 1. 基础数据类型直接指向**数据本体**，引用(对象)数据类型直接指向**数据的内存地址**。所以当赋值时，实际上基础类型是**复制一个本体给新变量**，而引用类型是复制了**内存地址给新变量**。这造成基础类型的新变量修改时**不会影响原来的变量**，而引用数据类型**会影响原来的变量**。
-2. **函数(function)** 是一个非常特殊的对象，它是唯一一个由 **Function** 实例出来的非内置构造方法。注意不要吧**function**和**Function**搞混了。**Function**是内置的构造方法，所有构造方法都是它实例出来的，所以所有构造方法的 **\_\_porto\_\_** 都指向他的**prototype**,包括他自己（他自己也是构造方法）和**Object**。总结一下，所有构造方法的原型都指向 **Function** 的 **prototype**。其他普通对象的 **\_\_porto\_\_** 指向实例他们的构造方法的 **prototype**。
+2. **函数(function)** 是一个非常特殊的对象，它是唯一一个由 **Function** 实例出来的非内置构造方法。注意不要吧**function**和**Function**搞混了。**Function**是内置的构造方法，所有构造方法都是它实例出来的，所以所有构造方法的 **\_\_porto\_\_** 都指向他的**prototype**,包括他自己（他自己也是构造方法）和**Object**。总结一下，所有构造方法的原型都指向 **Function** 的 **prototype**。其他普通对象的 **\_\_porto\_\_** 指向实例他们的构造方法的 **prototype**。并且只有构造方法有**prototype**，普通对象没有。注意内置构造方法的 **函数(function)** 并不能new。（Object.prototype.toString()之类）
 3. **函数(function)** 的闭包其实就是一个接口函数，函数外部作用域（window）无法访问函数内部的作用域 **（内部作用域可以访问外部作用域，反之则不行。）** ，此时函数可以**返回另一个函数**（此函数内部写有相关方法访问它父级函数的内容，），外部作用域（window）可以通过调用这个返回的函数**间接访问**到，它父级的作用域。做到了外部作用域间接访问内部作用域的功能。而这个在父函数内部**返回的函数**就叫做**闭包**（使外部作用域间接访问内部作用域），当然不管它被不被返回都叫**闭包**。只是不返回的话好像没什么用。
 4. 关于 **箭头函数** 和 **函数** 的 **this** 问题。 **函数** 的 **this** 通过谁调用它，它的this就是谁。**箭头函数** 的 **this** 定义的时候外层有没有其他父函数如果有， **this** 就是外层父函数的 **this** ，没有其他父函数则 **this** 是 window。
 5. 原型链图解：<a href="/md/img/原型链.png" target="_blank"><img src="/md/img/原型链.png"></a>
@@ -95,10 +95,14 @@ void(0) //void运算符
 
 https://wangdoc.com/javascript/operators/bit.html
 
-### 内部对象
+## 内部对象
 
-## Array
+### Array
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
 ```javascript
+//静态方法
+Array.isArray() //判断值是否为数组
+
 //修改器方法（会修改原数组）
 Array.prototype.shift() //开头删除一个值，并返回这个值。
 Array.prototype.pop() //末尾删除一个值，并返回这个值。
@@ -118,14 +122,58 @@ Array.prototype.indexOf() //正向查找指定的元素是否存在，存在则�
 Array.prototype.lastIndexOf() //反向查找指定的元素是否存在，存在则返回键值，否则返回-1。（如果多个相同的值则返回最后一个的键值）
 
 //迭代方法
-Array.prototype.forEach(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，并将当前元素，当前索引，和数组本身传给回调函数。
-Array.prototype.every(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，如果所有回调函数都返回true，则整体返回true。反之则整体返回false。
-Array.prototype.some(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，只要有一个回调函数返回true，则整体返回true。反之则整体返回false。
-Array.prototype.filter(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，然后将所有返回true的元素组成一个新数组。并整体返回这个新数组。
-Array.prototype.map(callback(当前元素, 当前索引, 数组本身), this) //遍历一个数组，然后将所有回调函数的返回组成一个新数组。并整体返回这个新数组。
-Array.prototype.reduce(callback(累加值, 当前值, 当前索引, 数组本身), 初始值) //遍历一个数组，将上一个回调函数的返回值作为下一个回调函数的累加值。最后整体返回最后一个回调函数的值。
+(callback(当前元素, 当前索引, 数组本身), this)
+Array.prototype.forEach() //遍历一个数组，并将当前元素，当前索引，和数组本身传给回调函数。
+Array.prototype.every() //遍历一个数组，如果所有回调函数都返回true，则整体返回true。反之则整体返回false。
+Array.prototype.some() //遍历一个数组，只要有一个回调函数返回true，则整体返回true。反之则整体返回false。
+Array.prototype.filter() //遍历一个数组，然后将所有返回true的元素组成一个新数组。并整体返回这个新数组。
+Array.prototype.map() //遍历一个数组，然后将所有回调函数的返回组成一个新数组。并整体返回这个新数组。
+
+(callback(累加值, 当前值, 当前索引, 数组本身), 初始值)
+Array.prototype.reduce() //遍历一个数组，将上一个回调函数的返回值作为下一个回调函数的累加值。最后整体返回最后一个回调函数的值。
 Array.prototype.reduceRight() //和Array.prototype.reduce()一样，但是是从最后一个元素往前遍历。
 ```
 
 ### 特性
 1. 所有**实例的Array**都有一个自动添加的**length属性**注意它不是原型属性所以他是实例数组的**私有属性**，表示当前数组有多少个值。注意不要和**Array.prototype.length**和**Array.length**搞混。**Array.prototype.length**在实例中存在于 **\_\_proto\_\_** 中。而**Array.length**是属于**Array构造方法的静态属性**。
+
+### Object
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object
+```javascript
+//静态方法
+Object.keys() //对象的键值转数组
+Object.values() //对象值转数组
+Object.entries() //对象的键值和值成对转换成二维数组。
+Object.getOwnPropertyNames() //对象的键值转数组（不可枚举也会转换。比如数组的length）
+Object.assign() //合并两个对象，如果键值相同则使用最后一个实参的，并返回第一个实参对象。(会修改第一个实参对象)
+Object.create() //返回一个空白的新对象，其原型是第一个实参。（一般用于指定prototype的原型）
+Object.getPrototypeOf() //返回实参对象的原型。
+
+//实例方法
+Object.prototype.hasOwnProperty() //判断自己是否存在某个键值（不包括原型链）。返回布尔值
+Object.prototype.isPrototypeOf() //判断一个对象是否存在自己原型链中。返回布尔值
+Object.prototype.valueOf() //返回对象自身（此方法一般会自定义来达到某些需求）
+Object.prototype.toString() //返回自身字符串（此方法一般会自定义来达到某些需求。此方法还可准确判断实参的类型，不同类型会返回不同字符串。因为实例的此方法有可能会自定义所以如果需要用其判断类型一般这样调用Object.prototype.toString.call(value)或者Object.getPrototypeOf(value).toString.call(value)，此处一定要注意this指向，需要将this指向需要执行的对象。不直接使用__proto__的原因是，__proto__不是标准访问方式，某些JavaScript环境可能没有__proto__。）
+```
+
+### Function
+```javascript
+//实例方法
+Function.prototype.apply(this, [arg1, arg2, ...]) //重新定义this。数组的元素为函数的实参。
+Function.prototype.call(this, arg1, arg2, ...) //重新定义this。和apply唯一区别是实参直接书写不是数组。
+Function.prototype.bind(this)(arg1, arg2, ...) //重新定义this。并返回这个新函数。它不会直接调用函数。
+```
+
+### 特性
+1. 所有构造方法都是Function的实例，包括他自己和Object。所有普通对象都是实例它的构造方法的实例。
+
+### Number
+```javascript
+//实例方法
+Number.prototype.toFixed() //保留小数点(0-20)，多余部分四舍五入。太大或太小会报出异常。
+Number.prototype.toPrecision() //和toFixed一样，只是多余部分舍去。并且范围为(1-100)。
+```
+
+### Math
+数学内置构造方法：
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
