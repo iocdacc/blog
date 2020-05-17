@@ -24,6 +24,8 @@
 
 ## 运算符
 
+> 运算符是对底层代码的直接访问
+
 ### 算术运算符
 
 ```javascript
@@ -84,16 +86,59 @@ x % y //余数运算符
 void(0) //void运算符
 , //逗号运算符
 ... //扩展运算符（ES6新增）
+() //圆括号运算符
+obj.a/obj['a'] //属性访问符
+new //实例运算符
 ```
 
 #### 特性
 1. **void()** void运算符中，执行一个表达式。通常用在a标签防止跳转。
 2. **,** 逗号运算符中，执行所有运算子，但只返回最后一个运算子的值。
 3. **...** 扩展运算符中，其主要功能为将可遍历结构（数组，对象）将其中的元素提取出来。其中对象的元素是成对出现的，并且无法脱离花括号。所以对象的元素只能提取到其他的对象中。无法直接提取给变量。
+3. **new** new.target属性可以在类函数中判断这个函数执行时是否是实例. 如果是则返回函数本身如果不是则返回undefined
 
 ### 二进制位运算符(位运算符)
 
 https://wangdoc.com/javascript/operators/bit.html
+
+## 关键字/字面量
+
+> JavaScript的关键字或字面量是一种语法糖，比如 **{}**等于**new Object()**,**[]**等于**new Array()**。他们的本质其实就是代码片段.
+
+```javascript
+[] //定义一个数组,等同于new Array().
+{} //定义一个数组,等同于new Object().
+/ab+c/i //正则表达式字面量,等同于new RegExp('ab+c', 'i').
+this //指向函数的执行上下文
+super //指向父对象
+function //定义了函数表达式,和new Function()功能相同.
+class //定义了类表达式,这个是ES6的功能.让JS更像传统的面向对象语法.
+function* //定义一个协程函数.ES6的异步解决方案.现阶段用的比较少,只有最新版本的浏览器支持.
+yield //暂停协程函数. g.next() 执行后会在此处暂停.
+yield* //调用另一个协程函数. g.next() 执行后会在此调用另一个协程函数.
+async function //function*的语法糖,使用更方便.此为ES2016的内容.
+await //yield的语法糖,使用更方便.
+```
+
+## 语句
+
+> 语句和表达式类似，它们的区别是**表达式有返回值**而**语句无返回值**。比如**for**，**if**，**switch**等都没有返回值。这里需要注意**function**，当他被赋值给其他变量时 var myfun = function fun(){} **它是表达式有返回值**（返回函数本身，相当于Object.prototype.valueOf()），当直接书写时 function fun(){} **它是声明没有返回值**。表达式和语句都有其各自的固定写法。
+
+### 流程控制语句
+```javascript
+if...else //判断语句
+break //终止当前代码之后的代码.包括之后的循环.只在switch语句和迭代语句中有效.
+continue //终止当前代码之后的代码.不包括之后的循环.只在迭代语句中有效.
+switch(1){ //执行括号内的代码返回值与case的值进行匹配,执行匹配的case之后break之前的代码.未匹配时执行default后的代码.
+  case 1:
+  break;
+  default:
+  break;
+}
+Empty //空语句,有时在迭代语句中不需要之后的代码块可以直接写一个分号其表示空语句.但最好在分号前写一个注释表示这个时空语句增加可读性
+try{...}catch(err if condition){...}finally{...} //异常响应语句. 当try代码块中报错时执行catch中的代码err为捕获的异常 并且condition为true才执行.finally为不管报不报错都执行的代码.
+throw '...' //用户自定义的报错
+```
 
 ## 内部对象
 
@@ -172,6 +217,34 @@ Function.prototype.bind(this)(arg1, arg2, ...) //重新定义this。并返回这
 //实例方法
 Number.prototype.toFixed() //保留小数点(0-20)，多余部分四舍五入。太大或太小会报出异常。
 Number.prototype.toPrecision() //和toFixed一样，只是多余部分舍去。并且范围为(1-100)。
+```
+
+### String
+```javascript
+//实例属性
+String.prototype.length //返回字符串的长度
+
+//实例方法
+String.prototype.charAt() //返回指定位置的字符（从0开始）
+String.prototype.charCodeAt() //返回指定位置字符的Unicode 码点（从0开始 十进制）
+String.prototype.concat() //合并多个字符串返回新字符串对原字符串无修改
+String.prototype.slice() //截取指定范围字符返回新字符串对原字符串无修改（从0开始）
+String.prototype.indexOf() //正向查找指定字符出现位置（相同返回第一个的位置）。未查找到返回-1。
+String.prototype.lastIndexOf() //逆向查找指定字符出现位置（相同返回逆向第一个的位置）。未查找到返回-1。
+String.prototype.trim() //去除字符串两边的空格，制表符，换行符，回车符。返回新字符串不改变原字符串。
+String.prototype.toLowerCase() //字符串全部转为小写。返回新字符串不改变原字符串。
+String.prototype.toUpperCase() //字符串全部转为大写。返回新字符串不改变原字符串。
+String.prototype.match(可使用正则) //查找字符串是否存在某段字符，返回新数组不改变原字符串。数组index属性代表匹配的位置，input 代表原字符串。未查找到返回null。
+String.prototype.search(可使用正则) //查找字符串是否存在某段字符，返回字符出现的位置不改变原字符串。未查找到返回-1。
+String.prototype.replace(可使用正则,替换的字符) //替换字符串中某段字符。返回新字符串不改变原字符串。未查找到返回原字符串。
+String.prototype.split(可使用正则) //按照实参的字符串分割字符串。返回一个字符分割后作为元素的新数组。
+```
+
+### JSON
+```javascript
+//静态方法
+JSON.stringify() //对象转JSON
+JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使用eval("(" + JSON + ")")的方法 但此方法可能有执行未知代码的风险）
 ```
 
 ### Math
