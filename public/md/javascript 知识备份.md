@@ -95,6 +95,14 @@ void(0) //void运算符
 
 https://wangdoc.com/javascript/operators/bit.html
 
+## 表达式
+
+> JavaScript的表达式一部分是内置方法的简写，比如 **{}**等于**new Object()**,**[]**等于**new Array()**。另一部分则是内部代码的接口，比如**new**,**typeof**，这些代码没有提供构造方法，只能通过这些接口（表达式）间接访问。
+
+## 语句，声明
+
+> 语句，声明和表达式类似，它们的区别是**表达式有返回值**而**语句，声明无返回值**。比如**for**，**if**，**switch**等都没有返回值。这里需要注意**function**，当他被赋值给其他变量时 var myfun = function fun(){} **它是表达式有返回值**（返回函数本身，相当于Object.prototype.valueOf()），当直接书写时 function fun(){} **它是声明没有返回值**。表达式和语句都有其各自的固定写法。
+
 ## 内部对象
 
 ### Array
@@ -172,6 +180,34 @@ Function.prototype.bind(this)(arg1, arg2, ...) //重新定义this。并返回这
 //实例方法
 Number.prototype.toFixed() //保留小数点(0-20)，多余部分四舍五入。太大或太小会报出异常。
 Number.prototype.toPrecision() //和toFixed一样，只是多余部分舍去。并且范围为(1-100)。
+```
+
+### String
+```javascript
+//实例属性
+String.prototype.length //返回字符串的长度
+
+//实例方法
+String.prototype.charAt() //返回指定位置的字符（从0开始）
+String.prototype.charCodeAt() //返回指定位置字符的Unicode 码点（从0开始 十进制）
+String.prototype.concat() //合并多个字符串返回新字符串对原字符串无修改
+String.prototype.slice() //截取指定范围字符返回新字符串对原字符串无修改（从0开始）
+String.prototype.indexOf() //正向查找指定字符出现位置（相同返回第一个的位置）。未查找到返回-1。
+String.prototype.lastIndexOf() //逆向查找指定字符出现位置（相同返回逆向第一个的位置）。未查找到返回-1。
+String.prototype.trim() //去除字符串两边的空格，制表符，换行符，回车符。返回新字符串不改变原字符串。
+String.prototype.toLowerCase() //字符串全部转为小写。返回新字符串不改变原字符串。
+String.prototype.toUpperCase() //字符串全部转为大写。返回新字符串不改变原字符串。
+String.prototype.match(可使用正则) //查找字符串是否存在某段字符，返回新数组不改变原字符串。数组index属性代表匹配的位置，input 代表原字符串。未查找到返回null。
+String.prototype.search(可使用正则) //查找字符串是否存在某段字符，返回字符出现的位置不改变原字符串。未查找到返回-1。
+String.prototype.replace(可使用正则,替换的字符) //替换字符串中某段字符。返回新字符串不改变原字符串。未查找到返回原字符串。
+String.prototype.split(可使用正则) //按照实参的字符串分割字符串。返回一个字符分割后作为元素的新数组。
+```
+
+### JSON
+```javascript
+//静态方法
+JSON.stringify() //对象转JSON
+JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使用eval("(" + JSON + ")")的方法 但此方法可能有执行未知代码的风险）
 ```
 
 ### Math
