@@ -250,5 +250,3 @@ JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使�
 ### Math
 数学内置构造方法：
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
-
-<iframe src="//player.bilibili.com/player.html?aid=200684641&bvid=BV1Sz411q7S4&cid=191257210&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
