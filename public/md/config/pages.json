@@ -13,6 +13,18 @@
     "src": "/md/page/snippet.md",
     "hidden": true
   },
+  "2020-05-21-2":{
+    "date": "2020-05-21-2",
+    "title": "redux 知识备份",
+    "tag": "javascript",
+    "src": "/md/redux 知识备份.md"
+  },
+  "2020-05-21":{
+    "date": "2020-05-21",
+    "title": "babel 知识备份",
+    "tag": "javascript",
+    "src": "/md/babel 知识备份.md"
+  },
   "2020-03-19":{
     "date": "2020-03-19",
     "title": "javascript 知识备份",
