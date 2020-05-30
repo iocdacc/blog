@@ -11,7 +11,7 @@ class MenuIcon extends Component {
   }
 
   componentDidUpdate() {
-    let h2Array = [...document.querySelectorAll('h2,h3')];
+    let h2Array = [...document.querySelectorAll('h2')];
     let h2 = h2Array.map((h2, index) => {
       return (<li className={h2.localName} key={index}>
         <a href="#" onClick={this.scrollToAnchor.bind(this, h2.getAttribute('id'))}>
