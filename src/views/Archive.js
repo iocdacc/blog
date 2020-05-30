@@ -43,6 +43,32 @@ class Archive extends Component {
 
   render() {
     if (this.props.archivesListData && this.props.archivesListData[this.props.match.params.id] && this.props.archivesListData[this.props.match.params.id].contentData) {
+      let tag = [];
+      if (Array.isArray(this.props.archivesListData[this.props.match.params.id].tag)) {
+        tag = this.props.archivesListData[this.props.match.params.id].tag.map((element,key)=>{
+          if (key > 0) {
+            return (
+              <span key={element}>
+                <i>,</i>
+                <Link  to={'/archives/'+element}>{element}</Link>
+              </span>
+            );
+          } else if (key == 0) {
+            return (
+              <span key={element}>
+                <Link  to={'/archives/'+element}>{element}</Link>
+              </span>
+            );
+          }
+        });
+      }else if (typeof this.props.archivesListData[this.props.match.params.id].tag == 'string') {
+        tag = [
+          <Link key={this.props.archivesListData[this.props.match.params.id].tag} to={'/archives/'+this.props.archivesListData[this.props.match.params.id].tag}>
+            {this.props.archivesListData[this.props.match.params.id].tag}
+          </Link>
+        ];
+      }
+
       return (
         <div>
           <div className="g-mainArc">
@@ -51,7 +77,7 @@ class Archive extends Component {
               <div className="info">
                 <span>{this.props.archivesListData[this.props.match.params.id].date}</span>
                 {/* <span><i className="m-icon m-icon-eye"></i><span id="busuanzi_value_page_pv">0</span></span> */}
-                <Link to={'/archives/'+this.props.archivesListData[this.props.match.params.id].tag}><span><i className="m-icon m-icon-label"></i>{this.props.archivesListData[this.props.match.params.id].tag}</span></Link>
+                <span><i className="m-icon m-icon-label"></i>{tag}</span>
               </div>
               <Content data={this.props.archivesListData[this.props.match.params.id].contentData}/>
             </div>
@@ -68,7 +94,7 @@ class Archive extends Component {
         <div>
           <div className="g-main">
             <div className="m-article">
-              <h1 className="title"></h1>
+              <h1 className="title">载入中</h1>
               <div className="info"></div>
               <Content data=""/>
             </div>

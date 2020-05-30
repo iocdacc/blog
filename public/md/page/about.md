@@ -1,8 +1,3 @@
-
-> Pride only hurts, it never helps.  
-> 自尊只会伤害你，绝不会帮助你。  
-> —— 昆汀·塔伦蒂诺《低俗小说》  
-
 # 联系方式
 
 iocdacc@gmail.com

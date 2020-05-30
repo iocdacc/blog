@@ -13,22 +13,40 @@
     "src": "/md/page/snippet.md",
     "hidden": true
   },
+  "2020-05-28":{
+    "date": "2020-05-28",
+    "title": "Git 知识备份",
+    "tag": ["code","知识备份"],
+    "src": "/md/Git 知识备份.md"
+  },
+  "2020-05-27-2":{
+    "date": "2020-05-27",
+    "title": "TCP,IP 知识备份",
+    "tag": ["code","知识备份"],
+    "src": "/md/TCP,IP.md"
+  },
+  "2020-05-27":{
+    "date": "2020-05-27",
+    "title": "设计模式 知识备份",
+    "tag": ["code","知识备份"],
+    "src": "/md/设计模式.md"
+  },
   "2020-05-21-2":{
-    "date": "2020-05-21-2",
+    "date": "2020-05-21",
     "title": "redux 知识备份",
-    "tag": "javascript",
+    "tag": ["javascript","知识备份"],
     "src": "/md/redux 知识备份.md"
   },
   "2020-05-21":{
     "date": "2020-05-21",
     "title": "babel 知识备份",
-    "tag": "javascript",
+    "tag": ["javascript","知识备份"],
     "src": "/md/babel 知识备份.md"
   },
   "2020-03-19":{
     "date": "2020-03-19",
     "title": "javascript 知识备份",
-    "tag": "javascript",
+    "tag": ["javascript","知识备份"],
     "src": "/md/javascript 知识备份.md"
   },
   "2019-10-09":{

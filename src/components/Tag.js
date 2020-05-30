@@ -9,8 +9,15 @@ class Tag extends Component {
     let v = this.props.archivesListData;
     for (const key in v) {
       if (!v[key].hidden) {
-        tagData[v[key].tag] ? (tagData[v[key].tag] += 1) : (tagData[v[key].tag] = 1);
-        tagData[v[key].tag] > 7 && (tagData[v[key].tag] = 7);
+        if (Array.isArray(v[key].tag)) {
+          v[key].tag.forEach((item)=>{
+            tagData[item] ? (tagData[item] += 1) : (tagData[item] = 1);
+            tagData[item] > 7 && (tagData[item] = 7);
+          });
+        }else if (typeof v[key].tag == 'string') {
+          tagData[v[key].tag] ? (tagData[v[key].tag] += 1) : (tagData[v[key].tag] = 1);
+          tagData[v[key].tag] > 7 && (tagData[v[key].tag] = 7);
+        }
       }
     }
     let TagList = [];

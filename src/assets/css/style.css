@@ -80,11 +80,11 @@ body{background-color: #1d1f21;}
 .m-article .content a:hover::after{background-color:#2bbc8a;}
 .m-article .content ul{margin:4px 0;padding-inline-start: 26px;}
 .m-article .content ul li{font-size:1.2rem;line-height:1.8;list-style:disc;word-break: break-all;}
-.m-article .content ul li ul,.m-article .content ul li ol{padding:0 0 0 10px;}
+.m-article .content ul li ul,.m-article .content ul li ol{padding:0 0 0 18px;}
 .m-article .content ul li ul li,.m-article .content ul li ol{list-style:circle;}
 .m-article .content ol{margin:4px 0;padding-inline-start: 26px;}
 .m-article .content ol li{font-size:1.2rem;line-height:1.8;list-style:decimal;word-break: break-all;}
-.m-article .content ol li ul,.m-article .content ol li ol{padding:0 0 0 10px;}
+.m-article .content ol li ul,.m-article .content ol li ol{padding:0 0 0 18px;}
 .m-article .content ol li ul li,.m-article .content ol li ol{list-style:circle;}
 .m-article .content hr{border:1px dashed #ccc;}
 .m-article .content p{margin:1rem 0;word-break:break-all;line-height:1.5;}

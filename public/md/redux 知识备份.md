@@ -1,10 +1,10 @@
-> 本文章基于 redux 4.0.5
-> redux 类似于 sessionStorage 的加强版 
-> redux 本质还是页面的数据 和定义一个全局变量的形式差不多 所以当页面刷新时 redux的数据就没有了 而 sessionStorage 类似一个数据库 数据存在于硬盘所以 页面刷新时数据依然存在
-> redux 和 sessionStorage 各有优势 它们可以配合使用
-> redux 的优势是 数据存在于内存中 读写速度非常快 并且 redux 还有其他很多实用的功能比如状态保存,状态回溯等 但缺点是依附于页面 页面刷新就无法读取了
-> sessionStorage 的优势是 数据存在于硬盘 它不依附于页面 所以数据可以一直保存 但缺点是读写速度没有内存快
-> 所以要让 redux 也能刷新读取 就可以在刷新前将 redux 的数据存储于 sessionStorage 刷新后重新载入 redux
+> 本文章基于 redux 4.0.5  
+> redux 类似于 sessionStorage 的加强版  
+> redux 本质还是页面的数据 和定义一个全局变量的形式差不多 所以当页面刷新时 redux的数据就没有了 而 sessionStorage 类似一个数据库 数据存在于硬盘所以 页面刷新时数据依然存在  
+> redux 和 sessionStorage 各有优势 它们可以配合使用  
+> redux 的优势是 数据存在于内存中 读写速度非常快 并且 redux 还有其他很多实用的功能比如状态保存,状态回溯等 但缺点是依附于页面 页面刷新就无法读取了  
+> sessionStorage 的优势是 数据存在于硬盘 它不依附于页面 所以数据可以一直保存 但缺点是读写速度没有内存快  
+> 所以要让 redux 也能刷新读取 就可以在刷新前将 redux 的数据存储于 sessionStorage 刷新后重新载入 redux  
 
 ## redux源码解析
 

@@ -177,7 +177,22 @@ let i = 0
 while(i < 2) //当括号内返回true时执行此次迭代
 ```
 
-## 内部对象
+## 标准对象(非构造方法)
+```javascript
+//变量
+Infinity //值为Infinity 可以将其与其他值进行比较是否为true
+NaN //值为NaN 可以将其与其他值进行比较是否为true
+undefined ////值为undefined 可以将其与其他值进行比较是否为true
+
+//函数
+eval(x)
+isFinite(number)
+isNaN(number)
+parseFloat(string)
+parseInt(string, radix)
+```
+
+## 标准对象(构造方法)
 
 ### Array
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array
@@ -233,7 +248,7 @@ Object.getPrototypeOf() //返回实参对象的原型。
 
 //实例方法
 Object.prototype.hasOwnProperty() //判断自己是否存在某个键值（不包括原型链）。返回布尔值
-Object.prototype.isPrototypeOf() //判断一个对象是否存在自己原型链中。返回布尔值
+Object.prototype.isPrototypeOf() //判断自己是否存在某个对象的原型链中。返回布尔值
 Object.prototype.valueOf() //返回对象自身（此方法一般会自定义来达到某些需求）
 Object.prototype.toString() //返回自身字符串（此方法一般会自定义来达到某些需求。此方法还可准确判断实参的类型，不同类型会返回不同字符串。因为实例的此方法有可能会自定义所以如果需要用其判断类型一般这样调用Object.prototype.toString.call(value)或者Object.getPrototypeOf(value).toString.call(value)，此处一定要注意this指向，需要将this指向需要执行的对象。不直接使用__proto__的原因是，__proto__不是标准访问方式，某些JavaScript环境可能没有__proto__。）
 ```
@@ -287,3 +302,40 @@ JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使�
 ### Math
 数学内置构造方法：
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+## 浏览器对象(非构造方法)
+
+```javascript
+setTimeout(func|code,time) //指定毫秒后执行定义的方法
+setInterval(func|code,time) //指定毫秒循环执行定义的方法
+```
+
+## 浏览器对象(构造方法)
+
+### Document
+
+> 这个方法一般无需手动实例化,它的实例就是当前浏览的网页.浏览器自动执行.
+> 注意实例后的命名为**document**首字母为小写
+
+```javascript
+//实例属性
+Document.prototype.body //当前网页的body
+Document.prototype.all //当前网页的所有标签 注意这个不是数组 (最新标准已经删除此方法)(只读)
+Document.prototype.compatMode //当前网页是怪异模式(BackCompat)还是标准模式(CSS1Compat)(只读)
+Document.prototype.readyState //当前网页的加载状态
+Document.prototype.cookie //当前网站的cookie
+Document.prototype.title //当前网站的title
+Document.prototype.domain //当前网站的域名 
+Document.prototype.location //当前网站的URI(只读)
+Document.prototype.referrer //来源网站的URI(只读)
+Document.prototype.URL //当前网站的URL(只读)
+
+//实例方法
+Document.prototype.getElementById() //获取指定id的元素
+Document.prototype.getElementsByClassName() //获取指定class的元素集合(集合)
+Document.prototype.getElementsByName() //获取指定name的元素集合(集合)
+Document.prototype.getElementsByTagName() //获取指定标签的元素集合(集合)
+Document.prototype.getElementsByTagNameNS() //获取指定命名空间的指定标签的元素集合(集合)
+Document.prototype.hasFocus() //当前页面是否获取焦点 返回布尔值
+```
+

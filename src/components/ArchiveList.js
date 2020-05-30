@@ -11,18 +11,40 @@ class archiveList extends Component {
       for (const key in this.props.archivesListData) {
         let res = this.props.archivesListData[key];
         if (!res.hidden) {
-          if (res.tag === this.props.match.params.tag || !this.props.match.params.tag) {
-            if (i >= this.props.page && this.props.page) break;
-            i++;
+          if (Array.isArray(res.tag)) {
+            let show = false;
+            res.tag.forEach((item) => {
+              if (item === this.props.match.params.tag || !this.props.match.params.tag) {
+                if (i >= this.props.page && this.props.page) return;
+                show = true;
+              }
 
-            list.push(
-              <li key={key}>
-                <span className="date">{res.date}</span>
-                <span className="title">
-                  <Link to={'/archive/' + key}>{res.title}</Link>
-                </span>
-              </li>
-            );
+            });
+            if (show) {
+              i++;
+              list.push(
+                <li key={key}>
+                  <span className="date">{res.date}</span>
+                  <span className="title">
+                    <Link to={'/archive/' + key}>{res.title}</Link>
+                  </span>
+                </li>
+              );
+            }
+          } else {
+            if (res.tag === this.props.match.params.tag || !this.props.match.params.tag) {
+              if (i >= this.props.page && this.props.page) break;
+              i++;
+
+              list.push(
+                <li key={key}>
+                  <span className="date">{res.date}</span>
+                  <span className="title">
+                    <Link to={'/archive/' + key}>{res.title}</Link>
+                  </span>
+                </li>
+              );
+            }
           }
         }
       }
