@@ -4,13 +4,15 @@
 ### 对象
 javascript中一切皆对象  
 这句话的意思的是除了基础数据类型,所有引用数据类型都是一个对象.而这些引用数据类型的区别是它们有不同的对象属性.  
+
 一个**普通对象**在默认情况下只有__proto__属性  
-一个**普通函数对象**在默认情况下有arguments,caller,length,name,prototype,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]属性  
-一个**箭头函数对象**在默认情况下有arguments,caller,length,name,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]属性  
-...
-它们不过是在**普通对象**上加了一些特殊的属性而已,而当JavaScript引擎解析到这些特殊的属性时会做出相应的操作.
-当然需要注意的是这些特殊属性无法手动添加,你无法将一个**普通对象**手动添加这些属性,然后试图修改成**普通函数对象**.
-这些特殊属性只能通过相应的操作才能合法生成,比如 new Function() 之类.
+一个**普通函数对象**在默认情况下有**arguments,caller,length,name,prototype,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]**属性  
+一个**箭头函数对象**在默认情况下有**arguments,caller,length,name,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]**属性  
+...  
+
+它们不过是在**普通对象**上加了一些特殊的属性而已,而当JavaScript引擎解析到这些特殊的属性时会做出相应的操作.  
+当然需要注意的是这些特殊属性无法手动添加,你无法将一个**普通对象**手动添加这些属性,然后试图修改成**普通函数对象**.  
+这些特殊属性只能通过相应的操作才能合法生成,比如 new Function() 之类.  
 
 ### 构造函数,普通函数
 它们不是具体的东西而是一组对象属性  
@@ -388,7 +390,7 @@ Document.prototype.hasFocus() //当前页面是否获取焦点 返回布尔值
 
 ### 鼠标事件
 |名称|内容|备注|
-|:-|:-||:-|
+|:--|:--|:--|
 |onclick|单击鼠标时触发||
 |ondblclick|双击鼠标时触发||
 |oncontextmenu|在用户点击鼠标右键打开上下文菜单时触发||

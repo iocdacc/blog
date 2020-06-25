@@ -106,6 +106,21 @@ body{background-color: #1d1f21;}
 .m-article .content pre code .line-numbers-rows span:first-child{padding-top:19px;}
 .m-article .content pre code .line-numbers-rows span:last-child{padding-bottom:14px;}
 .m-article .content pre code .toolbar{margin-right:20px;}
+.m-article .content table{width: 100%;}
+.m-article .content table tr th,.m-article .content table tr td{padding: 8px;min-width: 108px;border: 1px #2f2f2f solid;}
+.m-article .content table thead tr{background-color: #2f2f2f;}
+.m-article .content table tbody tr td{
+transition: background-color .4s;
+-moz-transition: background-color .4s;	/* Firefox 4 */
+-webkit-transition: background-color .4s;	/* Safari 和 Chrome */
+-o-transition: background-color .4s;	/* Opera */
+}
+.m-article .content table tbody tr td:hover{background-color: #393939;
+transition: background-color .4s;
+-moz-transition: background-color .4s;	/* Firefox 4 */
+-webkit-transition: background-color .4s;	/* Safari 和 Chrome */
+-o-transition: background-color .4s;	/* Opera */
+}
 
 /* 文章摘要 */
 .m-abstract{position:absolute;right:0;top:40px;}
