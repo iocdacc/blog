@@ -1,8 +1,19 @@
 > 根据ECMA规范 所有javascript的实现都应该有一个顶级的对象 其中浏览器的是window，node的是global
 
 ## 名词解释
+### 对象
+javascript中一切皆对象  
+这句话的意思的是除了基础数据类型,所有引用数据类型都是一个对象.而这些引用数据类型的区别是它们有不同的对象属性.  
+一个**普通对象**在默认情况下只有__proto__属性  
+一个**普通函数对象**在默认情况下有arguments,caller,length,name,prototype,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]属性  
+一个**箭头函数对象**在默认情况下有arguments,caller,length,name,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]属性  
+...
+它们不过是在**普通对象**上加了一些特殊的属性而已,而当JavaScript引擎解析到这些特殊的属性时会做出相应的操作.
+当然需要注意的是这些特殊属性无法手动添加,你无法将一个**普通对象**手动添加这些属性,然后试图修改成**普通函数对象**.
+这些特殊属性只能通过相应的操作才能合法生成,比如 new Function() 之类.
+
 ### 构造函数,普通函数
-它们不是具体的东西更像是一个属性  
+它们不是具体的东西而是一组对象属性  
 而它们的区别是:  
 **构造函数**可以实例化(new操作)  
 **普通函数**可以普通调用
@@ -15,7 +26,7 @@
 比如**声明函数**它拥有**构造函数**和**普通函数**属性,那它即是**构造函数**又是**普通函数**,它能new又能普通调用.  
 比如**箭头函数**它只拥有**普通函数**属性,那它就只是**普通函数**,它只能普通调用.
 
-**对象有哪些属性,这完全是由ecma规范规定的.和这个对象是谁的实例,它有没有prototype,或是construct都没有关系.**
+**对象有哪些属性,这完全是由ecma规范规定的.和它是谁的实例没有关系.**
 
 目前所知的拥有**构造函数**属性的有:  
 **声明函数**,大部分内置首字母大写的函数
@@ -24,7 +35,7 @@
 **声明函数**,**箭头函数**,部分内置首字母大写的函数,内置首字母小写的函数
 
 ### Function
-**Function**是内置的构造函数，它的作用就时实例化**函数(function)**,所有**函数(function)**都时它的实例.  
+**Function**是内置的构造函数，它的作用就时实例化**函数(function)**.ecma规定所有**函数(function)**都是它的实例.  
 所以所有**函数(function)**的 **\_\_porto\_\_** 都指向他的**prototype**,包括他自己（构造函数也是**函数(function)**）和**Object**。  
 总结一下，所有**函数(function)**的原型都指向**Function**的**prototype**。其他普通对象的 **\_\_porto\_\_** 指向实例他们的构造函数的 **prototype**.
 
@@ -373,3 +384,89 @@ Document.prototype.getElementsByTagNameNS() //获取指定命名空间的指定�
 Document.prototype.hasFocus() //当前页面是否获取焦点 返回布尔值
 ```
 
+## 浏览器事件(Event)
+
+### 鼠标事件
+|名称|内容|备注|
+|:-|:-||:-|
+|onclick|单击鼠标时触发||
+|ondblclick|双击鼠标时触发||
+|oncontextmenu|在用户点击鼠标右键打开上下文菜单时触发||
+|onmouseenter|鼠标移动到元素上时触发|子元素不会触发|
+|onmouseleave|鼠标移出元素时触发|子元素不会触发|
+|onmouseover|鼠标移动到元素上时触发|子元素会触发|
+|onmouseout|鼠标移出元素时触发|子元素会触发|
+|onmousemove|鼠标被移动||
+|onmousedown|鼠标按钮被按下||
+|onmouseup|鼠标按钮被松开||
+
+
+```javascript
+onabort	//图像加载被中断时
+oncancel //当动画被取消时 H5
+oncanplay	//事件在用户可以开始播放视频/音频（audio/video）时触发。
+oncanplaythrough //事件在视频/音频（audio/video）可以正常播放且无需停顿和缓冲时触发。
+onchange //该事件在表单元素的内容改变时触发( <input>, <keygen>, <select>, 和 <textarea>)
+onclick	//点击时触发
+oncuechange	cuechange
+ondblclick //双击时触发
+ondurationchange //事件在视频/音频（audio/video）的时长发生变化时触发。
+onemptied //当期播放列表为空时触发	
+onended	//视频/音频播放结束时触发
+oninput	//用户输入时触发
+oninvalid	invalid
+onkeydown	//某个键盘按键被按下
+onkeypress	//某个键盘按键被按下并松开
+onkeyup	//某个键盘按键被松开
+onloadeddata	//当前帧的数据已加载时触发
+onloadedmetadata	//视频/音频（audio/video）的元数据加载后触发
+onloadstart	//开始寻找指定视频/音频（audio/video）触发。
+onmousedown	//鼠标按钮被按下
+onmouseenter	//当鼠标指针移动到元素上时触发
+onmouseleave	//当鼠标指针移出元素时触发
+onmousemove	//鼠标被移动。
+onmouseout	//鼠标从某元素移开
+onmouseover	//鼠标移到某元素之上
+onmouseup	//鼠标按键被松开
+
+onpause	//视频/音频（audio/video）暂停时触发。
+onplay	//视频/音频（audio/video）开始播放时触发。
+onplaying	//视频/音频（audio/video）暂停或者在缓冲后准备重新开始播放时触发。
+onprogress	//下载指定的视频/音频（audio/video）时触发。
+onratechange	//视频/音频（audio/video）的播放速度发送改变时触发。
+onreset	//表单重置时触发
+onseeked	//用户重新定位视频/音频（audio/video）的播放位置后触发。
+onseeking	//用户开始重新定位视频/音频（audio/video）时触发。
+onselect	//选取文本时触发 ( <input> 和 <textarea>)
+onshow	//当 <menu> 元素在上下文菜单显示时触发
+onstalled	//浏览器获取媒体数据，但媒体数据不可用时触发。
+onsubmit	//表单提交时触发
+onsuspend	//浏览器读取媒体数据中止时触发。
+ontimeupdate	//当前的播放位置发送改变时触发。
+ontoggle	//在用户打开或关闭 <details> 元素时触发
+onvolumechange	//在音量发生改变时触发。
+onwaiting	//视频由于要播放下一帧而需要缓冲时触发。
+
+
+onblur	//元素失去焦点时触发
+onerror	//视频/音频（audio/video）数据加载期间发生错误时触发。
+onfocus	//元素获取焦点时触发
+onload	//一张页面或一幅图像完成加载。
+onresize	//窗口或框架被重新调整大小。
+onscroll	//当文档被滚动时发生的事件。
+
+
+onafterprint	//该事件在页面已经开始打印，或者打印窗口已经关闭时触发	
+onbeforeprint	beforeprint
+onbeforeunload	beforeunload
+onhashchange	hashchange
+onmessage	message
+onoffline	offline
+ononline	online
+onpagehide	pagehide
+onpageshow	pageshow
+onpopstate	popstate
+onstorage	storage
+onunload	unload
+
+```

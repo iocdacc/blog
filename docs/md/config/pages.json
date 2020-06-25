@@ -13,6 +13,12 @@
     "src": "/md/page/snippet.md",
     "hidden": true
   },
+  "2020-06-10":{
+    "date": "2020-06-10",
+    "title": "OOAD和UML",
+    "tag": ["UML","OOAD","设计模式"],
+    "src": "/md/OOAD和UML.md"
+  },
   "2020-05-28":{
     "date": "2020-05-28",
     "title": "Git 知识备份",
