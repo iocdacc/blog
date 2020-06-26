@@ -228,8 +228,8 @@ while(i < 2) //当括号内返回true时执行此次迭代
 ```javascript
 //变量
 Infinity //值为Infinity 可以将其与其他值进行比较是否为true
-NaN //值为NaN 可以将其与其他值进行比较是否为true
-undefined ////值为undefined 可以将其与其他值进行比较是否为true
+NaN //值为NaN NaN与任何数据比较都是false 需要判断是否为NaN请使用isNaN()
+undefined //值为undefined 可以将其与其他值进行比较是否为true
 
 //函数
 eval(x)
@@ -359,10 +359,21 @@ setInterval(func|code,time) //指定毫秒循环执行定义的方法
 
 ## 浏览器对象(构造函数)
 
+### EventTarget
+
+>EventTarget->Node  
+>浏览器的所有构造方法API都继承Node,而Node又继承EventTarget.  
+
+```javascript
+//实例方法
+EventTarget.prototype.addEventListener() //在实例上绑定一个事件
+```
+
 ### Document
 
-> 这个方法一般无需手动实例化,它的实例就是当前浏览的网页.浏览器自动执行.
-> 注意实例后的命名为**document**首字母为小写
+> Node->Document  
+> 这个方法一般无需手动实例化,它的实例就是当前浏览的网页.浏览器自动执行.  
+> 注意实例后的命名为**document**首字母为小写  
 
 ```javascript
 //实例属性
@@ -384,6 +395,46 @@ Document.prototype.getElementsByName() //获取指定name的元素集合(集合)
 Document.prototype.getElementsByTagName() //获取指定标签的元素集合(集合)
 Document.prototype.getElementsByTagNameNS() //获取指定命名空间的指定标签的元素集合(集合)
 Document.prototype.hasFocus() //当前页面是否获取焦点 返回布尔值
+Document.prototype.createElement() //创建一个Dom节点(Element对象)
+```
+
+### Node
+
+>Node->Element  
+>所有Element实例都继承Node  
+>Node的实例方法,Element的实例都能用.  
+
+```javascript
+//实例方法
+Node.prototype.cloneNode(deep) //克隆一个Dom节点 两个节点相互独立 deep为true时克隆子节点反之不克隆
+Node.prototype.insertBefore() //在元素的第一个子节点之前添加一个节点,它只接受Element对象
+Node.prototype.appendChild() //在元素的最后一个子节点之后添加一个节点,它只接受Element对象
+Node.prototype.hasChildNodes() //节点是否存在子节点返回布尔值
+Node.prototype.normalize() //整理所有文本子节点,合并相邻的文本节点,删除空白文本节点.
+Node.prototype.removeChild(element) //删除一个子节点
+Node.prototype.replaceChild(newChild, oldChild) //替换一个子节点
+```
+
+### Element
+
+>Element->HTMLElement->HTMLDivElement ...  
+>Element一般不直接对应节点,一些细分的Element类别继承Element.  
+>也就是说Element的实例才直接对应节点,比如Element->HTMLElement->HTMLDivElement对应div标签  
+
+```javascript
+//实例属性
+Element.prototype.className //只读 字符串 返回元素的class属性 
+Element.prototype.classList //只读 对象 返回元素的class属性 可以通过它的原型方法 add() remove() toggle()添加和删除,切换class属性
+
+//实例方法
+Element.prototype.append() //在元素的最后一个子节点之后添加一个节点,它只接受字符串形式的Dom节点
+Element.prototype.hasAttribute() //当前节点是否存在某个属性,返回布尔值.
+Element.prototype.getAttribute() //返回当前节点的指定属性值
+Element.prototype.getAttributeNames() //返回包含所有属性名的数组
+Element.prototype.getBoundingClientRect() //返回一个对象,其包含了相对于窗口左上角的坐标偏移值和自身的尺寸信息. IE9^
+Element.prototype.setAttribute(name, value) //设置指定属性的值
+Element.prototype.toggleAttribute(name) //删除或添加一个布尔属性值
+Element.prototype.removeAttribute(name) //删除一个指定的元素
 ```
 
 ## 浏览器事件(Event)
@@ -401,74 +452,95 @@ Document.prototype.hasFocus() //当前页面是否获取焦点 返回布尔值
 |onmousemove|鼠标被移动||
 |onmousedown|鼠标按钮被按下||
 |onmouseup|鼠标按钮被松开||
+|onwheel|该事件在鼠标滚轮在元素上下滚动时触发||
 
+### 键盘事件
+|名称|内容|备注|
+|:--|:--|:--|
+|onkeydown|某个键盘按键被按下||
+|onkeyup|某个键盘按键被松开||
+|onkeypress|某个键盘按键被按下并松开||  
 
-```javascript
-onabort	//图像加载被中断时
-oncancel //当动画被取消时 H5
-oncanplay	//事件在用户可以开始播放视频/音频（audio/video）时触发。
-oncanplaythrough //事件在视频/音频（audio/video）可以正常播放且无需停顿和缓冲时触发。
-onchange //该事件在表单元素的内容改变时触发( <input>, <keygen>, <select>, 和 <textarea>)
-onclick	//点击时触发
-oncuechange	cuechange
-ondblclick //双击时触发
-ondurationchange //事件在视频/音频（audio/video）的时长发生变化时触发。
-onemptied //当期播放列表为空时触发	
-onended	//视频/音频播放结束时触发
-oninput	//用户输入时触发
-oninvalid	invalid
-onkeydown	//某个键盘按键被按下
-onkeypress	//某个键盘按键被按下并松开
-onkeyup	//某个键盘按键被松开
-onloadeddata	//当前帧的数据已加载时触发
-onloadedmetadata	//视频/音频（audio/video）的元数据加载后触发
-onloadstart	//开始寻找指定视频/音频（audio/video）触发。
-onmousedown	//鼠标按钮被按下
-onmouseenter	//当鼠标指针移动到元素上时触发
-onmouseleave	//当鼠标指针移出元素时触发
-onmousemove	//鼠标被移动。
-onmouseout	//鼠标从某元素移开
-onmouseover	//鼠标移到某元素之上
-onmouseup	//鼠标按键被松开
+### 表单事件
+|名称|内容|备注|
+|:--|:--|:--|
+|onblur|元素失去焦点时触发||
+|onfocus|元素获取焦点时触发||
+|onchange|该事件在表单元素的内容改变时触发(input, keygen, select, 和 textarea)||
+|onfocusin|元素即将获取焦点时触发||
+|onfocusout|元素即将失去焦点时触发||
+|oninput|元素获取用户输入时触发||
+|onreset|表单重置时触发||
+|onsearch|用户向搜索域输入文本时触发 (input="search")||
+|onselect|用户选取文本时触发 (input 和 textarea)||
+|onsubmit|表单提交时触发||  
 
-onpause	//视频/音频（audio/video）暂停时触发。
-onplay	//视频/音频（audio/video）开始播放时触发。
-onplaying	//视频/音频（audio/video）暂停或者在缓冲后准备重新开始播放时触发。
-onprogress	//下载指定的视频/音频（audio/video）时触发。
-onratechange	//视频/音频（audio/video）的播放速度发送改变时触发。
-onreset	//表单重置时触发
-onseeked	//用户重新定位视频/音频（audio/video）的播放位置后触发。
-onseeking	//用户开始重新定位视频/音频（audio/video）时触发。
-onselect	//选取文本时触发 ( <input> 和 <textarea>)
-onshow	//当 <menu> 元素在上下文菜单显示时触发
-onstalled	//浏览器获取媒体数据，但媒体数据不可用时触发。
-onsubmit	//表单提交时触发
-onsuspend	//浏览器读取媒体数据中止时触发。
-ontimeupdate	//当前的播放位置发送改变时触发。
-ontoggle	//在用户打开或关闭 <details> 元素时触发
-onvolumechange	//在音量发生改变时触发。
-onwaiting	//视频由于要播放下一帧而需要缓冲时触发。
+### 框架/对象（Frame/Object）事件  
+|名称|内容|备注|
+|:--|:--|:--|
+|onabort|图像的加载被中断。 (object)||
+|onbeforeunload|该事件在即将离开页面（刷新或关闭）时触发||
+|onerror|在加载文档或图像时发生错误。 (object, body和 frameset)||
+|onhashchange|该事件在当前 URL 的锚部分发生修改时触发||
+|onload|一张页面或一幅图像完成加载||
+|onpageshow|该事件在用户访问页面时触发||
+|onpagehide|该事件在用户离开当前网页跳转到另外一个页面时触发||
+|onresize|窗口或框架被重新调整大小||
+|onscroll|当文档被滚动时发生的事件||
+|onunload|用户退出页面。 (body 和 frameset)||  
 
+### 剪贴板事件
+|名称|内容|备注|
+|:--|:--|:--|
+|oncopy|该事件在用户拷贝元素内容时触发||
+|oncut|该事件在用户剪切元素内容时触发||
+|onpaste|该事件在用户粘贴元素内容时触发||
 
-onblur	//元素失去焦点时触发
-onerror	//视频/音频（audio/video）数据加载期间发生错误时触发。
-onfocus	//元素获取焦点时触发
-onload	//一张页面或一幅图像完成加载。
-onresize	//窗口或框架被重新调整大小。
-onscroll	//当文档被滚动时发生的事件。
+### 拖动事件
+|名称|内容|备注|
+|:--|:--|:--|
+|ondrag|该事件在元素正在拖动时触发||
+|ondragend|该事件在用户完成元素的拖动时触发||
+|ondragenter|该事件在拖动的元素进入放置目标时触发||
+|ondragleave|该事件在拖动元素离开放置目标时触发||
+|ondragover|该事件在拖动元素在放置目标上时触发||
+|ondragstart|该事件在用户开始拖动元素时触发||
+|ondrop|该事件在拖动元素放置在目标区域时触发||
 
+### 多媒体事件
+|名称|内容|备注|
+|:--|:--|:--|
+|onabort|事件在视频/音频（audio/video）终止加载时触发。||
+|oncanplay|事件在用户可以开始播放视频/音频（audio/video）时触发。||
+|oncanplaythrough|事件在视频/音频（audio/video）可以正常播放且无需停顿和缓冲时触发。||
+|ondurationchange|事件在视频/音频（audio/video）的时长发生变化时触发。||
+|onemptied|当期播放列表为空时触发||
+|onended|事件在视频/音频（audio/video）播放结束时触发。||
+|onerror|事件在视频/音频（audio/video）数据加载期间发生错误时触发。||
+|onloadeddata|事件在浏览器加载视频/音频（audio/video）当前帧时触发触发。||
+|onloadedmetadata|事件在指定视频/音频（audio/video）的元数据加载后触发。||
+|onloadstart|事件在浏览器开始寻找指定视频/音频（audio/video）触发。||
+|onpause|事件在视频/音频（audio/video）暂停时触发。||
+|onplay|事件在视频/音频（audio/video）开始播放时触发。||
+|onplaying|事件在视频/音频（audio/video）暂停或者在缓冲后准备重新开始播放时触发。||
+|onprogress|事件在浏览器下载指定的视频/音频（audio/video）时触发。||
+|onratechange|事件在视频/音频（audio/video）的播放速度发送改变时触发。||
+|onseeked|事件在用户重新定位视频/音频（audio/video）的播放位置后触发。||
+|onseeking|事件在用户开始重新定位视频/音频（audio/video）时触发。||
+|onstalled|事件在浏览器获取媒体数据，但媒体数据不可用时触发。||
+|onsuspend|事件在浏览器读取媒体数据中止时触发。||
+|ontimeupdate|事件在当前的播放位置发送改变时触发。||
+|onvolumechange|事件在音量发生改变时触发。||
+|onwaiting|事件在视频由于要播放下一帧而需要缓冲时触发。||
 
-onafterprint	//该事件在页面已经开始打印，或者打印窗口已经关闭时触发	
-onbeforeprint	beforeprint
-onbeforeunload	beforeunload
-onhashchange	hashchange
-onmessage	message
-onoffline	offline
-ononline	online
-onpagehide	pagehide
-onpageshow	pageshow
-onpopstate	popstate
-onstorage	storage
-onunload	unload
+### 动画事件
+|名称|内容|备注|
+|:--|:--|:--|
+|onanimationend|该事件在 CSS 动画结束播放时触发||
+|onanimationiteration|该事件在 CSS 动画重复播放时触发||
+|onanimationstart|该事件在 CSS 动画开始播放时触发||
 
-```
+### 过渡事件
+|名称|内容|备注|
+|:--|:--|:--|
+|ontransitionend|该事件在 CSS 完成过渡后触发。||
