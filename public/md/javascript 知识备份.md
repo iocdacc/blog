@@ -37,9 +37,9 @@ javascript中一切皆对象
 **声明函数**,**箭头函数**,部分内置首字母大写的函数,内置首字母小写的函数
 
 ### Function
-**Function**是内置的构造函数，它的作用就时实例化**函数(function)**.ecma规定所有**函数(function)**都是它的实例.  
-所以所有**函数(function)**的 **\_\_porto\_\_** 都指向他的**prototype**,包括他自己（构造函数也是**函数(function)**）和**Object**。  
-总结一下，所有**函数(function)**的原型都指向**Function**的**prototype**。其他普通对象的 **\_\_porto\_\_** 指向实例他们的构造函数的 **prototype**.
+**Function**是内置的构造函数，它的作用就时实例化**函数(function)**. ecma规定所有**函数(function)**都是它的实例.  
+所以所有**函数(function)**的 **\_\_porto\_\_**都指向他的**prototype**,包括他自己（构造函数也是**函数(function)**）和**Object**。  
+总结一下，所有**函数(function)**的原型都指向**Function**的**prototype**。其他普通对象的 **\_\_porto\_\_**指向实例他们的构造函数的**prototype**.
 
 ### 声明函数
 **声明函数**是Function的实例.它拥有**构造函数**和**普通函数**属性.  
