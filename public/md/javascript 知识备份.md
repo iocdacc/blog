@@ -359,6 +359,10 @@ setInterval(func|code,time) //指定毫秒循环执行定义的方法
 
 ## 浏览器对象(构造函数)
 
+### 主要DOM节点原型链关系图
+
+<a href="/md/img/主要DOM节点原型链关系图.png" target="_blank"><img src="/md/img/主要DOM节点原型链关系图.png"></a>
+
 ### EventTarget
 
 >EventTarget->Node  
@@ -367,6 +371,7 @@ setInterval(func|code,time) //指定毫秒循环执行定义的方法
 ```javascript
 //实例方法
 EventTarget.prototype.addEventListener() //在实例上绑定一个事件
+EventTarget.prototype.removeEventListener() //删除实例上绑定的指定事件
 ```
 
 ### Document
@@ -389,11 +394,11 @@ Document.prototype.referrer //来源网站的URI(只读)
 Document.prototype.URL //当前网站的URL(只读)
 
 //实例方法
-Document.prototype.getElementById() //获取指定id的元素
-Document.prototype.getElementsByClassName() //获取指定class的元素集合(集合)
-Document.prototype.getElementsByName() //获取指定name的元素集合(集合)
-Document.prototype.getElementsByTagName() //获取指定标签的元素集合(集合)
-Document.prototype.getElementsByTagNameNS() //获取指定命名空间的指定标签的元素集合(集合)
+Document.prototype.getElementById() //获取指定id的节点(返回动态节点)
+Document.prototype.getElementsByClassName() //获取指定class的节点集合(集合)(返回动态节点)
+Document.prototype.getElementsByName() //获取指定name的节点集合(集合)(返回动态节点)
+Document.prototype.getElementsByTagName() //获取指定标签的节点集合(集合)(返回动态节点)
+Document.prototype.getElementsByTagNameNS() //获取指定命名空间的指定标签的节点集合(集合)(返回动态节点)
 Document.prototype.hasFocus() //当前页面是否获取焦点 返回布尔值
 Document.prototype.createElement() //创建一个Dom节点(Element对象)
 ```
@@ -421,20 +426,58 @@ Node.prototype.replaceChild(newChild, oldChild) //替换一个子节点
 >Element一般不直接对应节点,一些细分的Element类别继承Element.  
 >也就是说Element的实例才直接对应节点,比如Element->HTMLElement->HTMLDivElement对应div标签  
 
+#### 元素偏移量和自身尺寸示意图:  
+<a href="/md/img/元素偏移量示意图.png" target="_blank"><img src="/md/img/元素偏移量示意图.png"></a>
+
 ```javascript
 //实例属性
-Element.prototype.className //只读 字符串 返回元素的class属性 
+Element.prototype.className //字符串 返回元素的class属性 
+Element.prototype.id //字符串 返回元素的id属性 
+Element.prototype.innerHTML //字符串 元素的文本内容
 Element.prototype.classList //只读 对象 返回元素的class属性 可以通过它的原型方法 add() remove() toggle()添加和删除,切换class属性
+
+Element.prototype.clientHeight //只读 元素不带边框的高度
+Element.prototype.clientWidth //只读 元素不带边框的宽度
+Element.prototype.clientTop //只读 元素顶边到边框顶边的距离(可视为上边框宽度)
+Element.prototype.clientLeft //只读 元素左边到边框左边的距离(可视为左边框宽度)
+
+HTMLElement.prototype.offsetWidth //只读 元素带边框的宽度
+HTMLElement.prototype.offsetHeight //只读 元素带边框的高度
+HTMLElement.prototype.offsetTop //只读 元素带边框顶边到,除了position为static之外的父元素的顶边框下边的距离.如果父元素定位都为static,则父元素视作body.
+HTMLElement.prototype.offsetLeft //只读 元素带边框左边到,除了position为static之外的父元素的左边框右边的距离.如果父元素定位都为static,则父元素视作body.
+
+Element.prototype.scrollHeight //只读 内容高度(包括滚动条视野外的部分)
+Element.prototype.scrollWidth //只读 内容宽度(包括滚动条视野外的部分)
+Element.prototype.scrollTop //可视内容的顶部 到内容整体顶部的距离(包括滚动条视野外的部分)
+Element.prototype.scrollLeft //可视内容的左边 到内容整体左边的距离(包括滚动条视野外的部分)
 
 //实例方法
 Element.prototype.append() //在元素的最后一个子节点之后添加一个节点,它只接受字符串形式的Dom节点
 Element.prototype.hasAttribute() //当前节点是否存在某个属性,返回布尔值.
 Element.prototype.getAttribute() //返回当前节点的指定属性值
 Element.prototype.getAttributeNames() //返回包含所有属性名的数组
-Element.prototype.getBoundingClientRect() //返回一个对象,其包含了相对于窗口左上角的坐标偏移值和自身的尺寸信息. IE9^
+Element.prototype.getBoundingClientRect() //返回一个对象,其包含了相对于网页整体左上角的坐标偏移值和自身的尺寸信息,自身的边框包括在内,自身的外边距不包括在内. IE9^
+Element.prototype.getClientRects() //和getBoundingClientRect()类似,区别是行内元素会根据换行符分割成多个对象
 Element.prototype.setAttribute(name, value) //设置指定属性的值
 Element.prototype.toggleAttribute(name) //删除或添加一个布尔属性值
 Element.prototype.removeAttribute(name) //删除一个指定的元素
+
+Element.prototype.insertAdjacentText(position, text) //在元素旁边插入文本
+Element.prototype.insertAdjacentElement(position, element) //在元素旁边插入元素
+// position:
+//'beforebegin': 在该元素本身的前面.
+//'afterbegin':只在该元素当中, 在该元素第一个子孩子前面.
+//'beforeend':只在该元素当中, 在该元素最后一个子孩子后面.
+//'afterend': 在该元素本身的后面.
+
+Element.prototype.querySelector() //使用CSS选择器查询节点,返回查询到的第一个节点(返回静态节点,不会随节点更新而更新)
+Element.prototype.querySelectorAll() //使用CSS选择器查询节点,返回查询到的所有节点(返回静态节点,不会随节点更新而更新)
+
+Element.prototype.requestFullscreen() //使指定节点进入全屏模式
+
+Element.prototype.scroll(xCoord, yCoord) //相对于绝对坐标移动滚动条
+Element.prototype.scrollBy(xCoord, yCoord) //相对于当前坐标移动滚动条
+Element.prototype.scrollTo(xCoord, yCoord) //将滚动条移动到指定坐标
 ```
 
 ## 浏览器事件(Event)
