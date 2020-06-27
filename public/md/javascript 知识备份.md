@@ -475,9 +475,9 @@ Element.prototype.querySelectorAll() //使用CSS选择器查询节点,返回查�
 
 Element.prototype.requestFullscreen() //使指定节点进入全屏模式
 
-Element.prototype.scroll(xCoord, yCoord) //相对于绝对坐标移动滚动条
-Element.prototype.scrollBy(xCoord, yCoord) //相对于当前坐标移动滚动条
-Element.prototype.scrollTo(xCoord, yCoord) //将滚动条移动到指定坐标
+Element.prototype.scroll({top: 垂直距离, left: 水平距离, auto||smooth}) //相对于绝对坐标移动滚动条
+Element.prototype.scrollBy({top: 垂直距离, left: 水平距离, auto||smooth}) //相对于当前坐标移动滚动条
+Element.prototype.scrollTo({top: 垂直距离, left: 水平距离, auto||smooth}) //将滚动条移动到指定坐标
 ```
 
 ## 浏览器事件(Event)
