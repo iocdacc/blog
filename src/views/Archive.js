@@ -30,7 +30,6 @@ class Archive extends Component {
     };
   }
 
-
   componentDidMount() {
     this.props.archiveContent(this.props.match.params.id);
   }

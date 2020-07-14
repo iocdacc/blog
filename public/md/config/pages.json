@@ -1,57 +1,58 @@
 {
-  "about":{
-    "date": "2019-12-28",
-    "title": "关于",
-    "tag": "关于",
-    "src": "/md/page/about.md",
-    "hidden": true
+  "2020-07-11":{
+    "date": "2020-07-11",
+    "title": "English生词本",
+    "tag": ["生词本","English"],
+    "src": "/md/English生词本.md"
   },
-  "snippet":{
-    "date": "2019-12-28",
-    "title": "代码片段",
-    "tag": "代码片段",
-    "src": "/md/page/snippet.md",
-    "hidden": true
+  "2020-07-09":{
+    "date": "2020-07-09",
+    "title": "React知识备份",
+    "tag": ["React","知识备份"],
+    "src": "/md/React 知识备份.md"
   },
   "2020-06-10":{
     "date": "2020-06-10",
     "title": "OOAD和UML",
     "tag": ["UML","OOAD","设计模式"],
-    "src": "/md/OOAD和UML.md"
+    "src": "/md/OOAD和UML.md",
+    "hidden": true
   },
   "2020-05-28":{
     "date": "2020-05-28",
-    "title": "Git 知识备份",
+    "title": "Git知识备份",
     "tag": ["code","知识备份"],
-    "src": "/md/Git 知识备份.md"
+    "src": "/md/Git 知识备份.md",
+    "hidden": true
   },
   "2020-05-27-2":{
     "date": "2020-05-27",
-    "title": "TCP,IP 知识备份",
+    "title": "TCP,IP知识备份",
     "tag": ["code","知识备份"],
-    "src": "/md/TCP,IP.md"
+    "src": "/md/TCP,IP.md",
+    "hidden": true
   },
   "2020-05-27":{
     "date": "2020-05-27",
-    "title": "设计模式 知识备份",
+    "title": "设计模式知识备份",
     "tag": ["code","知识备份"],
     "src": "/md/设计模式.md"
   },
   "2020-05-21-2":{
     "date": "2020-05-21",
-    "title": "redux 知识备份",
+    "title": "redux知识备份",
     "tag": ["javascript","知识备份"],
     "src": "/md/redux 知识备份.md"
   },
   "2020-05-21":{
     "date": "2020-05-21",
-    "title": "babel 知识备份",
+    "title": "babel知识备份",
     "tag": ["javascript","知识备份"],
     "src": "/md/babel 知识备份.md"
   },
   "2020-03-19":{
     "date": "2020-03-19",
-    "title": "javascript 知识备份",
+    "title": "javascript知识备份",
     "tag": ["javascript","知识备份"],
     "src": "/md/javascript 知识备份.md"
   },
@@ -144,5 +145,19 @@
     "title": "Unicode 12.0字符代码图表",
     "tag": "Unicode",
     "src": "/md/Unicode 12.0字符代码图表.md"
+  },
+  "about":{
+    "date": "2019-12-28",
+    "title": "关于",
+    "tag": "关于",
+    "src": "/md/page/about.md",
+    "hidden": true
+  },
+  "snippet":{
+    "date": "2019-12-28",
+    "title": "代码片段",
+    "tag": "代码片段",
+    "src": "/md/page/snippet.md",
+    "hidden": true
   }
 }
