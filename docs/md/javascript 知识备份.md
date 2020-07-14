@@ -268,8 +268,8 @@ undefined //值为undefined 可以将其与其他值进行比较是否为true
 eval(x)
 isFinite(number)
 isNaN(number)
-parseFloat(string)
-parseInt(string, radix)
+parseFloat(string) //数据类型转换成整型
+parseInt(string, radix) //数据类型转换成浮点型
 ```
 
 ## 标准对象(构造函数)
@@ -325,6 +325,7 @@ Object.getOwnPropertyNames() //对象的键值转数组（不可枚举也会转�
 Object.assign() //合并两个对象，如果键值相同则使用最后一个实参的，并返回第一个实参对象。(会修改第一个实参对象)
 Object.create() //返回一个空白的新对象，其原型是第一个实参。（一般用于指定prototype的原型）
 Object.getPrototypeOf() //返回实参对象的原型。
+Object.setPrototypeOf(要修改的对象, 作为原型的对象) //修改对象的原型
 
 //实例方法
 Object.prototype.hasOwnProperty(某个键值) //判断自己是否存在某个键值（不包括原型链）。返回布尔值
