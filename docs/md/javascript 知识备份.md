@@ -285,7 +285,7 @@ Array.prototype.shift() //开头删除一个值，并返回这个值。
 Array.prototype.pop() //末尾删除一个值，并返回这个值。
 Array.prototype.unshift() //开头增加一个或多个值，并返回新的length。
 Array.prototype.push() //末尾增加一个或多个值，并返回新的length。
-Array.prototype.splice() //对任意位置的值进行，增删改操作，并返回被删除的值。其他情况返回空数组。
+Array.prototype.splice(start, end, item) //对任意位置的值进行，增删改操作，并返回被删除的值。其他情况返回空数组。
 Array.prototype.reverse() //颠倒数组。返回被颠倒的数组。和原数组相等（原数组被颠倒了，其实返回的就是原数组）。
 Array.prototype.sort() //对数组进行排序。返回被排序的数组。和原数组相等。（原数组被排序了，其实返回的就是原数组）
 
