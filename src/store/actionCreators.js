@@ -80,7 +80,7 @@ export const getProjects = () => {
           {
             name: 'VsClick',
             describe: '点击效果',
-            src: 'https://iocdacc.github.io/VsClick'
+            src: 'https://iocdacc.github.io/VsClick/demos/'
           }
         ]
       });
