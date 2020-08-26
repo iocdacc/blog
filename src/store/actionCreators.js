@@ -68,14 +68,19 @@ export const getProjects = () => {
         type: 'GET_PROJECTS',
         projectsData: [
           {
-            name: 'vsPlayAudio',
+            name: 'VsPlayAudio',
             describe: '美观的音乐播放器',
             src: 'https://iocdacc.github.io/vsPlayAudio'
           },
           {
-            name: 'vsPlayVideo',
+            name: 'VsPlayVideo',
             describe: '美观的视频播放器',
             src: 'https://iocdacc.github.io/vsPlayVideo'
+          },
+          {
+            name: 'VsClick',
+            describe: '点击效果',
+            src: 'https://iocdacc.github.io/VsClick'
           }
         ]
       });
