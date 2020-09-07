@@ -78,7 +78,7 @@ class Archive extends Component {
                 {/* <span><i className="m-icon m-icon-eye"></i><span id="busuanzi_value_page_pv">0</span></span> */}
                 <span><i className="m-icon m-icon-label"></i>{tag}</span>
               </div>
-              <Content data={this.props.archivesListData[this.props.match.params.id].contentData}/>
+              <Content data={this.props.archivesListData[this.props.match.params.id].contentData} option={this.props.archivesListData[this.props.match.params.id].option} />
             </div>
             <Comments id={this.props.match.params.id} url={this.props.match.url} />
           </div>

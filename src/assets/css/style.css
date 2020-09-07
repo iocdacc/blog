@@ -94,7 +94,7 @@ body{background-color: #1d1f21;}
 .m-article .content .h2,.m-article .content h2{font-size:1.3rem;font-weight:700;color:#2bbc8a;height: 1.7rem;line-height: 1.7rem;}
 .m-article .content .h2,.m-article .content h2{position:relative;text-transform:none;letter-spacing:normal;margin-top:2rem;margin-bottom:.5rem;display:block}
 .m-article .content h2:before{content:"#";color:#2bbc8a;position:absolute;left:-1.5rem;top:0rem;font-size:1.5rem;font-weight:700;}
-.m-article .content h3{position:relative;font-size:1.2rem;font-weight:700;color:#eee;height: 1.5rem;line-height: 1.5rem;}
+.m-article .content h3{position:relative;font-size:1.2rem;font-weight:700;color:#eee;line-height: 1.5rem;}
 .m-article .content h3:before{content:"*";color:#2bbc8a;position:absolute;left:-1.5rem;top:0.2rem;font-size:1.5rem;font-weight:700;}
 .m-article .content h4,.m-article .content h5,.m-article .content h6{font-size:1.2rem;font-weight:400;color:#ccc;border-bottom:1px dashed #ccc;display:inline;text-decoration:none}
 .m-article .content dt,.m-article .content strong,.m-article .content th{font-weight:700}
