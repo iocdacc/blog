@@ -15,6 +15,7 @@ class Home extends Component {
   }
 
   render() {
+    document.title = 'iocdacc';
     return (
       <div className="g-main">
         <ShowText />

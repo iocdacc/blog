@@ -5,7 +5,7 @@
 javascript中一切皆对象  
 这句话的意思是除了基础数据类型,所有引用数据类型都是一个对象.而这些引用数据类型的区别是它们有不同的对象属性.  
 
-一个**普通对象**在默认情况下只有**__proto__**属性  
+一个**普通对象**在默认情况下只有**\_\_proto\_\_**属性  
 一个**普通函数对象**在默认情况下有**arguments,caller,length,name,prototype,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]**属性  
 一个**箭头函数对象**在默认情况下有**arguments,caller,length,name,__proto__,\[\[FunctionLocation\]\],\[\[Scopes\]\]**属性  
 ...  
@@ -70,7 +70,7 @@ javascript中一切皆对象
 ABC就好像断了一样.
 
 ### 原型链
-原型链的顶端对象是**Object**的**prototype**,因为**prototype**本质是一个普通对象它是由**Object**实例出来的,因此**Object**的**prototype**没有**__proto__**\.  
+原型链的顶端对象是**Object**的**prototype**,因为**prototype**本质是一个普通对象它也是由**Object**实例出来的,为防止产生自己的原型指向自己的情况，因此**Object**的**prototype**为null.  
 需要注意的是,原型链是**prototype**的链条,不是**__proto__**的链条,只是在实例的角度它们都变成了**__proto__**\.  
 比如对象的原型继承的是父对象的**prototype**,不是父对象的**__proto__**\.  
 父对象有它自己的原型链和子对象的原型链没有关系\.  
@@ -78,7 +78,7 @@ Object的**prototype**-->构造函数的**prototype**-->普通对象的**__proto
 Object的**prototype**-->Function的**prototype**-->构造函数的**__proto__**\.  
 但是**__proto__**可以手动指定的原因,实例的原型可能并不是自己构造函数的**prototype**\.  
 Object的**prototype**-->构造函数的**prototype**--N个-->构造函数的**prototype**-->普通对象的**__proto__**\.  
-但因为原型不能循环的原因,最终都会指向Object的**prototype**\.  
+但因为原型不能循环的原因,最终Object的**prototype**指向null\.  
 
 <a href="/md/img/原型链.png" target="_blank"><img src="/md/img/原型链.png"></a>
 
@@ -93,6 +93,29 @@ ES6中增加了块作用域,除了函数的其他花括号就是块作用域.
 var声明无视块作用域,按ES5的作用域声明.  
 而在块作用域内部let声明的变量只有在块作用域内部才能访问.  
 let声明 全局作用域->函数作用域->块作用域
+
+### 词法作用域和动态作用域
+JavaScript使用的是词法作用域（静态作用域）
+
+即访问变量时：函数本身的作用域->函数**定义处**的外层查找->直到顶级作用域
+
+而与之相对应的是动态作用域
+
+即访问变量时：函数本身的作用域->函数**调用处**的外层查找->直到顶级作用域
+
+### 同步代码，异步代码，宏任务，微任务。
+JavaScript是单线程的。
+
+JavaScript会优先执行同步代码。将异步代码放入任务队列中。只有等浏览器认为同步代码执行完毕才会通知主线程开始执行任务队列中的异步代码。
+
+其中只有setTimeout,setInterval的回调，AJAX的回调等等耗时任务才是异步代码，其他的都是同步代码。
+
+这其中同步代码，任务队列中的每一个异步代码块都是一个宏任务。
+而微任务会在这些宏任务执行完成后马上执行。
+
+其中只有Promise.then，Object.observe，MutaionObserver，process.nextTick(Node.js 环境)等等，才是微任务，其他都是宏任务。
+
+微任务特点是它会在宏任务后渲染前执行。而异步任务则是在同步任务后渲染后执行。
 
 ## 数据类型
 
@@ -268,8 +291,8 @@ undefined //值为undefined 可以将其与其他值进行比较是否为true
 eval(x)
 isFinite(number)
 isNaN(number)
-parseFloat(string) //数据类型转换成整型
-parseInt(string, radix) //数据类型转换成浮点型
+parseFloat(string) //数据类型转换成浮点型
+parseInt(string, radix) //数据类型转换成整型
 ```
 
 ## 标准对象(构造函数)
@@ -380,6 +403,39 @@ JSON.stringify() //对象转JSON
 JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使用eval("(" + JSON + ")")的方法 但此方法可能有执行未知代码的风险）
 ```
 
+### Promise
+```js
+// 参数
+// resolve 完成函数，实例的then方法开始运行。并将其参数传给它。
+// reject 失败函数，抛出错误，错误信息为其参数。
+new Promise(function callback(resolve, reject)());
+
+// 静态方法
+Promise.all([promise1, promise2, promise3]).then(values=>{ // 同时监听多个Promise实例。如果有一个执行reject（失败）则整体失败，失败参数为第一个执行的reject。
+  console.log(values); // [values1, values2, values3]
+}); 
+
+Promise.allSettled([promise1, promise2, promise3]).then(values=>{ // 同时监听多个Promise实例。成功失败互不影响，成功失败信息和数据分别存入数组。
+  console.log(values); // [{reason: "values1", status: "rejected"}, {reason: "values2", status: "fulfilled"}, {reason: "values3", status: "fulfilled"}]
+}); 
+
+Promise.any([promise1, promise2, promise3]).then(values=>{ // 同时监听多个Promise实例。只接收第一个成功的信息。所有都失败则返回固定错误语句。
+  console.log(values); // values1
+});
+
+Promise.race([promise1, promise2, promise3]).then(values=>{ // 同时监听多个Promise实例。只接收第一个成功或失败的信息。
+  console.log(values); // values1
+});
+
+Promise.reject('失败参数') // 固定返回失败的Promise实例
+Promise.resolve('成功参数') // 固定返回成功的Promise实例
+
+// 实例方法
+Promise.prototype.then(value=>{}) // 处理成功的方法
+Promise.prototype.catch(error=>{}) // 处理失败的方法
+Promise.prototype.finally(()=>{}) // 不管成功失败都会执行，回调函数没有参数。
+```
+
 ### Math
 数学内置构造函数：
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
@@ -387,8 +443,60 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 ## 浏览器对象(非构造函数)
 
 ```javascript
-setTimeout(func|code,time) //指定毫秒后执行定义的方法
-setInterval(func|code,time) //指定毫秒循环执行定义的方法
+// 属性
+screen // 一些硬件信息（分辨率之类）
+navigator // 客户端信息
+clientInformation // 客户端信息
+innerHeight // 包括滚动条的页面高度
+innerWidth // 包括滚动条的页面宽度
+outerHeight // 浏览器的整体高度
+outerWidth // 浏览器的整体宽度
+pageXOffset // 横向滚动条到左边的距离
+pageYOffset // 纵向滚动条到顶边的距离
+screenLeft，screenX // 浏览器窗口左边到屏幕左边的距离
+screenTop，screenY // 浏览器窗口顶边到屏幕顶边的距离
+scrollX // 滚动条横向滚动的距离
+scrollY // 滚动条纵向滚动的距离
+isSecureContext // 是否处于SSL安全页面，布尔值。
+location // 页面URL相关
+parent // 当前窗口的父窗口的window，父窗口即window.open的创建者。
+top // 当前窗口的最顶层window，最顶层即window.open嵌套创建时最顶层的窗口。
+performance // 当前窗口的性能相关。
+visualViewport // 返回当前可视区域的信息
+
+// 函数
+setTimeout(func|code,time[,param1,param2,...]) // 指定毫秒后执行定义的方法,返回ID。
+clearTimeout(int) // 根据ID取消setTimeout回调函数执行。
+setInterval(func|code,time[,param1,param2,...]) // 指定毫秒循环执行定义的方法,返回ID。
+clearInterval(int) // 根据ID取消setInterval回调函数执行。
+alert(str) // 带确认的对话框。
+confirm(str) // 带确认及取消按钮的对话框，确认返回true,取消返回false。
+prompt(str) // 带输入框的对话框。输入内容在返回的对象内。
+close() // 关闭所在的window窗口
+btoa() // 编码base64
+atob() // 解码base64
+blur() // 使所在的window窗口失去焦点
+requestAnimationFrame(func) // 在浏览器下一帧渲染时运行回调函数。返回预约ID。
+cancelAnimationFrame(int) // 通过预约ID，取消requestAnimationFrame()的回调函数执行。
+requestIdleCallback(func) // 在浏览器下次空闲时运行回调函数。返回预约ID。
+cancelIdleCallback(int) // 通过预约ID，取消requestIdleCallback()的回调函数执行。
+createImageBitmap() // 图标裁切
+fetch() // 浏览器实现的AJAX请求，返回一个Promise实例。
+focus() // 使窗口置于最前面。
+getSelection() // 显示当前窗口内文本选择范围和光标位置。
+history() // 浏览器的浏览历史。
+matchMedia() // 媒体查询方法。
+moveBy(x, y) // 相对当前位置移动窗口位置 (大部分浏览器默认禁用)
+moveTo(x, y) // 移动窗口到指定位置 (大部分浏览器默认禁用)
+resizeBy(x, y) // 增加窗口的大小 (大部分浏览器默认禁用)
+resizeTo(x, y) // 指定窗口的大小 (大部分浏览器默认禁用)
+open() // 打开一个新的浏览器窗口 
+postMessage() // 与相同域的其他窗口通信
+print() // 启用打印机打印当前窗口内容
+queueMicrotask() // 执行一个微任务
+scroll(x, y, options)，scrollTo(x, y, options) // 将滚动条移动到指定位置
+scrollBy(x, y, options) // 将滚动条移动指定像素
+stop() // 停止网页载入
 ```
 
 ## 浏览器对象(构造函数)
@@ -512,6 +620,32 @@ Element.prototype.requestFullscreen() //使指定节点进入全屏模式
 Element.prototype.scroll({top: 垂直距离, left: 水平距离, auto||smooth}) //相对于绝对坐标移动滚动条
 Element.prototype.scrollBy({top: 垂直距离, left: 水平距离, auto||smooth}) //相对于当前坐标移动滚动条
 Element.prototype.scrollTo({top: 垂直距离, left: 水平距离, auto||smooth}) //将滚动条移动到指定坐标
+```
+
+### WebSocket
+```js
+// 参数
+new WebSocket(url[, 协议])
+
+// 静态常量
+WebSocket.CONNECTING // 值为0，表示正在连接。
+WebSocket.OPEN // 值为1，表示连接成功，可以通信了。
+WebSocket.CLOSING	// 值为2，表示连接正在关闭。
+WebSocket.CLOSED // 值为3，表示连接已经关闭，或者打开连接失败。
+
+// 实例属性
+webSocket.prototype.binaryType // 返回websocket连接所传输二进制数据的类型。
+webSocket.prototype.bufferedAmount // 返回被send但还没有发送给服务器的数据。
+
+// 实例方法
+webSocket.prototype.send('json') // 将数据发送给服务端。
+webSocket.prototype.close([错误状态码[, 错误原因字符串]]) // 关闭当前连接。
+
+// 实例事件
+webSocket.prototype.onclose = function(){} // 当一个 WebSocket 连接被关闭时触发。
+webSocket.prototype.error = function(){} // 当一个 WebSocket 连接因错误而关闭时触发，例如无法发送数据时。
+webSocket.prototype.message = function(){} // 当通过 WebSocket 收到数据时触发。
+webSocket.prototype.open = function(){} // 当一个 WebSocket 连接成功时触发。
 ```
 
 ## 浏览器事件(Event)

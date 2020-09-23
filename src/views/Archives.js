@@ -4,6 +4,7 @@ import ArchiveList from 'components/ArchiveList';
 
 class Archives extends Component {
   render() {
+    document.title = 'iocdacc - Archives';
     return (
       <div>
         <div className="g-main">

@@ -7,13 +7,22 @@ class RandQuestion extends Component {
     this.state = {
       list: []
     };
+
+  }
+
+  componentDidMount(){
+
+    this.h3 = [...document.getElementsByTagName('h3')]
+
+    this.h3.forEach((e, k)=>{
+      e.innerText = '问题' + (k + 1) + ' ' + e.innerText
+    })
   }
 
   question(){
-    let h3 = [...document.getElementsByTagName('h3')];
     let list = [];
     for (let index = 0; index < 5; index++) {
-      list.push(<h3 key={index}>{h3[_.random(0, h3.length - 1)].textContent}</h3>);
+      list.push(<h3 key={index}>{this.h3[_.random(0, this.h3.length - 1)].textContent}</h3>);
     }
 
     this.setState({list});

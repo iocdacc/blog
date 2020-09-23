@@ -25,6 +25,9 @@ class About extends Component {
   }
 
   render() {
+    let title = [...this.state.id];
+    title = title[0].toUpperCase() + this.state.id.slice(1)
+    document.title = 'iocdacc - ' + title;
     if (this.props.archivesListData && this.props.archivesListData[this.state.id].contentData) {
       return (
         <div>

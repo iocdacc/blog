@@ -67,7 +67,7 @@ class Archive extends Component {
           </Link>
         ];
       }
-
+      document.title = 'iocdacc - ' + this.props.archivesListData[this.props.match.params.id].title;
       return (
         <div>
           <div className="g-mainArc">
