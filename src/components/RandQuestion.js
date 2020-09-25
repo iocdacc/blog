@@ -22,7 +22,16 @@ class RandQuestion extends Component {
   question(){
     let list = [];
     for (let index = 0; index < 5; index++) {
-      list.push(<h3 key={index}>{this.h3[_.random(0, this.h3.length - 1)].textContent}</h3>);
+      let key = _.random(0, this.h3.length - 1)
+
+      list.push(
+        <>
+          <h3 key={key}>
+            {this.h3[key].textContent + '\u0020'}
+            <button onClick={()=>{this.h3[key].scrollIntoView()}}>答案</button>
+          </h3>
+        </>
+      );
     }
 
     this.setState({list});

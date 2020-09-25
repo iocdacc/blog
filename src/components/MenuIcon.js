@@ -36,7 +36,7 @@ class MenuIcon extends Component {
       let anchorElement = document.getElementById(anchorId);
       if (anchorElement) {
         // 如果对应id的锚点存在，就跳转到锚点
-        anchorElement.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        anchorElement.scrollIntoView();
       }
     }
   }

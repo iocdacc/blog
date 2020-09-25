@@ -65,19 +65,19 @@ javascript中一切皆对象
 实例链条算一个自创的名词\.  
 原型链很容易与实例链搞混\.  
 子对象的原型指向父对象的**prototype**\.  
-父对象由谁实例的和子对象没有关系,子对象也无法访问父对象的**__proto__**\.  
+父对象由谁实例的和子对象没有关系,子对象也无法访问父对象的 **\_\_proto__**\.  
 比如A实例B,B实例C.A只和B有关联,C只和B有关联.A和C没有关联.  
 ABC就好像断了一样.
 
 ### 原型链
 原型链的顶端对象是**Object**的**prototype**,因为**prototype**本质是一个普通对象它也是由**Object**实例出来的,为防止产生自己的原型指向自己的情况，因此**Object**的**prototype**为null.  
-需要注意的是,原型链是**prototype**的链条,不是**__proto__**的链条,只是在实例的角度它们都变成了**__proto__**\.  
-比如对象的原型继承的是父对象的**prototype**,不是父对象的**__proto__**\.  
+需要注意的是,原型链是**prototype**的链条,不是 **\_\_proto__** 的链条,只是在实例的角度它们都变成了 **\_\_proto__**\.  
+比如对象的原型继承的是父对象的**prototype**,不是父对象的 **\_\_proto__**\.  
 父对象有它自己的原型链和子对象的原型链没有关系\.  
-Object的**prototype**-->构造函数的**prototype**-->普通对象的**__proto__**\.  
-Object的**prototype**-->Function的**prototype**-->构造函数的**__proto__**\.  
-但是**__proto__**可以手动指定的原因,实例的原型可能并不是自己构造函数的**prototype**\.  
-Object的**prototype**-->构造函数的**prototype**--N个-->构造函数的**prototype**-->普通对象的**__proto__**\.  
+Object的**prototype**-->构造函数的**prototype**-->普通对象的 **\_\_proto__**\.  
+Object的**prototype**-->Function的**prototype**-->构造函数的 **\_\_proto__**\.  
+但是 **\_\_proto__**可以手动指定的原因,实例的原型可能并不是自己构造函数的**prototype**\.  
+Object的**prototype**-->构造函数的**prototype**--N个-->构造函数的**prototype**-->普通对象的 **\_\_proto__**\.  
 但因为原型不能循环的原因,最终Object的**prototype**指向null\.  
 
 <a href="/md/img/原型链.png" target="_blank"><img src="/md/img/原型链.png"></a>
@@ -344,9 +344,11 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 Object.keys() //对象的键值转数组
 Object.values() //对象值转数组
 Object.entries() //对象的键值和值成对转换成二维数组。
-Object.getOwnPropertyNames() //对象的键值转数组（不可枚举也会转换。比如数组的length）
 Object.assign() //合并两个对象，如果键值相同则使用最后一个实参的，并返回第一个实参对象。(会修改第一个实参对象)
 Object.create() //返回一个空白的新对象，其原型是第一个实参。（一般用于指定prototype的原型）
+Object.getOwnPropertyNames() //对象的键值转数组（不可枚举也会转换。比如数组的length）
+Object.getOwnPropertyDescriptor(obj, 'key') // 返回对象指定的值
+Object.getOwnPropertySymbols() // 将对象上的Symbols键值转成数组
 Object.getPrototypeOf() //返回实参对象的原型。
 Object.setPrototypeOf(要修改的对象, 作为原型的对象) //修改对象的原型
 
@@ -370,9 +372,27 @@ Function.prototype.bind(this)(arg1, arg2, ...) //重新定义this。并返回这
 
 ### Number
 ```javascript
+//静态常量
+Number.MAX_SAFE_INTEGER // 最大安全数
+Number.MIN_SAFE_INTEGER // 最小安全数
+Number.MAX_VALUE // 最大正数，或加负号最小负数。
+Number.MIN_VALUE // 最接近0的正数，或加负号最接近0的负数。
+Number.NaN // 表示NaN,和全局变量NaN一样。不要用这个判断是否为NaN。请使用isNaN()方法。
+Number.POSITIVE_INFINITY // 正无穷，溢出时返回此常量。
+Number.NEGATIVE_INFINITY // 负无穷，溢出时返回此常量。
+
+//静态方法
+Number.isNaN() // 是否为NaN
+Number.isFinite() // 是否为有限小数或整数，不包括0。
+Number.isInteger() // 是否为整数
+Number.isSafeInteger() // 是否为安全数
+Number.parseFloat() // 字符串转浮点数
+Number.parseInt() // 字符串转整数
+
 //实例方法
 Number.prototype.toFixed() //保留小数点(0-20)，多余部分四舍五入。太大或太小会报出异常。
 Number.prototype.toPrecision() //和toFixed一样，只是多余部分舍去。并且范围为(1-100)。
+Number.prototype.toExponential() //用一个指数表示法字符串表示数字。
 ```
 
 ### String
@@ -401,6 +421,15 @@ String.prototype.split(可使用正则) //按照实参的字符串分割字符�
 //静态方法
 JSON.stringify() //对象转JSON
 JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使用eval("(" + JSON + ")")的方法 但此方法可能有执行未知代码的风险）
+```
+
+### RegExp
+```js
+// 参数
+// 修饰符
+// g
+new RegExp('正则表达式'[, '修饰符'])
+
 ```
 
 ### Promise
@@ -437,7 +466,7 @@ Promise.prototype.finally(()=>{}) // 不管成功失败都会执行，回调函�
 ```
 
 ### Math
-数学内置构造函数：
+数学内置构造函数：  
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math
 
 ## 浏览器对象(非构造函数)
@@ -620,6 +649,7 @@ Element.prototype.requestFullscreen() //使指定节点进入全屏模式
 Element.prototype.scroll({top: 垂直距离, left: 水平距离, auto||smooth}) //相对于绝对坐标移动滚动条
 Element.prototype.scrollBy({top: 垂直距离, left: 水平距离, auto||smooth}) //相对于当前坐标移动滚动条
 Element.prototype.scrollTo({top: 垂直距离, left: 水平距离, auto||smooth}) //将滚动条移动到指定坐标
+Element.prototype.scrollIntoView([bool, {过渡方式, 垂直对齐, 水平对齐}]) //将指定的元素滚动到可视区域，如果第一个参数为true（默认值），则顶部对齐。false为底部对齐。
 ```
 
 ### WebSocket
