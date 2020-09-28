@@ -141,7 +141,7 @@ body{background-color: #1d1f21;}
 .m-article .content pre code .line-numbers-rows span:last-child{padding-bottom:14px;}
 .m-article .content pre code .toolbar{margin-right:20px;}
 .m-article .content table{width: 100%;margin-bottom: 25px;word-break: break-all;}
-.m-article .content table tr th,.m-article .content table tr td{padding: 8px;border: 1px #2f2f2f solid;}
+.m-article .content table tr th,.m-article .content table tr td{padding: 8px;border: 1px #2f2f2f solid;max-width: 200px;}
 .m-article .content table thead tr{background-color: #2f2f2f;}
 .m-article .content table tbody tr{
 transition: background-color .4s;

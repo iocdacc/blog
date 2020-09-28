@@ -416,20 +416,35 @@ String.prototype.replace(可使用正则,替换的字符) //替换字符串中�
 String.prototype.split(可使用正则) //按照实参的字符串分割字符串。返回一个字符分割后作为元素的新数组。
 ```
 
+### RegExp
+|修饰符|全称|备注|
+|-|-|-|
+|g|**g**lobal|告诉引擎在找到第一个匹配项后不要停止，而是继续直到找不到更多匹配项为止。|
+|i|**i**nsensitive|不区分大小写|
+|m|**m**ulti line|多行匹配，主要用于^$，将换行符之后视为新行而不是将整体视为一行。|
+|s|**s**ingle line|允许.匹配换行符|
+|u|**u**nicode|主要用于\u匹配大于4位数的unicode字符，\u之后的unicode改用花括号包裹。|
+|y|stick**y**|黏性匹配，主要是配合g使用，之后的匹配的必须紧挨着之前匹配。不然就抛弃之后的匹配。|
+
+```js
+// 参数
+new RegExp('正则表达式'[, '修饰符']) // /.../g 字面量
+
+// 实例属性
+RegExp.prototype.source // 返回正则的内容 不包括/和修饰符
+
+// 实例方法
+RegExp.prototype.exec('str') // 搜索字符串返回匹配结果数组，和String.prototype.match(可使用正则)类似。
+RegExp.prototype.test('str') // 搜索字符串返回是否存在匹配的布尔值，和String.prototype.search(可使用正则)类似。
+```
+正则表达式测试工具：  
+<a href="https://regex101.com/" target="_blank">https://regex101.com/</a>
+
 ### JSON
 ```javascript
 //静态方法
 JSON.stringify() //对象转JSON
 JSON.parse() //JSON转对象（某些非标准JSON可能无法转换 可以使用eval("(" + JSON + ")")的方法 但此方法可能有执行未知代码的风险）
-```
-
-### RegExp
-```js
-// 参数
-// 修饰符
-// g
-new RegExp('正则表达式'[, '修饰符'])
-
 ```
 
 ### Promise
