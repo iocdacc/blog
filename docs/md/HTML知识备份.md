@@ -6,8 +6,8 @@
 请注意DOM节点不属于ECMA的规范,它们是浏览器通过浏览器API生成的实例.  
 在Node.js里就没有DOM节点.  
 
-
-## div
+## 常用标签
+### div
 ```html
 <div></div><!-- 无属性的块级元素 -->
 <!-- 
@@ -17,7 +17,7 @@
 -->
 ```
 
-## span
+### span
 ```html
 <span></span><!-- 无属性的行级元素 -->
 <!-- 
@@ -27,7 +27,7 @@
 -->
 ```
 
-## a
+### a
 ```html
 <a href="xxx.com" target="_blank">click</a><!-- 在新窗口打开链接 -->
 <a href="xxx.com" target="_self">click</a><!-- 默认，在当前窗口打开链接 -->
@@ -35,12 +35,12 @@
 <a href="xxx.com" target="_top">click</a><!-- 在顶层框架中打开链接 -->
 ```
 
-## form
+### form
 ```html
 <form action="form_action.asp" method="get">
 ```
 
-## input
+### input
 ```html
 <input type="text" name="name" value="" />
 <input type="button" value="Click me" onclick="msg()" /><!-- 按钮 -->
@@ -54,7 +54,7 @@
 <input type="image" src="submit.gif" alt="Submit" /><!-- 图片提交按钮 -->
 ```
 
-## table
+### table
 ```html
 <table border="1">
   <tr><!-- 行 -->
@@ -70,7 +70,7 @@
 </table>
 ```
 
-## ul 无序列表
+### ul 无序列表
 ```html
 <ul>
   <li>Coffee</li>
@@ -79,7 +79,7 @@
 </ul>
 ```
 
-## ol 有序列表
+### ol 有序列表
 ```html
 <ol start="2"><!-- 规定有序列表的起始值 -->
   <li>Coffee</li>
