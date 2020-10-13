@@ -1,5 +1,19 @@
 ## 名词解释
 
+### 盒子模型
+
+所谓盒子模型即，每个标签都是一个矩形空间。
+
+这个矩形空间由：内容（content）,内边距（padding），边框（border），外边距（margin）组成。
+
+因为历史遗留问题盒子模型分为两种。
+
+1. 标准盒子模型（w3c盒子模型），内容高宽不包括内边距和边框。
+
+2. IE盒子模型，内容高宽包括内边距和边框。
+
+现在普遍使用标准盒子模型。IE盒子模型主要使用于IE6，IE7，IE8。
+
 ### 文档流
 html的文档流分三种。普通文档流，浮动文档流，定位文档流。
 
@@ -132,7 +146,94 @@ div{
 ### border 边框属性
 ``` css
 {
-  border:5px solid red; /* 尺寸，线段样式，颜色 */
+  border-width: 1px; /* 边框宽度 */
+  border-color: #f0f0f0|red; /* 边框颜色 */
+  border-style: /* 边框样式 */
+    none| /* 无边框 */
+    solid| /* 实线边框 */
+    dotted| /* 点状边框 */
+    dashed| /* 虚线边框 */
+    double| /* 双边框 */
+    groove| /* 凹槽边框 */
+    ridge| /* 垄状边框 */
+    inset| /* 嵌入边框 */
+    outset /* 外凸边框 */
+  ;
+  border:border-width border-style border-color; /* 简写 */
+}
+```
+常用写法：
+```css
+{
+  border:5px solid red;
+}
+```
+
+### other 杂项
+```css
+{
+  padding-top: 10px; /* 上内边距 */
+  padding-right: 10px; /* 右内边距 */
+  padding-bottom: 10px; /* 下内边距 */
+  padding-left: 10px; /* 左内边距 */
+  padding: 10px 10px 10px 10px; /* 简写 */
+  margin-top: 10px; /* 上外边距 */
+  margin-right: 10px; /* 右外边距 */
+  margin-bottom: 10px; /* 下外边距 */
+  margin-left: 10px; /* 左外边距 */
+  margin: 10px 10px 10px 10px; /* 简写 */
+  width: 10px; /* 内容宽度 */
+  height: 10px; /* 内容高度 */
+  top: 10px; /* 定位偏移量 */
+  left: 10px; /* 定位偏移量 */
+  right: 10px; /* 定位偏移量 */
+  bottom: 10px; /* 定位偏移量 */
+  overflow: /* 当内容超出盒子模型时 */
+    visible| /* 超出内容不会隐藏 */
+    hidden| /* 超出内容隐藏 */
+    scroll| /* 超出内容隐藏，并始终显示滚动条。 */
+    auto /* 超出内容隐藏，并显示滚动条。 */
+  ;
+  display: /* 规定元素类型 */
+    none| /* 元素不会渲染 */
+    block| /* 定义为块元素 */
+    inline-block| /* 定义为行内块元素 */
+    inline| /* 定义为行内元素 */
+    flex| /* 定义为弹性盒子元素 */
+    inline-flex| /* 定义为行内弹性盒子元素 */
+    grid| /* 定义为网格盒子元素 */
+    inline-grid /* 定义为行内网格盒子元素 */
+  ;
+  visibility: /* 元素渲染可见性 */
+    visible| /* 元素渲染并可见 */
+    hidden| /* 元素渲染不可见（元素始终占据空间） */
+    collapse /* 隐藏表格单元格之后单元格会补充空白区域 */
+  ;
+  cursor: /* 鼠标样式 */
+    pointer| /* 手型标志 */
+    help| /* 鼠标带一个问号 */
+    progress| /* 加载状态 */
+    wait| /* 等待状态 */
+    move| /* 移动标志 */
+    text /* 文本状态 */
+  ;
+  box-shadow: /* 元素阴影 */
+    h-shadow /* 阴影水平位置 */
+    v-shadow /* 阴影垂直位置 */
+    blur /* 阴影模糊距离 */
+    spread /* 阴影大小 */
+    color /* 阴影颜色 */
+    inset /* 内阴影 */
+  ;
+}
+```
+常用写法：
+```css
+{
+  overflow: hidden;
+  visibility: hidden;
+  cursor: pointer;
+  box-shadow: 10px 10px 5px #888888;
 }
 ```
 

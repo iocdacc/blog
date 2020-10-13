@@ -157,12 +157,13 @@ transition: background-color .4s;
 }
 
 /* 文章摘要 */
-.m-abstract{position:absolute;right:0;top:40px;}
-.m-abstract ul li{font-size: 1.1rem;margin-bottom: 6px;position: relative;text-align: left;}
+.m-abstract{position:absolute;right:0;top:40px;height: 700px;overflow: auto;max-width: 400px;}
+.m-abstract ul li{font-size: 1.1rem;margin-bottom: 6px;position: relative;text-align: left;word-break:break-all;}
 .m-abstract ul li a{padding-left: 8px;}
 .m-abstract ul li a:hover{color:#2bbc8a;}
 .m-abstract ul li[class=h2]:before{content:"#";color:#2bbc8a;}
 .m-abstract ul li[class=h3]:before{content:"*";color:#2bbc8a;}
+.m-abstract ul li[class=h3]{margin-left: 16px;}
 
 /* 评论 */
 #disqus_thread {padding: 24px 16px 0 16px;}
