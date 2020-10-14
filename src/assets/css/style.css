@@ -116,13 +116,13 @@ body{background-color: #1d1f21;}
 .m-article .content ul li{text-align:justify;font-size:1.2rem;line-height:1.8;list-style:disc;word-break: break-all;}
 .m-article .content ul li ul,.m-article .content ul li ol{padding:0 0 0 18px;}
 .m-article .content ul li ul li,.m-article .content ul li ol{list-style:circle;}
-.m-article .content ol{margin:4px 0;padding-inline-start: 26px;}
+.m-article .content ol{margin: 20px 0 5px 0;padding-inline-start: 26px;}
 .m-article .content ol li{text-align:justify;font-size:1.2rem;line-height:1.8;list-style:decimal;word-break: break-all;}
 .m-article .content ol li ul,.m-article .content ol li ol{padding:0 0 0 18px;}
 .m-article .content ol li ul li,.m-article .content ol li ol{list-style:circle;}
 .m-article .content hr{border:1px dashed #ccc;}
 .m-article .content p{margin:1rem 0;word-break:break-all;line-height:1.5;text-align:justify;}
-.m-article .content blockquote{margin-left:0;margin-right:0;color:#ccffb6;margin-top:48px;position:relative;}
+.m-article .content blockquote{margin-left:0;margin-right:0;color:#ccffb6;margin-top: 32px;position:relative;}
 .m-article .content blockquote::before{color:#ccffb6;content:"\201C";font-size:2em;position:absolute;top:-24px;}
 .m-article .content .h1,.m-article .content h1{color:#2bbc8a;font-weight:bold;letter-spacing:.01em;font-size:1.4em;font-style:normal;font-weight:700;margin-top:3rem;margin-bottom:1rem;display:block}
 .m-article .content .h2,.m-article .content h2{font-size:1.3rem;font-weight:700;color:#2bbc8a;line-height: 1.7rem;}
