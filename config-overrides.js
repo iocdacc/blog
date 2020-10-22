@@ -10,7 +10,7 @@ module.exports = override(
   addBabelPlugins([
     'prismjs',
     {
-      languages: ['javascript', 'css', 'markup'],
+      languages: ['javascript', 'css', 'markup', 'jsx'],
       plugins: ['line-numbers', 'copy-to-clipboard'],
       theme: 'okaidia',
       css: true
