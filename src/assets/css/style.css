@@ -128,9 +128,9 @@ body{background-color: #1d1f21;}
 .m-article .content .h2,.m-article .content h2{font-size:1.3rem;font-weight:700;color:#2bbc8a;line-height: 1.7rem;}
 .m-article .content .h2,.m-article .content h2{position:relative;text-transform:none;letter-spacing:normal;margin-top:2rem;margin-bottom:.5rem;display:block}
 .m-article .content h2:before{content:"#";color:#2bbc8a;position:absolute;left:-1.5rem;top:0rem;font-size:1.5rem;font-weight:700;text-align:justify;word-break:break-all;}
-.m-article .content h3{position:relative;font-size:1.2rem;font-weight:700;color:#eee;line-height: 1.5rem;text-align:justify;word-break:break-all;}
+.m-article .content h3{position:relative;font-size:1.2rem;font-weight:700;color:#fff;line-height: 1.5rem;text-align:justify;word-break:break-all;}
 .m-article .content h3:before{content:"*";color:#2bbc8a;position:absolute;left:-1.5rem;top:0.2rem;font-size:1.5rem;font-weight:700;text-align:justify;word-break:break-all;}
-.m-article .content h4,.m-article .content h5,.m-article .content h6{font-size:1.2rem;font-weight:400;color:#ccc;border-bottom:1px dashed #ccc;display:inline;text-decoration:none;text-align:justify;word-break:break-all;}
+.m-article .content h4,.m-article .content h5,.m-article .content h6{font-size:1.2rem;font-weight:400;color:#fff;border-bottom:1px dashed #fff;display:inline;text-decoration:none;text-align:justify;word-break:break-all;}
 .m-article .content dt,.m-article .content strong,.m-article .content th{font-weight:700}
 .m-article .content strong{color: #2bbc8a;}
 .m-article .content h3,.m-article .content h4,.m-article .content h5,.m-article .content h6{margin-top:.9rem;margin-bottom:.5rem}
@@ -158,12 +158,14 @@ transition: background-color .4s;
 
 /* 文章摘要 */
 .m-abstract{position:absolute;right:0;top:40px;height: 700px;overflow: auto;max-width: 400px;}
+.m-abstract ul{padding: 0 16px;}
 .m-abstract ul li{font-size: 1.1rem;margin-bottom: 6px;position: relative;text-align: left;word-break:break-all;}
-.m-abstract ul li a{padding-left: 8px;}
+.m-abstract ul li a span{padding-left: 16px;display: inline-block;}
 .m-abstract ul li a:hover{color:#2bbc8a;}
-.m-abstract ul li[class=h2]:before{content:"#";color:#2bbc8a;}
-.m-abstract ul li[class=h3]:before{content:"*";color:#2bbc8a;}
+.m-abstract ul li[class=h2]:before{content:"#";color:#2bbc8a;position: absolute;}
+.m-abstract ul li[class=h3]:before{content:"*";color:#2bbc8a;position: absolute;}
 .m-abstract ul li[class=h3]{margin-left: 16px;}
+.m-abstract ul li[class=h4]{margin-left: 16px;}
 
 /* 评论 */
 #disqus_thread {padding: 24px 16px 0 16px;}

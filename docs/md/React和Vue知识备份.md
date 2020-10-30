@@ -4,7 +4,7 @@
 
 ## React和Vue异同
 ### 创建组件
-#### React
+**React**
 ```js
 // 创建组件
 let componentReact = React.createElement(
@@ -20,7 +20,7 @@ let componentReact = props=>React.createElement(
   props.nothing|'123'|otherComponent // 子元素内容
 )
 ```
-#### Vue
+**Vue**
 ```js
 // 创建组件
 let componentVue = Vue.extend({
@@ -38,7 +38,7 @@ Vue.comprnent('componentVue', { // Vue.extend会自动执行
 })
 ```
 ### 虚拟DOM渲染
-#### React
+**React**
 ```js
 ReactDOM.render(
   componentReact, 
@@ -46,7 +46,7 @@ ReactDOM.render(
   callback
 )
 ```
-#### Vue
+**Vue**
 1. 手动渲染
 
 ```js
@@ -66,12 +66,12 @@ let vm = new Vue({
 })
 ```
 ### 生成SSR使用的HTML文本
-#### React
+**React**
 ```js
 let ReactDOMServer = require('react-dom/server')
 let htmlStr = ReactDOMServer.renderToString(componentReact)
 ```
-#### Vue
+**Vue**
 ```js
 let renderer = require('vue-server-renderer').createRenderer()
 renderer.renderToString(vm, (err, htmlStr) => {
@@ -86,12 +86,12 @@ renderer.renderToString(vm).then(htmlStr => {
 })
 ```
 ### 浏览器接管静态html
-#### React
+**React**
 ```js
 // 假设根元素id为app
 ReactDOM.hydrate(componentReact, document.getElementById('app'))
 ```
-#### Vue
+**Vue**
 ```js
 // 就是对根元素进行渲染操作
 new Vue({
@@ -106,7 +106,7 @@ let vm = new Vue({
 })
 ```
 ### 模板语言
-#### React
+**React**
 1. JSX
 
 **<a href="https://babeljs.io/docs/en/babel-preset-react" target="_blank">React JSX babel配置方法</a>**
@@ -126,11 +126,11 @@ ReactDOM.render(componentReact, document.getElementById('app'))
 ```html
 <div id='app'></div>
 ```
-#### Vue
+**Vue**
 > 相较于React，Vue有多种编写模板的方式。
 1. 直接使用html
 
-**需要加载完整版的vue**
+**需要加载完整版的vue** vue.esm.js
 ```js
 // 因为需要解析模板里的花括号之类的东西
 // 需要加载完整版的vue
@@ -148,7 +148,7 @@ let vm = new Vue({
 ```
 2. 使用template属性
 
-**需要加载完整版的vue**
+**需要加载完整版的vue** vue.esm.js
 ```js
 // 因为需要解析模板里的花括号之类的东西
 // 需要加载完整版的vue
@@ -187,7 +187,7 @@ let vm = new Vue({
 优先级高的方法会**覆盖**优先级低的方法。其中template，render会**覆盖**根元素内的其他内容，除非使用了**插槽&lt;slot>&lt;/slot>**。html方式不会覆盖根元素内其他内容。
 
 ### 主流开发方式
-#### React
+**React**
 1. ES6
 
 ```js
@@ -195,16 +195,20 @@ import React, { Component } from 'react'
 import ReactDom from 'react-dom'
 
 class App extends Component {
-  constructor(props) {
+  constructor(props) { // props为父组件通过attr传入的数据
     super(props) // 执行父类的构造函数
-    this.state = {
+    this.state = { // 组件的私有数据
       str: '我是初始值'
     }
+  }
+
+  clickFun(){
+    this.setState({str: '我被点击了'}) // 必须使用this.setState方法修改才会触发页面重绘。
   }
   
   render(){
     return (
-      <div onClick={()=>{this.setState({str: '我被点击了'})}}>{this.state.str}</div>
+      <div onClick={clickFun}>{this.state.str}</div>
     )
   }
 }
@@ -222,8 +226,12 @@ import ReactDom from 'react-dom'
 let App = props=>{
   let [str, setStr] = useState('我是初始值')
 
+  let clickFun = ()=>{
+    setStr({str: '我被点击了'}) // 必须使用钩子函数提供的setStr方法修改才会触发页面重绘。
+  }
+
   return (
-    <div onClick={()=>setStr('我被点击了')} >{str}</div>
+    <div onClick={clickFun} >{str}</div>
   )
 }
 
@@ -233,7 +241,7 @@ ReactDom.render(<App/>, document.getElementById('app'))
 ```js
 let App = props=><div>{props.data}</div>
 ```
-#### Vue
+**Vue**
 1. Vue Loader
 
 > 使用运行时版本的vue  
@@ -244,19 +252,27 @@ let App = props=><div>{props.data}</div>
 app.vue
 ```html
 <template>
-  <div class="example" v-on:click="setStr">{{ str }}</div>
+  <div class="example" v-on:click="setStr">{{ str }}</div> <!--在模板里不用加this-->
+  <div>props: {{ prop1 }}</div> <!--在模板里不用加this-->
 </template>
 
 <script>
 export default { // 编译后此处返回当前组件
+  props: ['prop1'], // 要使用props必须先注册
   methods:{
-    setStr(){this.str = '我被点击了'}
+    setStr(){
+      this.str = '我被点击了' // 直接修改data就能触发页面重绘。
+    } 
   },
   // Vue Loader编译后实际上使用的是Vue.extend()。所以data必须是函数。
-  data () {
+  data(){
     return {
       str: '我是初始值'
     }
+  },
+  mounted(){
+    console.log(this.prop1) // props会直接注入到实例的根属性下。不像react需要使用this.props.prop1访问。
+    console.log(this.str) // data会直接注入到实例的根属性下。
   }
 }
 </script>
@@ -319,7 +335,7 @@ new Vue({
 
 ## React
 ### 名词解释
-#### 1. 组合
+#### 组合
 
 > 子组件内容的定制，一种特殊的props。  
 > 类似Vue的插槽。
@@ -362,7 +378,7 @@ let MyComponent = props=>{
 </MyComponent>
 ```
 ---
-#### 2. 状态提升
+#### 状态提升
 
 >某些时候两个同级的组件数据需要共享并同步，可以将数据存放在它们共同的父组件中，以简化逻辑。
 
@@ -388,7 +404,7 @@ let ComponentA = props=>{
 }
 ```
 ---
-#### 3. 受控组件与非受控组件
+#### 受控组件与非受控组件
 
 > react表单相关范式。
 
@@ -446,7 +462,7 @@ let ComponentA = props=>{
 }
 ```
 ---
-#### 4. 代码分割
+#### 代码分割
 
 webpack提供的代码分割
 ```jsx
@@ -464,7 +480,7 @@ const ComponentA = React.lazy(() => import('./ComponentA'));
 如果需要SSR代码分割可以使用<a href="https://loadable-components.com/" target="_blank">loadable-components</a>这个库。
 
 ---
-#### 5. context
+#### context
 
 > 根组件下的所有组件共享数据的一种方法。  
 > 在简单项目中替代redux的一种方法。  
@@ -505,7 +521,7 @@ class ComponentA extends React.Component {
 }
 ```
 ---
-#### 6. 错误边界
+#### 错误边界
 
 > 因为组件内部只能写表达式，不能写try/catch语句。  
 > 使用static getDerivedStateFromError()或componentDidCatch()的特性，创建一个专门处理组件报错的组件。  
@@ -543,7 +559,7 @@ class ErrorBoundary extends React.Component {
 </ErrorBoundary>
 ```
 ---
-#### 7. ref和refs转发
+#### ref和refs转发
 
 > React获取真实Dom的方法
 > 标签必须渲染后，dom才会映射到ref对象上。
@@ -555,6 +571,14 @@ let ComponentA = props=>{
   ref.current // 此时ref.current为空
   let clickFun = ()=>console.log(ref.current) // 此时对象才有值
   return <><span onClick={clickFun} ref={ref}>123</span></>
+}
+
+let ComponentA = props=>{
+  let ref
+  let refFun = element=>ref=element // 可以直接传递一个回调函数而不使用React.useRef()
+  ref.current // 此时ref.current为空
+  let clickFun = ()=>console.log(ref.current) // 此时对象才有值
+  return <><span onClick={clickFun} ref={refFun}>123</span></>
 }
 
 // ES6
@@ -598,7 +622,7 @@ let App = props=>{
 let ComponentA = <><span ref={props.myRef}>123</span></> 
 ```
 ---
-#### 8. 高阶组件（HOC，Height Of Component）
+#### 高阶组件（HOC，Height Of Component）
 
 > 将组件重复的逻辑抽象出来，抽象方法返回一个子组件。  
 > 这个抽象方法就叫高阶组件。
@@ -690,7 +714,7 @@ let App = props=><><ComponentA/><ComponentB/></>
 ReactDom.render(<App/>, document.getElementById('app'))
 ```
 ---
-#### 9. key
+#### key
 在react中如果有循环结构就必须在循环的标签上加key。  
 
 主要原因是react通过key来决定是否重绘此标签。两次渲染如果相同顺位的标签属性key没有变化则react认为标签内容没有变化，不会重绘此标签。  
@@ -699,8 +723,54 @@ key与标签的内容应该是绑定并唯一的。一般后端输出的数据�
 
 如果没有数据id则用数组下标作为key。但数组的顺序不能发生改变，否则会导致不必要的重绘。并且如果标签内容是表单也会导致表单内容混乱。
 
-### react api
-1. React
+---
+#### Portal（传送门）
+
+可以将子元素渲染到其他DOM中的方法。
+
+```jsx
+import React from 'react';
+import ReactDom from 'react-dom';
+
+let App = props=>ReactDom.createPortal(
+  <div>app2</div>, 
+  document.getElementById('app2')
+)
+
+ReactDom.render(<App/>, document.getElementById('app1'))
+```
+```html
+<div id="app1"></div>
+<div id="app2"><!-- <div>app2</div> --></div>
+```
+---
+#### 合成事件
+react中绑定的事件实际上并非直接绑定在指定的DOM上，而是统一绑定到document上。  
+然后根据其内部的虚拟DOM树进行事件冒泡。
+
+将所有事件绑定到document上然后根据虚拟DOM进行事件冒泡和其他特性就是合成事件。  
+
+合成事件使用的是React的虚拟DOM树和实际的DOM树其实没有关系。  
+
+所以使用Portal将子元素渲染到其他位置其还是遵循原来的虚拟DOM树进行事件冒泡或者context。
+
+合成事件相较于普通事件优化了性能。
+
+#### Profiler（性能测试内置组件）
+Profiler是一个React内置组件，它在生产环境是禁用的。
+
+主要主要功能是监听指定的组件和其子组件的渲染性能。
+
+```jsx
+let App = props=>(
+  <Profiler id="otherComponent" onRender={callback}> {/* 使用callback监听渲染性能 */}
+    <otherComponent />
+  </Profiler>
+)
+```
+
+### React api
+#### React
 
 > React的核心API,主要用于生成React虚拟节点.
 
@@ -735,12 +805,6 @@ React.Component() //组件抽象类
 React.PureComponent() //组件抽象类,props和state无更新时不刷新组件.
 React.memo(函数组件) //props和state无更新时不刷新组件.
 
-//hook(只有函数组件可以使用)
-React.useState(初始化state) // 使函数组件可以是用state, 返回一个数组第一个是当前state,第二个是setstate()
-React.useEffect(callback()) // 生命周期钩子,组件初次渲染和更新后执行其回调函数.
-React.useRef() // 创建一个ref对象.
-React.useContext() // 消费指定context
-
 //context
 React.createContext({data: '默认值'}) // 创建一个context对象
 Context.Provider // context注册根组件
@@ -748,15 +812,28 @@ Context.Consumer // 组件的方式消费指定context
 Class.contextType // 消费指定context
 
 ``` 
+
+#### React Hook
+> React Hook是增强函数组件的一系列API，函数组件取代了传统的ES6的class开发方式。
+
+```js
+import React from 'react'
+
+//hook(只有函数组件可以使用)
+React.useState(初始化state) // 使函数组件可以是用state, 返回一个数组第一个是当前state,第二个是setstate()
+React.useEffect(callback()) // 生命周期钩子,组件初次渲染和更新后执行其回调函数.
+React.useRef() // 创建一个ref对象.
+React.useContext() // 消费指定context
+```
   
 
-2. React.Component
-
-> React.Component是React比较重要又特殊的API.  
-> React.Component是组件的抽象类.  
-> 它的主要作用是,赋予一个类,组件的特性.  
-> 只有继承它,在React.createElement()渲染虚拟DOM时,才会实例化具体组件,从而才会在渲染时调用具体组件相应的生命周期方法.  
-> 如果不继承它,具体组件渲染虚拟DOM时将被普通调用.  
+#### React.Component
+> React.Component主要用于ES6的class方式开发。  
+> React.Component是React比较重要又特殊的API。  
+> React.Component是组件的抽象类。  
+> 它的主要作用是，赋予一个类，组件的特性。  
+> 只有继承它，在React.createElement()渲染虚拟DOM时，才会实例化具体组件，从而才会在渲染时调用具体组件相应的生命周期方法。  
+> 如果不继承它，具体组件渲染虚拟DOM时将被普通调用。  
 > 当然它也提供了一些辅助作用的实例方法  
 
 生命周期和其他功能：
@@ -804,7 +881,7 @@ class App extends Component{
 ```  
   
 
-3. ReactDom
+#### ReactDom
 
 > React的html渲染API,主要用于在浏览器环境将虚拟节点渲染到html上.
 
@@ -813,10 +890,10 @@ import ReactDOM from 'react-dom'
 
 ReactDOM.render(element, container[, callback]) //渲染一个虚拟DOM到指定节点中.
 ReactDOM.unmountComponentAtNode(container) //删除指定节点中的虚拟DOM.
-ReactDOM.createPortal(element, container) //创建一个渲染动作,当ReactDOM.render执行时,会执行这个渲染动作.
+ReactDOM.createPortal(element, container) // 将子节点渲染到指定的DOM中，而不是父组件中。
 ```
 
-4. ReactDOMServer
+#### ReactDOMServer
 
 > React的字符串渲染API,主要用于在node环境渲染成文本，由其他web服务器返回给客户端。
 
@@ -851,9 +928,14 @@ let jsx = <div className={this.props.color}></div> // 作为属性值时外面�
 // JSX更接近于JS而非HTML
 // 所以JSX标签属性使用的是DOM属性的书写方式
 let jsx = <div className=""></div> // 使用className而非class，其属性名以DOM属性为标准。
+let jsx = <div style={{backgroundColor:'red'}}></div> // style传入一个对象而非字符串
+
+// 其他特殊功能
+let jsx = <div dangerouslySetInnerHTML={__html: '<div></div>'}></div> // 渲染未转义的内容
+
 ```
 
-### redux
+### Redux
 > 一种全局共享的数据仓库
 
 ```javascript
@@ -884,7 +966,7 @@ store.dispatch({ type: 'INCREMENT' });
 
 ```
 
-### react redux
+### React Redux
 > redux的react插件,增加易用性.
 ```javascript
 import { Provider, connect } from 'react-redux'
@@ -919,7 +1001,7 @@ export connect(
 
 ## Vue
 
-### vue api
+### Vue api
 
 > 和react不同的是vue核心api和它的html渲染api在一起。
 
@@ -960,7 +1042,7 @@ new Vue({ // Vue构造函数，创建一个组件并渲染或挂载。核心功�
     foo: 'value'
   },
   inject: ['foo'], // 获取指定的共享数据
-  watch: { // 监听指定data值，只有改变就会执行回掉方法。
+  watch: { // 监听指定data值，只要改变就会执行回掉方法。
     num(){
       console.log("num改变了")
     },
@@ -1015,18 +1097,18 @@ new Vue({ // Vue构造函数，创建一个组件并渲染或挂载。核心功�
 
   // 生命周期
   // 初次渲染阶段
-  beforeCreate(){},
-  created(){},
-  beforeMount(){},
-  mounted(){},
+  beforeCreate(){}, // 仅仅初始化实例完成。data，props，Dom都无法访问。
+  created(){}, // 实例创建完成。data，props可访问，但Dom无法访问。
+  beforeMount(){}, // 渲染准备阶段，此时已经渲染了根节点。
+  mounted(){}, // 渲染完成阶段，此时节点和数据已经渲染完成。
 
   // 更新渲染阶段
-  beforeUpdate(){},
-  updated(){},
+  beforeUpdate(){}, // 数据更新但未渲染
+  updated(){}, // 已经重新渲染完成
 
   // 删除阶段
-  beforeDestroy(){},
-  destroyed(){},
+  beforeDestroy(){}, // 删除准备阶段
+  destroyed(){}, // 已完成删除
 
   // 报错阶段
   errorCaptured(){},
@@ -1052,7 +1134,8 @@ Vue.component( // 将一个预设的Vue构造函数注册为组件。
   Vue.extend({})|{} // Vue.extend可省略。
 ) 
 Vue.nextTick(callback) // Dom下一次渲染之后触发回调。
-Vue.delete(this.list, 'name') // 删除组件data中的一个数据。会触发更新阶段。不能是data的一级对象。
+Vue.set(Vue.prototype.data, key, value) // 实例创建后，给data数据的对象添加新值时不会触发重绘，此时使用此方法添加新值可以强制重绘。
+Vue.delete(Vue.prototype.data, 'name') // 删除组件data中的一个数据。会触发更新阶段。不能是data的一级对象。
 Vue.directive('my-directive', { // 全局创建一个指令，绑定指令的元素会执行内部的生命周期方法。
   bind(){}, // 绑定指令后触发。
   inserted(){}, // 当前组件开始渲染时调用。只保证父组件渲染完成，本身可能还未渲染。
@@ -1085,10 +1168,25 @@ Vue.prototype.$root // 根组件实例
 Vue.prototype.$children // 子组件实例
 Vue.prototype.$slots // 组件实例的插槽内容
 Vue.prototype.$scopedSlots // 组件实例的作用域插槽的内容
-Vue.prototype.$refs
-Vue.prototype.$isServer
-Vue.prototype.$attrs
-Vue.prototype.$listeners
+Vue.prototype.$refs // 当前组件的所有用ref attr注册了的dom和组件
+Vue.prototype.$isServer // 当前组件是否运行在服务器
+Vue.prototype.$attrs // 
+Vue.prototype.$listeners // 当前组件所有事件回调方法
+
+// 实例方法
+Vue.prototype.$watch('dataKey', callback) // 监听data数据是否发生变化，是则触发回调方法。
+Vue.prototype.$set(Vue.prototype.data, key, value) // 当对data数据内的对象新增属性时不会发生重绘，可以使用此方法新增属性并强制重绘。
+                                                   // 不能修改Vue实例，或修改根实例上的data数据。
+Vue.prototype.$delete(Vue.prototype.data, key) // 删除指定的data属性。触发重绘。
+                                               // 不能删除Vue实例属性，或删除根实例上的data数据。
+Vue.prototype.$on('eventName', callback) // 创建一个自定义事件
+Vue.prototype.$once('eventName', callback) // 创建一个只执行一次的自定义事件
+Vue.prototype.$off('eventName'[, callbackName]) // 删除自定义事件,如果没有提供事件名则删除实例上的所有自定义事件。
+Vue.prototype.$emit('eventName', value) // 执行一个自定义事件
+Vue.prototype.$mount('CSS选择器') // 当未定义el时，可以使用此方法手动渲染根组件。
+Vue.prototype.$forceUpdate() // 强制重绘。它只影响当前组件和使用了插槽的子组件。
+Vue.prototype.$nextTick(callback) // Dom下一次渲染之后触发回调。当前实例作为回调的实参。
+Vue.prototype.$destroy() // 完全销毁当前实例
 ```
 
 ### 模板语法
