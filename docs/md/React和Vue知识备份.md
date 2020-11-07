@@ -1001,7 +1001,7 @@ let App = props=>{
 ```
 
 react-router-dom api
-```jsx
+```text
 import {
   Router,
   Switch,
