@@ -1001,7 +1001,7 @@ let App = props=>{
 ```
 
 react-router-dom api
-```text
+```jsx
 import {
   Router,
   Switch,
@@ -1038,18 +1038,6 @@ useParams() // 当前页面的get参数。
 // 功能组件，必须包含在根组件内。
 // 链接组件
 <Link to="/user"></Link> // 字符串跳转
-<Link to={{ // object跳转
-  pathname: "/courses", // url
-  search: "?sort=name", // get参数
-  hash: "#the-hash", // hash
-  state: {fromDashboard: true} // 是否刷新
-}}></Link>
-<Link to={location=>({ // 函数跳转
-  pathname: "/courses", // url
-  search: "?sort=name", // get参数
-  hash: "#the-hash", // hash
-  state: {fromDashboard: true} // 是否刷新
-})}></Link>
 <Link to="user" replace></Link> // replace会替换当前浏览记录而不是在之后增加。
 <Link to="user" component={React.forwardRef((props, ref) => ( // 自定义a标签
   <a ref={ref}>💅 {props.children}</a>
