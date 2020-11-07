@@ -1032,12 +1032,7 @@ useParams() // 当前页面的get参数。
 
 <StaticRouter></StaticRouter> // 静态路由，不使用浏览器的URL而是手动指定，这对于SSR项目很有用。
 <StaticRouter location="/xxx"></StaticRouter> // 手动指定一个路由
-<StaticRouter location={{ /* object跳转 */
-    pathname: "/courses", /* url */
-    search: "?sort=name", /* get参数 */
-    hash: "#the-hash", /* hash */
-    state: {fromDashboard: true} /* 是否刷新 */
-}}></StaticRouter>
+<StaticRouter location=""></StaticRouter>
 <StaticRouter context={context}></StaticRouter> // 用于接收重定向信息，服务器软件可以根据此信息重新指定URL。
 
 // 功能组件，必须包含在根组件内。
