@@ -134,11 +134,9 @@ body{background-color: #1d1f21;}
 .m-article .content dt,.m-article .content strong,.m-article .content th{font-weight:700}
 .m-article .content strong{color: #2bbc8a;}
 .m-article .content h3,.m-article .content h4,.m-article .content h5,.m-article .content h6{margin-top:.9rem;margin-bottom:.5rem}
-.m-article .content pre code,.m-article .content p code,.m-article .content li code{font-family:"Meslo LG","Helvetica Neue",Helvetica,"Microsoft yahei",Arial,sans-serif,monospace;}
-.m-article .content pre code .line-numbers-rows{background-color:#383838;border:0;top:-21px;}
+.m-article .content pre code{font-family:"Meslo LG";display: inline-block;}
+.m-article .content pre code .line-numbers-rows{background-color:#383838;border:0;padding:1em 0;top:-1em;}
 .m-article .content pre code .line-numbers-rows span::before{content:counter(linenumber);color:#999;display:block;text-align:right;padding-right:.5rem;}
-.m-article .content pre code .line-numbers-rows span:first-child{padding-top:19px;}
-.m-article .content pre code .line-numbers-rows span:last-child{padding-bottom:14px;}
 .m-article .content pre code .toolbar{margin-right:20px;}
 .m-article .content table{width: 100%;margin-bottom: 25px;word-break: break-all;}
 .m-article .content table tr th,.m-article .content table tr td{padding: 8px;border: 1px #2f2f2f solid;max-width: 200px;}
