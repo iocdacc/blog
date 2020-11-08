@@ -580,6 +580,7 @@ queueMicrotask() // 执行一个微任务
 scroll(x, y, options)，scrollTo(x, y, options) // 将滚动条移动到指定位置
 scrollBy(x, y, options) // 将滚动条移动指定像素
 stop() // 停止网页载入
+getEventListeners(dom) // 获取指定dom上绑定的事件（仅支持Chrome）
 ```
 
 ## 浏览器对象(构造函数)
