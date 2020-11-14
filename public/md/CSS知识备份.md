@@ -324,18 +324,18 @@ div{
 ```css
 {
   transform: 
-    translate(x,y)| /* 2d位移 */
-    translate3d(x,y,z)| /* 3d位移 */
-    scale(x,y)| /* 2d缩放 */
-    scale3d(x,y,z)| /* 3d缩放 */
-    rotate(angle)| /* 2d旋转 */
-    rotate3d(x,y,z,angle)| /* 3d旋转 */
-    skew(x-angle,y-angle)| /* 2d倾斜 */
-    perspective(n) /* 转换为透视相机 */
+    translate(x,y||5px,5px||50%,50%)| /* 2d位移 */
+    translate3d(x,y,z||5px,5px,5px||50%,50%,50%)| /* 3d位移 */
+    scale(x,y||.5,.5)| /* 2d缩放 */
+    scale3d(x,y,z||.5,.5,.5)| /* 3d缩放 */
+    rotate(angle||360deg)| /* 2d旋转 */
+    rotate3d(x,y,z,angle||1,0,0,360deg)| /* 3d旋转 */
+    skew(x-angle,y-angle||360deg,360deg)| /* 2d倾斜 */
+    perspective(150px) /* 3d重要！，以自身为视角开启透视相机，设置相机相对于当前元素平面中心的z轴偏移量，默认为none，当未设置perspective时将使用正交相机。 */
   ;
   transform-origin: 50% 50% 0; /* 修改2d，3d元素的原点位置 */
-  transform-style: flat|preserve-3d; /* flat为以当前元素为平面子元素使用正交相机，preserve-3d为子元素统一使用当前元素的透视相机。 */
-  perspective: 150px; /* 子元素开启透视相机，设置相机相对于当前元素平面中心的z轴偏移量，默认为none，当未设置perspective时将使用正交相机。 */
+  transform-style: flat|preserve-3d; /* 3d重要！，flat为以当前元素为平面子元素使用正交相机，preserve-3d为子元素统一使用当前元素的透视相机。 */
+  perspective: 150px; /* 3d重要！，以父元素为开启透视相机，设置相机相对于当前元素平面中心的z轴偏移量，默认为none，当未设置perspective时将使用正交相机。 */
   perspective-origin: 50% 50%; /* 设置相机相对于当前元素平面中心的x,y轴偏移量。当未设置perspective时此项无效。 */
   backface-visibility: visible|hidden; /* 3d元素背面是否可见 */
 }
