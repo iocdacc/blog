@@ -19,3 +19,7 @@ git config --global user.name "iocdacc"
 
 git config --global user.email iocdacc@gmail.com
 ```
+
+## jQuery手册
+
+https://www.jb51.net/shouce/jquery1.82/
