@@ -70,12 +70,12 @@ export const getProjects = () => {
           {
             name: 'VsPlayAudio',
             describe: '美观的音乐播放器',
-            src: 'https://iocdacc.github.io/vsPlayAudio'
+            src: 'https://iocdacc.github.io/VsPlayAudio'
           },
           {
             name: 'VsPlayVideo',
             describe: '美观的视频播放器',
-            src: 'https://iocdacc.github.io/vsPlayVideo'
+            src: 'https://iocdacc.github.io/VsPlayVideo'
           },
           {
             name: 'VsClick',
